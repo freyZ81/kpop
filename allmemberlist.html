@@ -28,9 +28,16 @@
         Members
     </h1>
     <table id="tableMembersGroupsAndBirthdays">
-        <tr>
-            <th id="membersGroupsAndBirthdays" colspan="3">Members, groups and birthdays</th>
-        </tr>
+        <thead>
+            <tr>
+                <th onclick="sortName()">Name</th>
+                <th onclick="sortGroup()">Group</th>
+                <th onclick="sortDate()">Birthday</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
     </table>
 
     <script src="memberlist.js"></script>
