@@ -159,4 +159,4 @@ function sortDate() {
     setMembers(allMembers);
 }
 
-setMembers(allMembers)
+setMembers(allMembers);
