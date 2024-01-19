@@ -325,6 +325,11 @@ let allMembers = [
         birthday: new Date("1997-10-23"),
     },
     {
+        name: "Seulgi",
+        group: ["RV"],
+        birthday: new Date("1994-02-10"),
+    },
+    {
         name: "Wendy",
         group: ["RV"],
         birthday: new Date("1994-02-21"),
@@ -1746,7 +1751,7 @@ let allMembers = [
     },
     {
         name: "Yunji",
-        group: ["Busters"],
+        group: ["Ex-Busters"],
         birthday: new Date("2007-01-09"),
     },
     {
@@ -1765,8 +1770,13 @@ let allMembers = [
         birthday: new Date("2005-03-05"),
     },
     {
-        name: "MinMin",
+        name: "Nami",
         group: ["Busters"],
+        birthday: new Date("2004-06-08"),
+    },
+    {
+        name: "MinMin",
+        group: ["Ex-Busters"],
         birthday: new Date("2006-07-02"),
     },
     {
