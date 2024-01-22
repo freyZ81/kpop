@@ -12,11 +12,14 @@ const result = document.getElementById("result");
 function setNewPicture() {
     randomNumber = Math.floor(Math.random() * allMembers.length);
 
-    if (allMembers[randomNumber].group != '') {
-        let source = folder + allMembers[randomNumber].group[0].toLowerCase() + "/" + allMembers[randomNumber].name.toLowerCase() + ".jpg";
+    console.log(allMembers[randomNumber].name[allMembers[randomNumber].name.length-1]);
+    console.log(allMembers[randomNumber].name);
+    if (allMembers[randomNumber].group[0] != '') {
+        let source = folder + allMembers[randomNumber].group[allMembers[randomNumber].group.length-1].toString().toLowerCase()
+        + "/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
-    } else if (allMembers[randomNumber].group == '') {
-        let source = folder + "solo/" + allMembers[randomNumber].name.toLowerCase() + ".jpg";
+    } else if (allMembers[randomNumber].group[0] == '') {
+        let source = folder + "solo/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
     }
@@ -25,11 +28,12 @@ function setNewPicture() {
 
 console.log(allMembers.length);
 function checkAnswer() {
-    if (answer.value.toLowerCase() === allMembers[randomNumber].name.toLowerCase()) {
+    if (answer.value.toLowerCase() === allMembers[randomNumber].name[-0].toLowerCase()) {
         result.innerHTML = "You guessed it correct.";
         answer.value = "";
     } else {
-        result.innerHTML = "That was wrong. It was " + allMembers[randomNumber].name + ".";
+        result.innerHTML = "That was wrong. It was " + allMembers[randomNumber].name[0]
+        + " from " + allMembers[randomNumber].group[0] + ".";
         answer.value = "";
     }
     setNewPicture();

@@ -18,7 +18,7 @@ function setMembers(memberArray) {
         const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
         
         const countryCell = newRow.insertCell(0);
-        countryCell.innerHTML = member.name;
+        countryCell.innerHTML = member.name[0];
     
         const countryCell2 = newRow.insertCell(-1);
         countryCell2.innerHTML = member.group[0];
