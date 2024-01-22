@@ -165,7 +165,6 @@ function sortDate() {
 function setBirthdays() {
     todaysBirthdays.innerHTML = "";
 
-
     for (let i = 0; i < allMembers.length; i++) {
         var member = allMembers[i];
         memberbirthday = new Date(member.birthday);

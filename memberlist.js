@@ -1945,6 +1945,11 @@ let allMembers = [
         birthday: new Date("2007-04-12"),
     },
     {
+        name: "Lynn",
+        group: ["tripleS"],
+        birthday: new Date("2007-04-12"),
+    },
+    {
         name: "Xinyu",
         group: ["tripleS"],
         birthday: new Date("2002-05-25"),
@@ -1988,6 +1993,26 @@ let allMembers = [
         name: "Kaede",
         group: ["tripleS"],
         birthday: new Date("2005-12-20"),
+    },
+    {
+        name: "Mayu",
+        group: ["tripleS"],
+        birthday: new Date("2002-05-12"),
+    },
+    {
+        name: "Shion",
+        group: ["tripleS"],
+        birthday: new Date("2006-04-03"),
+    },
+    {
+        name: "Hayeon",
+        group: ["tripleS"],
+        birthday: new Date("2007-08-01"),
+    },
+    {
+        name: "Joobin",
+        group: ["tripleS"],
+        birthday: new Date("2009-01-16"),
     },
     {
         name: "Yuto",
