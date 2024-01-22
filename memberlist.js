@@ -1585,6 +1585,41 @@ let allMembers = [
         birthday: new Date("2005-09-01"),
     },
     {
+        name: "E.Ji",
+        group: ["ICHILLIN"],
+        birthday: new Date("2000-11-08"),
+    },
+    {
+        name: "Jiyoon",
+        group: ["ICHILLIN"],
+        birthday: new Date("2000-09-12"),
+    },
+    {
+        name: "Jackie",
+        group: ["ICHILLIN"],
+        birthday: new Date("2001-11-17"),
+    },
+    {
+        name: "Joonie",
+        group: ["ICHILLIN"],
+        birthday: new Date("2002-05-24"),
+    },
+    {
+        name: "Chaerin",
+        group: ["ICHILLIN"],
+        birthday: new Date("2003-03-31"),
+    },
+    {
+        name: "Yeju",
+        group: ["ICHILLIN"],
+        birthday: new Date("2004-09-01"),
+    },
+    {
+        name: "Chowon",
+        group: ["ICHILLIN"],
+        birthday: new Date("2005-08-18"),
+    },
+    {
         name: "JinE",
         group: ["Ex-Oh My Girl"],
         birthday: new Date("1995-01-22"),
