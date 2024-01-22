@@ -1536,18 +1536,53 @@ let allMembers = [
     },
     {
         name: "Sion",
-        group: ["Bebez"],
+        group: ["geenius"],
         birthday: new Date("2001-03-07"),
     },
     {
         name: "YeYoung",
-        group: ["Bebez"],
-        birthday: new Date("2000-03-31"),
+        group: ["geenius"],
+        birthday: new Date("2000-05-31"),
     },
     {
-        name: "Min",
-        group: ["Bebez"],
-        birthday: new Date("2004-08-05"),
+        name: "Andamiro",
+        group: ["geenius"],
+        birthday: new Date("2003-05-06"),
+    },
+    {
+        name: "Mika",
+        group: ["geenius"],
+        birthday: new Date("2002-01-08"),
+    },
+    {
+        name: "Zoe",
+        group: ["geenius"],
+        birthday: new Date("2002-04-12"),
+    },
+    {
+        name: "Evie",
+        group: ["iii"],
+        birthday: new Date("2002-05-22"),
+    },
+    {
+        name: "Ahra",
+        group: ["iii"],
+        birthday: new Date("2004-02-20"),
+    },
+    {
+        name: "Nicole",
+        group: ["iii"],
+        birthday: new Date("2005-07-09"),
+    },
+    {
+        name: "Yan",
+        group: ["iii"],
+        birthday: new Date("2005-07-11"),
+    },
+    {
+        name: "Vivi",
+        group: ["iii"],
+        birthday: new Date("2005-09-01"),
     },
     {
         name: "JinE",
