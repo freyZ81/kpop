@@ -81,6 +81,11 @@ let allMembers = [
         group: [""],
         birthday: new Date("1996-12-09"),
     },
+    {
+        name: "Boa",
+        group: [""],
+        birthday: new Date("1986-11-05"),
+    },
 
     /*
     //Gruppen
@@ -2681,4 +2686,5 @@ let allMembers = [
     },*/
 ]
 
+localStorage.removeItem('membersArray');
 localStorage.setItem('membersArray', JSON.stringify(allMembers));
