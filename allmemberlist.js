@@ -9,6 +9,7 @@ function fuehrendeNullWennEinstellig(num) {
 
 function setMembers(memberArray) {
     var tableBody = document.getElementById("tableBody");
+
     for (let i = 0; i < memberArray.length; i++) {
         var member = memberArray[i];
         memberbirthday = new Date(member.birthday);
@@ -25,14 +26,14 @@ function setMembers(memberArray) {
         countryCell3.innerHTML = fuehrendeNullWennEinstellig(memberbirthday.getDate())
         + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1)
         + "." + memberbirthday.getFullYear();
-      }
+    }
 }
 
 function sortName() {
     console.log("Sort Group");
     allMembers.sort(function(a, b) {
-        var dateA = new Date(a.birthday);//parseDate(a.birthdate);
-        var dateB = new Date(b.birthday);//parseDate(b.birthdate);
+        var dateA = new Date(a.birthday);
+        var dateB = new Date(b.birthday);
 
         // Zuerst nach Name sortieren
         if (a.name < b.name) {
@@ -159,4 +160,41 @@ function sortDate() {
     setMembers(allMembers);
 }
 
+function setBirthdays() {
+    let todaysBirthdays = document.getElementById("birthdays");
+    todaysBirthdays.innerHTML = "";
+
+
+    for (let i = 0; i < allMembers.length; i++) {
+        var member = allMembers[i];
+        memberbirthday = new Date(member.birthday);
+                
+        // Zeitzone für Südkorea festlegen
+        const koreaTimezone = 'Asia/Seoul';
+        // Aktuelles Datum und Uhrzeitobjekt erstellen
+        const currentDate = new Date();
+        // Zeitzone für das Datumobjekt festlegen
+        const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
+    
+        if (koreaDate.getDate() === memberbirthday.getDate() && koreaDate.getMonth() === memberbirthday.getMonth()) {
+            if (member.group != "") {
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name + " aus " + member.group + " Geburtstag. Sie wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+            }
+            if (member.group == "") {
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name + " Geburtstag. Sie wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+            }
+        }
+        //console.log(koreaDate.getDate());
+        // Aktuelles Datum erstellen
+        const currentDate2 = new Date();
+
+        // 7 Tage (in Millisekunden) zum aktuellen Datum hinzufügen
+        const futureDate = new Date(koreaDate.getTime() + 1 * 24 * 60 * 60 * 1000);
+
+        //console.log('Zukünftiges Datum:', futureDate.getDate());
+
+    }
+}
+
+setBirthdays();
 setMembers(allMembers);
