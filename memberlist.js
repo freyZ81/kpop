@@ -2,7 +2,7 @@ let allMembers = [
 
     //Solos
     {
-        name: "JYP - Leader of Disappointment",
+        name: "JYP",// - Leader of Disappointment",
         group: [""],
         birthday: new Date("1971-12-13"),
     },
@@ -62,7 +62,7 @@ let allMembers = [
         birthday: new Date("1993-05-16"),
     },
     {
-        name: "G-Dragon",
+        name: "GDragon",
         group: [""],
         birthday: new Date("1988-08-18"),
     },
@@ -72,7 +72,7 @@ let allMembers = [
         birthday: new Date("1998-09-27"),
     },
     {
-        name: "Young-Ji",
+        name: "YoungJi",
         group: [""],
         birthday: new Date("2002-09-10"),
     },
@@ -82,7 +82,7 @@ let allMembers = [
         birthday: new Date("1996-12-09"),
     },
 
-    
+    /*
     //Gruppen
     {
         name: "Jiyoon",
@@ -2678,7 +2678,7 @@ let allMembers = [
         name: "Dalyn",
         group: ["ANS"],
         birthday: new Date("1999-08-27"),
-    },
+    },*/
 ]
 
 localStorage.setItem('membersArray', JSON.stringify(allMembers));
