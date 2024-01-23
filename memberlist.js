@@ -2650,22 +2650,22 @@ let allMembers = [
     },
     {
         name: ["Belle"],
-        group: ["Kiss of Life"],
+        group: ["Kiss of Life", "kol"],
         birthday: new Date("2004-03-20"),
     },
     {
         name: ["Julie"],
-        group: ["Kiss of Life"],
+        group: ["Kiss of Life", "kol"],
         birthday: new Date("2000-03-29"),
     },
     {
         name: ["Haneul"],
-        group: ["Kiss of Life"],
+        group: ["Kiss of Life", "kol"],
         birthday: new Date("2005-05-25"),
     },
     {
         name: ["Natty"],
-        group: ["Kiss of Life"],
+        group: ["Kiss of Life", "kol"],
         birthday: new Date("2002-05-30"),
     },
     {
