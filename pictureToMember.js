@@ -6,7 +6,9 @@ let randomNumber;
 const folder = "pics/";
 const result = document.getElementById("result");
 
-
+//evtl die Perrson als einzelnes speichert und nicht immer mit der Liste und Nummer arbeiten
+//abfangen, dass nicht die gleiche Person hintereinander drankommen kann
+//Button Tipps einrichten
 
 function setNewPicture() {
     randomNumber = Math.floor(Math.random() * allMembers.length);
@@ -18,6 +20,7 @@ function setNewPicture() {
         }
         let source = folder + groupStr + "/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
+        memberPicture.src = source;
     } else if (allMembers[randomNumber].group[0] == '') {
         let source = folder + "solo/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;

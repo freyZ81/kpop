@@ -1889,7 +1889,7 @@ let allMembers = [
         birthday: new Date("1998-05-27"),
     },
     {
-        name: ["Cheng Xiao"],
+        name: ["Cheng Xiao", "ChengXiao"],
         group: ["WJSN"],
         birthday: new Date("1998-07-15"),
     },
@@ -1909,7 +1909,7 @@ let allMembers = [
         birthday: new Date("1996-09-14"),
     },
     {
-        name: ["Mei Qi"],
+        name: ["Mei Qi", "MeiQi"],
         group: ["WJSN"],
         birthday: new Date("1998-10-15"),
     },
