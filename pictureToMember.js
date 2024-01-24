@@ -32,8 +32,11 @@ function checkAnswer() {
         let correctMemberNames = allMembers[randomNumber].name.map(name => name.toLowerCase());
         if (correctMemberNames.includes(answer)) {
             result.innerHTML = "You guessed it correct."
-            + " It was " + allMembers[randomNumber].name[0]
-            + " from " + allMembers[randomNumber].group[0] + ".";
+            + " It was " + allMembers[randomNumber].name[0];
+            if (allMembers[randomNumber].group[0] != '') {
+                result.innerHTML += " from " + allMembers[randomNumber].group[0];
+            }
+            result.innerHTML += ".";
             document.getElementById("answer").value = "";
             setNewPicture();
 
