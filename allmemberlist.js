@@ -4,6 +4,8 @@ allMembers = JSON.parse(localStorage.getItem('membersArray'));
 const tableMembersGroupsAndBirthdays = document.getElementById("tableMembersGroupsAndBirthdays");
 let todaysBirthdays = document.getElementById("birthdays");
 let nextBirthdays = [];
+const counter = document.getElementById("counter");
+counter.innerHTML = "In the list are " + allMembers.length + " members.";
 
 function fuehrendeNullWennEinstellig(num) {
     return num < 10 ? "0" + num : num;

@@ -2,7 +2,6 @@
 allMembers = JSON.parse(localStorage.getItem('membersArray'));
 
 const memberPicture = document.getElementById("memberPicture");
-const answer = document.getElementById("answer");
 let randomNumber;
 const folder = "pics/";
 const result = document.getElementById("result");
@@ -12,11 +11,12 @@ const result = document.getElementById("result");
 function setNewPicture() {
     randomNumber = Math.floor(Math.random() * allMembers.length);
 
-    console.log(allMembers[randomNumber].name[allMembers[randomNumber].name.length-1]);
-    console.log(allMembers[randomNumber].name);
     if (allMembers[randomNumber].group[0] != '') {
-        let source = folder + allMembers[randomNumber].group[allMembers[randomNumber].group.length-1].toString().toLowerCase()
-        + "/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
+        let groupStr = allMembers[randomNumber].group[allMembers[randomNumber].group.length-1].toString().toLowerCase();
+        if (groupStr.startsWith("ex-".toLowerCase())) {
+            groupStr = groupStr.replace("ex-".toLowerCase(), "");
+        }
+        let source = folder + groupStr + "/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
     } else if (allMembers[randomNumber].group[0] == '') {
         let source = folder + "solo/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
@@ -26,17 +26,23 @@ function setNewPicture() {
     answer.focus();
 }
 
-console.log(allMembers.length);
 function checkAnswer() {
-    if (answer.value.toLowerCase() === allMembers[randomNumber].name[-0].toLowerCase()) {
-        result.innerHTML = "You guessed it correct.";
-        answer.value = "";
-    } else {
-        result.innerHTML = "That was wrong. It was " + allMembers[randomNumber].name[0]
-        + " from " + allMembers[randomNumber].group[0] + ".";
-        answer.value = "";
+    const answer = document.getElementById("answer").value.toLowerCase();
+    if (answer != "") {
+        let correctMemberNames = allMembers[randomNumber].name.map(name => name.toLowerCase());
+        if (correctMemberNames.includes(answer)) {
+            result.innerHTML = "You guessed it correct."
+            + " It was " + allMembers[randomNumber].name[0]
+            + " from " + allMembers[randomNumber].group[0] + ".";
+            document.getElementById("answer").value = "";
+            setNewPicture();
+
+        } else {
+            result.innerHTML = "That was wrong. It is not '" + answer + "'.";
+            document.getElementById("answer").value = "";
+        }
+        
     }
-    setNewPicture();
 }
 
 // Überprüft, ob die Enter-Taste gedrückt wurde

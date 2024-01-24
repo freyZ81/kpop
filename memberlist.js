@@ -1265,52 +1265,52 @@ let allMembers = [
     },
     {
         name: ["Sungmin"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1986-01-01"),
     },
     {
         name: ["Kyuhyun"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1988-02-03"),
     },
     {
         name: ["Eunhyuk"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1986-04-04"),
     },
     {
         name: ["Siwon"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1986-04-07"),
     },
     {
         name: ["Ryeowook"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1987-06-21"),
     },
     {
         name: ["Leeteuk"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1983-07-01"),
     },
     {
         name: ["Heechul"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1983-07-10"),
     },
     {
         name: ["Yesung"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1984-08-24"),
     },
     {
         name: ["Shindong"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1985-09-28"),
     },
     {
         name: ["Donghae"],
-        group: ["Super Junior"],
+        group: ["Super Junior", "SuperJunior"],
         birthday: new Date("1986-10-15"),
     },
     {
