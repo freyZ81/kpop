@@ -3,26 +3,27 @@ allMembers = JSON.parse(localStorage.getItem('membersArray'));
 
 const memberPicture = document.getElementById("memberPicture");
 let randomNumber;
+let currentRandomNumber;
 const folder = "pics/";
 const result = document.getElementById("result");
-
-//evtl die Perrson als einzelnes speichert und nicht immer mit der Liste und Nummer arbeiten
-//abfangen, dass nicht die gleiche Person hintereinander drankommen kann
-//Button Tipps einrichten
+const hint = document.getElementById("hint");
+let currentMember;
 
 function setNewPicture() {
     randomNumber = Math.floor(Math.random() * allMembers.length);
+    currentRandomNumber = randomNumber != currentRandomNumber ? randomNumber : Math.floor(Math.random() * allMembers.length);
+    currentMember = allMembers[currentRandomNumber];
 
-    if (allMembers[randomNumber].group[0] != '') {
-        let groupStr = allMembers[randomNumber].group[allMembers[randomNumber].group.length-1].toString().toLowerCase();
+    if (currentMember.group[0] != '') {
+        let groupStr = currentMember.group[currentMember.group.length-1].toString().toLowerCase();
         if (groupStr.startsWith("ex-".toLowerCase())) {
             groupStr = groupStr.replace("ex-".toLowerCase(), "");
         }
-        let source = folder + groupStr + "/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
+        let source = folder + groupStr + "/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
-    } else if (allMembers[randomNumber].group[0] == '') {
-        let source = folder + "solo/" + allMembers[randomNumber].name[allMembers[randomNumber].name.length-1].toString().toLowerCase() + ".jpg";
+    } else if (currentMember.group[0] == '') {
+        let source = folder + "solo/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
     }
@@ -32,22 +33,47 @@ function setNewPicture() {
 function checkAnswer() {
     const answer = document.getElementById("answer").value.toLowerCase();
     if (answer != "") {
-        let correctMemberNames = allMembers[randomNumber].name.map(name => name.toLowerCase());
-        if (correctMemberNames.includes(answer)) {
-            result.innerHTML = "You guessed it correct."
-            + " It was " + allMembers[randomNumber].name[0];
-            if (allMembers[randomNumber].group[0] != '') {
-                result.innerHTML += " from " + allMembers[randomNumber].group[0];
-            }
-            result.innerHTML += ".";
+        if (answer == "help" || answer == "hint") {
+            getHelp();
             document.getElementById("answer").value = "";
-            setNewPicture();
-
+        } else if (answer == "skip") {
+            skip();
         } else {
-            result.innerHTML = "That was wrong. It is not '" + answer + "'.";
-            document.getElementById("answer").value = "";
+            let correctMemberNames = currentMember.name.map(name => name.toLowerCase());
+            if (correctMemberNames.includes(answer)) {
+                result.innerHTML = "You guessed it correct."
+                + " It was " + currentMember.name[0];
+                if (currentMember.group[0] != '') {
+                    result.innerHTML += " from " + currentMember.group[0];
+                }
+                result.innerHTML += ".";
+                document.getElementById("answer").value = "";
+                document.getElementById("hint").innerHTML = "";
+                setNewPicture();
+            } else {
+                result.innerHTML = "That was wrong. It is not '" + answer + "'.";
+                document.getElementById("answer").value = "";
+            }
         }
-        
+    }
+}
+
+function skip() {
+    document.getElementById("answer").value = "";
+    document.getElementById("hint").innerHTML = "";
+    result.innerHTML = "The member was '" + currentMember.name[0] + "'";
+    if (currentMember.group[0] != '') {
+        result.innerHTML += " from " + currentMember.group[0];
+    }
+    result.innerHTML += ".";
+    setNewPicture();
+}
+
+function getHelp() {
+    if (currentMember.group[0] != "") {
+        hint.innerHTML = "The member is from the group " + currentMember.group[0] + ".";
+    } else {
+        hint.innerHTML = "The member is a soloist.";
     }
 }
 

@@ -499,7 +499,7 @@ let allMembers = [
         birthday: new Date("1996-12-29"),
     },
     {
-        name: ["Kim Lip"],
+        name: ["Kim Lip", "KimLip"],
         group: ["Loona"],
         birthday: new Date("1999-02-10"),
     },
@@ -659,7 +659,7 @@ let allMembers = [
         birthday: new Date("2002-08-01"),
     },
     {
-        name: ["Haeun aka Ye Ah"],
+        name: ["Haeun aka Ye Ah", "Haeun"],
         group: ["Cignature"],
         birthday: new Date("1999-10-09"),
     },
@@ -794,7 +794,7 @@ let allMembers = [
         birthday: new Date("2000-12-27"),
     },
     {
-        name: ["I.N"],
+        name: ["I.N", "IN"],
         group: ["Stray Kids", "StrayKids"],
         birthday: new Date("2001-02-08"),
     },
@@ -829,7 +829,7 @@ let allMembers = [
         birthday: new Date("1997-10-03"),
     },
     {
-        name: ["Lee Know"],
+        name: ["Lee Know", "LeeKnow"],
         group: ["Stray Kids", "StrayKids"],
         birthday: new Date("1998-10-25"),
     },
@@ -995,37 +995,37 @@ let allMembers = [
     },
     {
         name: ["Hyungwon"],
-        group: ["Monsta X"],
+        group: ["Monsta X", "MonstaX"],
         birthday: new Date("1994-01-15"),
     },
     {
         name: ["I.M"],
-        group: ["Monsta X"],
+        group: ["Monsta X", "MonstaX"],
         birthday: new Date("1996-01-26"),
     },
     {
         name: ["Wonho"],
-        group: ["Ex-Monsta X"],
+        group: ["Ex-Monsta X", "Ex-MonstaX" ,"MonstaX"],
         birthday: new Date("1993-03-01"),
     },
     {
         name: ["Shownu"],
-        group: ["Monsta X"],
+        group: ["Monsta X", "MonstaX"],
         birthday: new Date("1992-06-18"),
     },
     {
         name: ["Joohoney"],
-        group: ["Monsta X"],
+        group: ["Monsta X", "MonstaX"],
         birthday: new Date("1994-10-06"),
     },
     {
         name: ["Minhyuk"],
-        group: ["Monsta X"],
+        group: ["Monsta X", "MonstaX"],
         birthday: new Date("1993-11-03"),
     },
     {
         name: ["Kihyun"],
-        group: ["Monsta X"],
+        group: ["Monsta X", "MonstaX"],
         birthday: new Date("1993-11-22"),
     },
     {
@@ -1120,7 +1120,7 @@ let allMembers = [
     },
     {
         name: ["Lucas"],
-        group: ["NCT"],
+        group: ["Ex-NCT"],
         birthday: new Date("1999-01-25"),
     },
     {
@@ -1195,7 +1195,7 @@ let allMembers = [
     },
     {
         name: ["Sungchan"],
-        group: ["NCT"],
+        group: ["Ex-NCT"],
         birthday: new Date("2001-09-13"),
     },
     {
@@ -1225,11 +1225,11 @@ let allMembers = [
     },
     {
         name: ["Shotaro"],
-        group: ["NCT"],
+        group: ["Ex-NCT"],
         birthday: new Date("2000-11-25"),
     },
     {
-        name: ["J-Hope"],
+        name: ["J-Hope", "JHope"],
         group: ["BTS"],
         birthday: new Date("1994-02-18"),
     },
@@ -2104,7 +2104,7 @@ let allMembers = [
         birthday: new Date("1998-01-31"),
     },
     {
-        name: ["Yeo One"],
+        name: ["Yeo One", "YeoOne"],
         group: ["Pentagon"],
         birthday: new Date("1996-03-27"),
     },
@@ -2667,6 +2667,31 @@ let allMembers = [
         name: ["Natty"],
         group: ["Kiss of Life", "kol"],
         birthday: new Date("2002-05-30"),
+    },
+    {
+        name: ["Castle J", "CastleJ"],
+        group: ["MCND"],
+        birthday: new Date("1999-05-31"),
+    },
+    {
+        name: ["BIC"],
+        group: ["MCND"],
+        birthday: new Date("2001-04-25"),
+    },
+    {
+        name: ["Minjae"],
+        group: ["MCND"],
+        birthday: new Date("2003-08-23"),
+    },
+    {
+        name: ["Huijun"],
+        group: ["MCND"],
+        birthday: new Date("2003-10-07"),
+    },
+    {
+        name: ["Win"],
+        group: ["MCND"],
+        birthday: new Date("2004-12-19"),
     },
     {
         name: ["Taemin"],
