@@ -209,6 +209,11 @@ let allMembers = [
         birthday: new Date("2000-10-30"),
     },
     {
+        name: ["Sullyoon"],
+        group: ["NMIXX"],
+        birthday: new Date("2004-01-26"),
+    },
+    {
         name: ["Haewon"],
         group: ["NMIXX"],
         birthday: new Date("2003-02-25"),
