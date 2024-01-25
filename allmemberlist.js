@@ -245,7 +245,7 @@ function setNextBirthdays(membersWithNextBirthdays) {
         const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
     
         if (member.group != "") {
-            todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + memberbirthday.getMonth()+1 + " hat " + member.name + " aus " + member.group + " Geburtstag. " + member.name + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+            todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + memberbirthday.getMonth()+1 + " hat " + member.name + " aus " + member.group[0] + " Geburtstag. " + member.name + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
         }
         if (member.group == "") {
             todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + memberbirthday.getMonth()+1 + " hat " + member.name + " Geburtstag. " + member.name + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
