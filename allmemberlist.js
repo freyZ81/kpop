@@ -233,6 +233,8 @@ function setNextBirthdays(membersWithNextBirthdays) {
         return 0;
     });
 
+    console.log(membersWithNextBirthdays);
+
     for (let i = 0; i < membersWithNextBirthdays.length; i++) {
         var member = membersWithNextBirthdays[i];
         memberbirthday = new Date(member.birthday);
