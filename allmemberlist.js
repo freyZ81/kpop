@@ -83,14 +83,16 @@ function sortName() {
 function sortGroup() {
     console.log("Sort Group");
     allMembers.sort(function(a, b) {
-        var dateA = new Date(a.birthday);//parseDate(a.birthdate);
-        var dateB = new Date(b.birthday);//parseDate(b.birthdate);
+        var dateA = new Date(a.birthday);
+        var dateB = new Date(b.birthday);
+        var groupA = removeExPrefix(a.group[0]);
+        var groupB = removeExPrefix(b.group[0]);
     
         // Zuerst nach Gruppe sortieren
-        if (a.group < b.group) {
+        if (groupA < groupB) {
             return -1;
         }
-        if (a.group > b.group) {
+        if (groupA > groupB) {
             return 1;
         }
 
@@ -256,6 +258,16 @@ function setNextBirthdays(membersWithNextBirthdays) {
 
 }
 
+function removeExPrefix(groupName) {
+    groupName = groupName.toLowerCase();
+    if (groupName != "") {
+        if (groupName.startsWith("ex-".toLowerCase())) {
+            groupName = groupName.replace("ex-".toLowerCase(), "");
+        }
+    }
+        
+    return groupName;
+}
 
 setBirthdays();
 setNextBirthdays(nextBirthdays)
