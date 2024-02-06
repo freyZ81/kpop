@@ -182,10 +182,10 @@ function setBirthdays() {
     
         if (koreaDate.getDate() === memberbirthday.getDate() && koreaDate.getMonth() === memberbirthday.getMonth()) {
             if (member.group != "") {
-                todaysBirthdays.innerHTML += ("Heute hat " + member.name + " aus " + member.group[0] + " Geburtstag. " + member.name + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " aus " + member.group[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
             }
             if (member.group == "") {
-                todaysBirthdays.innerHTML += ("Heute hat " + member.name + " Geburtstag. " + member.name + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
             }
         }
         // Aktuelles Datum erstellen

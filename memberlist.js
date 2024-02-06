@@ -2564,31 +2564,6 @@ let allMembers = [
         birthday: new Date("1997-12-27"),
     },
     {
-        name: ["Wooyeon"],
-        group: ["WOO!AH!", "WooAh"],
-        birthday: new Date("2003-02-11"),
-    },
-    {
-        name: ["Nana"],
-        group: ["WOO!AH!", "WooAh"],
-        birthday: new Date("2001-03-09"),
-    },
-    {
-        name: ["Lucy"],
-        group: ["WOO!AH!", "WooAh"],
-        birthday: new Date("2004-04-09"),
-    },
-    {
-        name: ["Minseo"],
-        group: ["WOO!AH!", "WooAh"],
-        birthday: new Date("2004-08-12"),
-    },
-    {
-        name: ["Sora"],
-        group: ["WOO!AH!", "WooAh"],
-        birthday: new Date("2003-08-30"),
-    },
-    {
         name: ["Sooyoung"],
         group: ["SNSD"],
         birthday: new Date("1990-02-10"),
@@ -2704,6 +2679,31 @@ let allMembers = [
         birthday: new Date("2004-12-19"),
     },
     {
+        name: ["Sunhye"],
+        group: ["Young Posse", "YoungPosse"],
+        birthday: new Date("2004-04-12"),
+    },
+    {
+        name: ["Yeonjung"],
+        group: ["Young Posse", "YoungPosse"],
+        birthday: new Date("2004-09-01"),
+    },
+    {
+        name: ["Jiana"],
+        group: ["Young Posse", "YoungPosse"],
+        birthday: new Date("2006-02-02"),
+    },
+    {
+        name: ["Doeun"],
+        group: ["Young Posse", "YoungPosse"],
+        birthday: new Date("2007-12-24"),
+    },
+    {
+        name: ["Jieun"],
+        group: ["Young Posse", "YoungPosse"],
+        birthday: new Date("2009-11-05"),
+    }, 
+    {
         name: ["Taemin"],
         group: ["Shinee"],
         birthday: new Date("1993-07-18"),
@@ -2725,6 +2725,7 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 
 /*
+Bilder:
 fromis, nj, gugudan, cravity, adya, rocket punch, wekimeki, snsd, apink, classy, geeenius, ichillin, OMG, Kard, Brave Girls, CLC, craxy, suju, billlie, ace, ateez, astro, busters
 
 
