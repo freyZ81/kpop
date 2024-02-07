@@ -36,7 +36,7 @@ function checkAnswer() {
                 if (currentMember.group != "") {
                     let groupNames = currentMember.group.map(group => group.toLowerCase())
                     if (groupNames.includes(userInput)) {
-                        choosedGroupMembers.push(allMembers[i])
+                        choosedGroupMembers.push(allMembers[i].name)
                         groupSelected = true
                         selectedGroup = currentMember.group[0]
                     }
@@ -46,6 +46,7 @@ function checkAnswer() {
                 question.innerHTML = "There was no group found with the name '" + userInput + "'. "
                 + "Please check and try again."
             } else {
+                choosedGroupMembers.sort()
                 tableHeader.innerHTML = "Group: " + selectedGroup
                 question.innerHTML = "Which member is in the group '" + selectedGroup + "'?"
                 inputGroupMember.value = ""
@@ -57,16 +58,15 @@ function checkAnswer() {
             //die Mambernamen werden eingegeben
             for (let i = 0; i < choosedGroupMembers.length; i++) {
                 let currentMember = choosedGroupMembers[i]
-                let memberNames = currentMember.name.map(name => name.toLowerCase())
+                let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
                 if (memberNames.includes(userInput)) {
                     //Name der Tabelle hinzufügen
                     
                     const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
                     const newCell = newRow.insertCell(0);
-                    newCell.innerHTML = choosedGroupMembers[i].name[0]
+                    newCell.innerHTML = choosedGroupMembers[i][0]
                     
                     choosedGroupMembers.splice(i, 1)
-                    //console.log(userInput, "was removed")
                     document.getElementById("inputGroupMember").value = ""
                     counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
                     if (choosedGroupMembers.length == 0) {
@@ -86,9 +86,9 @@ function giveUp() {
         for (let i = 0; i < choosedGroupMembers.length; i++) {
             if (i == (choosedGroupMembers.length-1)) {
                 counter.innerHTML += " and "
-                counter.innerHTML += choosedGroupMembers[i].name[0] + "."
+                counter.innerHTML += choosedGroupMembers[i] + "."
             } else {
-                counter.innerHTML += choosedGroupMembers[i].name[0] + ", "
+                counter.innerHTML += choosedGroupMembers[i] + ", "
             }
         }
         reset()
