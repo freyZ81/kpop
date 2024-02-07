@@ -82,7 +82,7 @@ function checkAnswer() {
 
 function giveUp() {
     if (choosedGroupMembers.length != 0) {
-        counter.innerHTML = "The last members of '" + selectedGroup + "' are "
+        counter.innerHTML = "The last " + choosedGroupMembers.length + " members of '" + selectedGroup + "' are "
         for (let i = 0; i < choosedGroupMembers.length; i++) {
             if (i == (choosedGroupMembers.length-1)) {
                 counter.innerHTML += " and "
