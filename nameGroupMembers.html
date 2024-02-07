@@ -6,6 +6,20 @@
     <title>Name the group members</title>
     <style>
         table {
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+        th, tr {
+            width: 250px;
+            max-width: 250px;
+            border: 1px solid black;
+        }
+        th {
+            background-color: rgba(0, 0, 0, 0.25);
+            color: black;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(214, 214, 214);
             border: 1px solid black;
         }
     </style>
@@ -18,16 +32,24 @@
     <p id=""></p>
 
     <p id="question">Which group do you want to name?</p>
+    <p id="counter"></p>
 
-    <input type="text" id="inputGroupMember" placeholder="group">
+    <input type="text" id="inputGroupMember" placeholder="group"> <button id="buttonGroupMember">Enter group</button> <button id="giveUp" onclick="giveUp()">Give up</button>
 
     <br>
     <br>
 
     <table id="tableMembers">
-        <th>
-            Gruppe
-        </th>
+        <thead>
+            <tr>
+                <th id="tableHeader">
+                    Group
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
     </table>
 
     <br>

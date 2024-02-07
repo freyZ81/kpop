@@ -834,7 +834,7 @@ let allMembers = [
         birthday: new Date("2000-09-22"),
     },
     {
-        name: ["Bang Chan"],
+        name: ["Bang Chan", "BangChan"],
         group: ["Stray Kids", "StrayKids"],
         birthday: new Date("1997-10-03"),
     },
