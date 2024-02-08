@@ -2702,7 +2702,62 @@ let allMembers = [
         name: ["Jieun"],
         group: ["Young Posse", "YoungPosse"],
         birthday: new Date("2009-11-05"),
-    }, 
+    },
+    {
+        name: ["Hinata"],
+        group: ["iScream"],
+        birthday: new Date("2004-08-27"),
+    },
+    {
+        name: ["Yuna"],
+        group: ["iScream"],
+        birthday: new Date("2004-03-06"),
+    },
+    {
+        name: ["Rui"],
+        group: ["iScream"],
+        birthday: new Date("2003-11-04"),
+    },
+    {
+        name: ["Jaeyun"],
+        group: ["8Turn"],
+        birthday: new Date("2002-07-02"),
+    },
+    {
+        name: ["Myungho"],
+        group: ["8Turn"],
+        birthday: new Date("2001-10-12"),
+    },
+    {
+        name: ["Minho"],
+        group: ["8Turn"],
+        birthday: new Date("2002-10-14"),
+    },
+    {
+        name: ["Yoonsung"],
+        group: ["8Turn"],
+        birthday: new Date("2003-11-13"),
+    },
+    {
+        name: ["Haemin"],
+        group: ["8Turn"],
+        birthday: new Date("2004-03-16"),
+    },
+    {
+        name: ["Kyungmin"],
+        group: ["8Turn"],
+        birthday: new Date("2004-10-28"),
+    },
+    {
+        name: ["Yungyu"],
+        group: ["8Turn"],
+        birthday: new Date("2005-09-07"),
+    },
+    {
+        name: ["Seungheon"],
+        group: ["8Turn"],
+        birthday: new Date("2007-05-15"),
+    },
     {
         name: ["Taemin"],
         group: ["Shinee"],

@@ -10,19 +10,25 @@ const hint = document.getElementById("hint");
 let currentMember;
 
 function setNewPicture() {
+    //es wird eine neue zufällige Zahl generiert
     randomNumber = Math.floor(Math.random() * allMembers.length);
     currentRandomNumber = randomNumber != currentRandomNumber ? randomNumber : Math.floor(Math.random() * allMembers.length);
     currentMember = allMembers[currentRandomNumber];
 
+    //das Bild wird gesetzt
     if (currentMember.group[0] != '') {
+        //Gruppenmember
         let groupStr = currentMember.group[currentMember.group.length-1].toString().toLowerCase();
         if (groupStr.startsWith("ex-".toLowerCase())) {
+            //wenn es ein Ex-Member ist
             groupStr = groupStr.replace("ex-".toLowerCase(), "");
         }
+        //groupStr = groupStr.startsWith("ex-".toLowerCase()) ? groupStr.replace("ex-".toLowerCase(), "") ? groupStr;
         let source = folder + groupStr + "/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
     } else if (currentMember.group[0] == '') {
+        //Soloist
         let source = folder + "solo/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
