@@ -26,9 +26,10 @@ document.getElementById("inputGroupMember").addEventListener("keyup", function(e
 function checkAnswer() {
     let userInput = document.getElementById("inputGroupMember").value.toLowerCase()
     if (userInput == "give up" || userInput == "giveup") {
+        //es wird aufgegeben
         giveUp()
     } else {
-
+        //wenn ein Name oder Gruppe eingegeben wird
         if (!groupSelected) {
             //die Gruppe wird ausgewählt
             for (let i = 0; i < allMembers.length; i++) {
@@ -36,6 +37,7 @@ function checkAnswer() {
                 if (currentMember.group != "") {
                     let groupNames = currentMember.group.map(group => group.toLowerCase())
                     if (groupNames.includes(userInput)) {
+                        //der Gruppenname entspricht der Eingabe
                         choosedGroupMembers.push(allMembers[i].name)
                         groupSelected = true
                         selectedGroup = currentMember.group[0]
@@ -43,9 +45,11 @@ function checkAnswer() {
                 }
             }
             if (!groupSelected) {
+                //wenn ein unbekannter Gruppenname eingegeben wurde
                 question.innerHTML = "There was no group found with the name '" + userInput + "'. "
                 + "Please check and try again."
             } else {
+                //wenn der Gruppenname gefunden wurde
                 choosedGroupMembers.sort()
                 tableHeader.innerHTML = "Group: " + selectedGroup
                 question.innerHTML = "Which member is in the group '" + selectedGroup + "'?"
@@ -74,6 +78,7 @@ function checkAnswer() {
                     //Text updaten
                     counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
                     if (choosedGroupMembers.length == 0) {
+                        //wenn alle Member genannt wurden
                         counter.innerHTML = "You named all members of '" + selectedGroup + "'."
                         reset()
                     }
@@ -85,7 +90,9 @@ function checkAnswer() {
 }
 
 function giveUp() {
+    //wenn aufgegeben wird
     if (choosedGroupMembers.length != 0) {
+        //Text wird angepasst, wenn noch Member fehlen
         counter.innerHTML = "The last " + choosedGroupMembers.length + " members of '" + selectedGroup + "' are "
         for (let i = 0; i < choosedGroupMembers.length; i++) {
             if (i == (choosedGroupMembers.length-1)) {
@@ -100,6 +107,7 @@ function giveUp() {
 }
 
 function reset() {
+    //alles wird zurückgesetzt
     question.innerHTML = "Which group do you want to name?"
     inputGroupMember.value = ""
     inputGroupMember.placeholder = "group"
