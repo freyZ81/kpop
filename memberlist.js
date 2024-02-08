@@ -1360,27 +1360,27 @@ let allMembers = [
     },
     {
         name: ["Donghun"],
-        group: ["A.C.E"],
+        group: ["A.C.E", "ACE"],
         birthday: new Date("1993-02-28"),
     },
     {
         name: ["Wow"],
-        group: ["A.C.E"],
+        group: ["A.C.E", "ACE"],
         birthday: new Date("1993-03-15"),
     },
     {
         name: ["Jun"],
-        group: ["A.C.E"],
+        group: ["A.C.E", "ACE"],
         birthday: new Date("1994-06-02"),
     },
     {
-        name: ["Kim Byeongkwan"],
-        group: ["A.C.E"],
+        name: ["Kim Byeongkwan", "KimByeongkwan"],
+        group: ["A.C.E", "ACE"],
         birthday: new Date("1996-08-13"),
     },
     {
         name: ["Chan"],
-        group: ["A.C.E"],
+        group: ["A.C.E", "ACE"],
         birthday: new Date("1997-12-31"),
     },
     {
@@ -1430,7 +1430,7 @@ let allMembers = [
     },
     {
         name: ["Rocky"],
-        group: ["Astro"],
+        group: ["Ex-Astro"],
         birthday: new Date("1999-02-25"),
     },
     {
@@ -1515,37 +1515,37 @@ let allMembers = [
     },
     {
         name: ["Riwon"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2007-01-11"),
     },
     {
         name: ["Boeun"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2008-02-11"),
     },
     {
         name: ["Seonyou"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2008-03-20"),
     },
     {
         name: ["Chaewon"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2003-06-04"),
     },
     {
         name: ["Hyungseo"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2001-06-25"),
     },
     {
         name: ["Jimin"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2007-11-25"),
     },
     {
         name: ["Hyeju"],
-        group: ["CLASS:y"],
+        group: ["CLASS:y", "CLASSy"],
         birthday: new Date("2003-12-09"),
     },
     {
@@ -1599,7 +1599,7 @@ let allMembers = [
         birthday: new Date("2005-09-01"),
     },
     {
-        name: ["E.Ji"],
+        name: ["E.Ji", "EJi"],
         group: ["ICHILLIN"],
         birthday: new Date("2000-11-08"),
     },
@@ -1635,46 +1635,46 @@ let allMembers = [
     },
     {
         name: ["JinE"],
-        group: ["Ex-Oh My Girl"],
+        group: ["Ex-Oh My Girl", "Ex-OMG"],
         birthday: new Date("1995-01-22"),
     },
     {
         name: ["Seunghee"],
-        group: ["Oh My Girl"],
+        group: ["Oh My Girl", "OMG"],
         birthday: new Date("1996-01-25"),
     },
     {
         name: ["Jiho"],
-        group: ["Oh My Girl"],
+        group: ["Ex-Oh My Girl", "Ex-OMG"],
         birthday: new Date("1997-04-04"),
     },
     {
         name: ["Mimi"],
-        group: ["Oh My Girl"],
+        group: ["Oh My Girl", "OMG"],
         birthday: new Date("1995-05-01"),
     },
     {
         name: ["Arin"],
-        group: ["Oh My Girl"],
+        group: ["Oh My Girl", "OMG"],
         birthday: new Date("1999-06-18"),
     },
     {
         name: ["Hyojung"],
-        group: ["Oh My Girl"],
+        group: ["Oh My Girl", "OMG"],
         birthday: new Date("1994-07-28"),
     },
     {
         name: ["Yubin"],
-        group: ["Oh My Girl"],
+        group: ["Oh My Girl", "OMG"],
         birthday: new Date("1997-09-09"),
     },
     {
         name: ["YooA"],
-        group: ["Oh My Girl"],
+        group: ["Oh My Girl", "OMG"],
         birthday: new Date("1995-09-17"),
     },
     {
-        name: ["J.Seph"],
+        name: ["J.Seph", "JSeph"],
         group: ["KARD"],
         birthday: new Date("1992-06-21"),
     },
@@ -1695,22 +1695,22 @@ let allMembers = [
     },
     {
         name: ["Yuna"],
-        group: ["Brave Girls"],
+        group: ["BB Girls", "BBGirls"],
         birthday: new Date("1993-04-06"),
     },
     {
         name: ["Yujeong"],
-        group: ["Brave Girls"],
+        group: ["BB Girls", "BBGirls"],
         birthday: new Date("1991-05-02"),
     },
     {
         name: ["Eunji"],
-        group: ["Brave Girls"],
+        group: ["BB Girls", "BBGirls"],
         birthday: new Date("1992-07-19"),
     },
     {
         name: ["Minyoung"],
-        group: ["Brave Girls"],
+        group: ["BB Girls", "BBGirls"],
         birthday: new Date("1990-09-12"),
     },
     {
@@ -1775,7 +1775,7 @@ let allMembers = [
     },
     {
         name: ["ChaeY"],
-        group: ["Craxy"],
+        group: ["Ex-Craxy"],
         birthday: new Date("2003-01-06"),
     },
     {
@@ -2780,11 +2780,9 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 
 /*
-Bilder:
-fromis, nj, gugudan, cravity, adya, rocket punch, wekimeki, snsd, apink, classy, geeenius, ichillin, OMG, Kard, Brave Girls, CLC, craxy, suju, billlie, ace, ateez, astro, busters
-
-
+Daten hinzufügen:
+Shinee, April, ANS
 
 komplett hinzufügen:
-Shinee, April, ANS, The Rose
+The Rose, VCHA
 */
