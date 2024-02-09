@@ -1349,7 +1349,7 @@ let allMembers = [
         birthday: new Date("2005-02-16"),
     },
     {
-        name: ["Moon Sua"],
+        name: ["Moon Sua", "MoonSua"],
         group: ["Billlie"],
         birthday: new Date("1999-09-09"),
     },
@@ -1994,7 +1994,7 @@ let allMembers = [
         birthday: new Date("1995-11-23"),
     },
     {
-        name: ["Kang Mina"],
+        name: ["Kang Mina", "KangMina", "Mina"],
         group: ["Gugudan"],
         birthday: new Date("1999-12-04"),
     },
@@ -2349,7 +2349,7 @@ let allMembers = [
         birthday: new Date("1996-07-17"),
     },
     {
-        name: ["S.Coups"],
+        name: ["S.Coups", "SCoups"],
         group: ["Seventeen"],
         birthday: new Date("1995-08-08"),
     },
@@ -2780,6 +2780,10 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 
 /*
+Bilder hinzufügen:
+exo, rq, cherry bullet, lightsum, monstax, ab6ix, enhypen, oneus, bang yedam, babymon haram, chuu, mml, dc, purki, bvndit, stayc
+
+
 Daten hinzufügen:
 Shinee, April, ANS
 
