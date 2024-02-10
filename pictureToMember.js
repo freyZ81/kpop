@@ -8,6 +8,8 @@ const folder = "pics/";
 const result = document.getElementById("result");
 const hint = document.getElementById("hint");
 let currentMember;
+const streak = document.getElementById("streak");
+let streakCounter = 0;
 
 function setNewPicture() {
     //es wird eine neue zufällige Zahl generiert
@@ -53,11 +55,15 @@ function checkAnswer() {
                     result.innerHTML += " from " + currentMember.group[0];
                 }
                 result.innerHTML += ".";
+                streakCounter += 1;
+                streak.innerHTML = "You guessed " + streakCounter + " correct in a row.";
                 document.getElementById("answer").value = "";
                 document.getElementById("hint").innerHTML = "";
                 setNewPicture();
             } else {
                 result.innerHTML = "That was wrong. It is not '" + answer + "'.";
+                streakCounter = 0;
+                streak.innerHTML = "";
                 document.getElementById("answer").value = "";
             }
         }
@@ -67,6 +73,8 @@ function checkAnswer() {
 function skip() {
     document.getElementById("answer").value = "";
     document.getElementById("hint").innerHTML = "";
+    streakCounter = 0;
+    streak.innerHTML = "";
     result.innerHTML = "The member was '" + currentMember.name[0] + "'";
     if (currentMember.group[0] != '') {
         result.innerHTML += " from " + currentMember.group[0];
