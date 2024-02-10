@@ -117,9 +117,3 @@ function reset() {
     choosedGroupMembers = []
     tableBody.innerHTML = ""
 }
-
-//counten, welche man schon genannt hat
-//Button, dass man nur eine Gruppe machen kann
-//Streak
-//Gruppe nennen und dann, ob es richtig ist
-//help2 wie viele Buchstaben, help3 den Anfangsbuchstaben

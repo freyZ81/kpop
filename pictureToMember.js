@@ -10,6 +10,8 @@ const hint = document.getElementById("hint");
 let currentMember;
 const streak = document.getElementById("streak");
 let streakCounter = 0;
+const wrongGuesses = document.getElementById("wrongGuesses");
+let guesses = "Wrong guesses: ";
 
 function setNewPicture() {
     //es wird eine neue zufällige Zahl generiert
@@ -55,6 +57,8 @@ function checkAnswer() {
                     result.innerHTML += " from " + currentMember.group[0];
                 }
                 result.innerHTML += ".";
+                guesses = "Wrong guesses: ";
+                wrongGuesses.innerHTML = "";
                 streakCounter += 1;
                 streak.innerHTML = "You guessed " + streakCounter + " correct in a row.";
                 document.getElementById("answer").value = "";
@@ -64,6 +68,8 @@ function checkAnswer() {
                 result.innerHTML = "That was wrong. It is not '" + answer + "'.";
                 streakCounter = 0;
                 streak.innerHTML = "";
+                guesses += (answer + ", ");
+                wrongGuesses.innerHTML = guesses;
                 document.getElementById("answer").value = "";
             }
         }
@@ -75,6 +81,8 @@ function skip() {
     document.getElementById("hint").innerHTML = "";
     streakCounter = 0;
     streak.innerHTML = "";
+    guesses = "Wrong guesses: ";
+    wrongGuesses.innerHTML = "";
     result.innerHTML = "The member was '" + currentMember.name[0] + "'";
     if (currentMember.group[0] != '') {
         result.innerHTML += " from " + currentMember.group[0];
@@ -101,3 +109,7 @@ document.getElementById("answer").addEventListener("keyup", function(event) {
   });
 
 setNewPicture()
+
+//Button, dass man nur eine Gruppe machen kann
+//Gruppe nennen und dann, ob es richtig ist
+//help2 wie viele Buchstaben, help3 den Anfangsbuchstaben
