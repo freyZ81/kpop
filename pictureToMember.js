@@ -37,7 +37,7 @@ function setNewPicture() {
 }
 
 function checkAnswer() {
-    const answer = document.getElementById("answer").value.toLowerCase();
+    const answer = document.getElementById("answer").value.toLowerCase().trim()
     if (answer != "") {
         if (answer == "help" || answer == "hint") {
             getHelp();

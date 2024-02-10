@@ -24,7 +24,7 @@ document.getElementById("inputGroupMember").addEventListener("keyup", function(e
 
 
 function checkAnswer() {
-    let userInput = document.getElementById("inputGroupMember").value.toLowerCase()
+    let userInput = document.getElementById("inputGroupMember").value.toLowerCase().trim()
     if (userInput == "give up" || userInput == "giveup") {
         //es wird aufgegeben
         giveUp()
@@ -117,3 +117,9 @@ function reset() {
     choosedGroupMembers = []
     tableBody.innerHTML = ""
 }
+
+//counten, welche man schon genannt hat
+//Button, dass man nur eine Gruppe machen kann
+//Streak
+//Gruppe nennen und dann, ob es richtig ist
+//help2 wie viele Buchstaben, help3 den Anfangsbuchstaben
