@@ -23,11 +23,10 @@ function setNewPicture() {
     if (currentMember.group[0] != '') {
         //Gruppenmember
         let groupStr = currentMember.group[currentMember.group.length-1].toString().toLowerCase();
-        if (groupStr.startsWith("ex-".toLowerCase())) {
-            //wenn es ein Ex-Member ist
-            groupStr = groupStr.replace("ex-".toLowerCase(), "");
-        }
-        //groupStr = groupStr.startsWith("ex-".toLowerCase()) ? groupStr.replace("ex-".toLowerCase(), "") ? groupStr;
+        
+        //wenn es ein Ex-Member ist
+        groupStr = groupStr.startsWith("ex-".toLowerCase()) ? groupStr.replace("ex-".toLowerCase(), "") : groupStr;
+        
         let source = folder + groupStr + "/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
@@ -110,6 +109,6 @@ document.getElementById("answer").addEventListener("keyup", function(event) {
 
 setNewPicture()
 
-//Button, dass man nur eine Gruppe machen kann
-//Gruppe nennen und dann, ob es richtig ist
-//help2 wie viele Buchstaben, help3 den Anfangsbuchstaben
+//Button, dass man nur eine Gruppe machen kann -> wenn der gedrückt wurde, eine neue Liste machen, wo die alle rein kommen und dann wird die Liste genommen
+//Gruppe nennen und dann, ob es richtig ist -> wenn alle falsch sind, dann prüfen, ob es der Gruppe gleicht und sonst einfach normal weitermachen
+//help2 wie viele Buchstaben, help3 den Anfangsbuchstaben -> nachdem der Button gedrückt wurde oder ein mal eingegeben wurde wird es umgeändert
