@@ -745,37 +745,37 @@ let allMembers = [
     },
     {
         name: ["Dosie"],
-        group: ["PurpleKiss"],
+        group: ["Purple Kiss", "PurpleKiss"],
         birthday: new Date("2000-02-11"),
     },
     {
         name: ["Ireh"],
-        group: ["PurpleKiss"],
+        group: ["Purple Kiss", "PurpleKiss"],
         birthday: new Date("2002-04-30"),
     },
     {
         name: ["Swan"],
-        group: ["PurpleKiss"],
+        group: ["Purple Kiss", "PurpleKiss"],
         birthday: new Date("2003-07-11"),
     },
     {
         name: ["Goeun"],
-        group: ["PurpleKiss"],
+        group: ["Purple Kiss", "PurpleKiss"],
         birthday: new Date("1999-09-03"),
     },
     {
         name: ["Jieun"],
-        group: ["Ex-PurpleKiss"],
+        group: ["Ex-Purple Kiss", "Ex-PurpleKiss"],
         birthday: new Date("1997-09-04"),
     },
     {
         name: ["Yuki"],
-        group: ["PurpleKiss"],
+        group: ["Purple Kiss", "PurpleKiss"],
         birthday: new Date("2002-11-06"),
     },
     {
         name: ["Chaein"],
-        group: ["PurpleKiss"],
+        group: ["Purple Kiss", "PurpleKiss"],
         birthday: new Date("2002-12-05"),
     },
     {
@@ -2788,5 +2788,5 @@ Daten hinzufügen:
 Shinee, April, ANS
 
 komplett hinzufügen:
-The Rose, VCHA
+The Rose, VCHA, NiziU
 */
