@@ -58,9 +58,10 @@ function checkAnswer() {
             skip();
         } else {
             let correctMemberNames = currentMember.name.map(name => name.toLowerCase());
+            let correctGroupNames = currentMember.group.map(group => group.startsWith("ex-".toLowerCase()) ? group.replace("ex-".toLowerCase(), "") : group);
             if (correctMemberNames.includes(answer)) {
                 result.innerHTML = "You guessed it correct."
-                + " It was " + currentMember.name[0];
+                    + " It was " + currentMember.name[0];
                 if (currentMember.group[0] != '') {
                     result.innerHTML += " from " + currentMember.group[0];
                 }
@@ -72,7 +73,13 @@ function checkAnswer() {
                 document.getElementById("answer").value = "";
                 document.getElementById("hint").innerHTML = "";
                 setNewPicture();
-            } else {
+            } else if (correctGroupNames.includes(answer)) {
+                hint.innerHTML = "You are right. The member is from the group '"
+                    + currentMember.group[0] + "'.";
+                document.getElementById("answer").value = "";                    
+            }
+            
+            else {
                 result.innerHTML = "That was wrong. It is not '" + answer + "'.";
                 streakCounter = 0;
                 streak.innerHTML = "";
@@ -121,7 +128,8 @@ function setGroupToGuess() {
                 }
             }
             if (groupToGuess.length == 0) {
-                result.innerHTML = "There was no group found with the name '" + groupInput + "'.";
+                result.innerHTML = "There was no group found with the name '"
+                    + groupInput + "'.";
                 document.getElementById("answer").value = "";
 
             } else {
