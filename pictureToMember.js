@@ -12,12 +12,21 @@ const streak = document.getElementById("streak");
 let streakCounter = 0;
 const wrongGuesses = document.getElementById("wrongGuesses");
 let guesses = "Wrong guesses: ";
+let randomGuess = true;
+let groupToGuess = [];
+const buttonGroupGuesses = document.getElementById("buttonGroupGuesses")
 
 function setNewPicture() {
     //es wird eine neue zufällige Zahl generiert
-    randomNumber = Math.floor(Math.random() * allMembers.length);
-    currentRandomNumber = randomNumber != currentRandomNumber ? randomNumber : Math.floor(Math.random() * allMembers.length);
-    currentMember = allMembers[currentRandomNumber];
+    if (randomGuess) {
+        randomNumber = Math.floor(Math.random() * allMembers.length);
+        currentRandomNumber = randomNumber != currentRandomNumber ? randomNumber : Math.floor(Math.random() * allMembers.length);
+        currentMember = allMembers[currentRandomNumber];
+    } else {
+        randomNumber = Math.floor(Math.random() * groupToGuess.length);
+        currentRandomNumber = randomNumber != currentRandomNumber ? randomNumber : Math.floor(Math.random() * groupToGuess.length);    
+        currentMember = groupToGuess[currentRandomNumber];
+    }
 
     //das Bild wird gesetzt
     if (currentMember.group[0] != '') {
@@ -98,6 +107,37 @@ function getHelp() {
     }
 }
 
+function setGroupToGuess() {
+    if (randomGuess) {
+        const groupInput = document.getElementById("answer").value.toLowerCase().trim()
+        if (groupInput != "") {
+            for (let i = 0; i < allMembers.length; i++) {
+                if (allMembers[i].group != "") {
+                    let correctGroupNames = allMembers[i].group.map(group => group.toLowerCase());
+                    if (correctGroupNames.includes(groupInput)) {
+                        groupToGuess.push(allMembers[i]);
+                        randomGuess = false;
+                    }
+                }
+            }
+            if (groupToGuess.length == 0) {
+                result.innerHTML = "There was no group found with the name '" + groupInput + "'.";
+                document.getElementById("answer").value = "";
+
+            } else {
+                buttonGroupGuesses.innerHTML = "Random guess"
+                document.getElementById("answer").value = "";
+            }
+        }
+    } else {
+        randomGuess = true;
+        buttonGroupGuesses.innerHTML = "Group guess";
+        groupToGuess = [];
+        document.getElementById("answer").value = "";
+    }
+    setNewPicture();
+}
+
 // Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("answer").addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
@@ -109,6 +149,5 @@ document.getElementById("answer").addEventListener("keyup", function(event) {
 
 setNewPicture()
 
-//Button, dass man nur eine Gruppe machen kann -> wenn der gedrückt wurde, eine neue Liste machen, wo die alle rein kommen und dann wird die Liste genommen
 //Gruppe nennen und dann, ob es richtig ist -> wenn alle falsch sind, dann prüfen, ob es der Gruppe gleicht und sonst einfach normal weitermachen
 //help2 wie viele Buchstaben, help3 den Anfangsbuchstaben -> nachdem der Button gedrückt wurde oder ein mal eingegeben wurde wird es umgeändert
