@@ -58,7 +58,7 @@ function checkAnswer() {
             skip();
         } else {
             let correctMemberNames = currentMember.name.map(name => name.toLowerCase());
-            let correctGroupNames = currentMember.group.map(group => group.startsWith("ex-".toLowerCase()) ? group.replace("ex-".toLowerCase(), "") : group);
+            let correctGroupNames = currentMember.group.map(group => group.startsWith("ex-".toLowerCase()) ? group.replace("ex-".toLowerCase(), "").toLowerCase() : group.toLowerCase());
             if (correctMemberNames.includes(answer)) {
                 result.innerHTML = "You guessed it correct."
                     + " It was " + currentMember.name[0];
@@ -73,13 +73,11 @@ function checkAnswer() {
                 document.getElementById("answer").value = "";
                 document.getElementById("hint").innerHTML = "";
                 setNewPicture();
-            } else if (correctGroupNames.includes(answer)) {
+            } else if (correctGroupNames.includes(answer) || correctGroupNames.includes("ex-" + answer)) {
                 hint.innerHTML = "You are right. The member is from the group '"
                     + currentMember.group[0] + "'.";
                 document.getElementById("answer").value = "";                    
-            }
-            
-            else {
+            } else {
                 result.innerHTML = "That was wrong. It is not '" + answer + "'.";
                 streakCounter = 0;
                 streak.innerHTML = "";
