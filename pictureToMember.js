@@ -157,5 +157,4 @@ document.getElementById("answer").addEventListener("keyup", function(event) {
 
 setNewPicture()
 
-//Gruppe nennen und dann, ob es richtig ist -> wenn alle falsch sind, dann prüfen, ob es der Gruppe gleicht und sonst einfach normal weitermachen
 //help2 wie viele Buchstaben, help3 den Anfangsbuchstaben -> nachdem der Button gedrückt wurde oder ein mal eingegeben wurde wird es umgeändert
