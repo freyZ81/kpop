@@ -1009,13 +1009,13 @@ let allMembers = [
         birthday: new Date("1994-01-15"),
     },
     {
-        name: ["I.M"],
+        name: ["I.M", "IM"],
         group: ["Monsta X", "MonstaX"],
         birthday: new Date("1996-01-26"),
     },
     {
         name: ["Wonho"],
-        group: ["Ex-Monsta X", "Ex-MonstaX" ,"MonstaX"],
+        group: ["Ex-Monsta X", "Ex-MonstaX"],
         birthday: new Date("1993-03-01"),
     },
     {
