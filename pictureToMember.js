@@ -14,9 +14,11 @@ const wrongGuesses = document.getElementById("wrongGuesses");
 let guesses = "Wrong guesses: ";
 let randomGuess = true;
 let groupToGuess = [];
-const buttonGroupGuesses = document.getElementById("buttonGroupGuesses")
+const buttonGroupGuesses = document.getElementById("buttonGroupGuesses");
+let helpCounter = 1;
 
 function setNewPicture() {
+    reset();
     //es wird eine neue zufällige Zahl generiert
     if (randomGuess) {
         randomNumber = Math.floor(Math.random() * allMembers.length);
@@ -89,13 +91,19 @@ function checkAnswer() {
     }
 }
 
-function skip() {
+function reset() {
     document.getElementById("answer").value = "";
     document.getElementById("hint").innerHTML = "";
-    streakCounter = 0;
-    streak.innerHTML = "";
     guesses = "Wrong guesses: ";
     wrongGuesses.innerHTML = "";
+    helpCounter = 1;
+    buttonHelp.innerHTML = "Help";
+}
+
+function skip() {
+    reset();
+    streakCounter = 0;
+    streak.innerHTML = "";
     result.innerHTML = "The member was '" + currentMember.name[0] + "'";
     if (currentMember.group[0] != '') {
         result.innerHTML += " from " + currentMember.group[0];
@@ -105,10 +113,23 @@ function skip() {
 }
 
 function getHelp() {
-    if (currentMember.group[0] != "") {
-        hint.innerHTML = "The member is from the group " + currentMember.group[0] + ".";
-    } else {
-        hint.innerHTML = "The member is a soloist.";
+    buttonHelp = document.getElementById("buttonHelp");
+    if (helpCounter == 1) {
+        if (currentMember.group[0] != "") {
+            hint.innerHTML = "The member is from the group " + currentMember.group[0] + ".";
+        } else {
+            hint.innerHTML = "The member is a soloist.";
+        }
+        helpCounter = 2;
+        buttonHelp.innerHTML = "Help 2";
+    } else if (helpCounter == 2) {
+        hint.innerHTML += "<br>The name has " + currentMember.name[-0].toString().length + " letters.";
+        helpCounter = 3;
+        buttonHelp.innerHTML = "Help 3";
+    } else if (helpCounter == 3) {
+        hint.innerHTML += "<br>The name starts with " + currentMember.name[0].toString()[0];
+        helpCounter = 4;
+        buttonHelp.innerHTML = "No more hints";
     }
 }
 
@@ -154,5 +175,3 @@ document.getElementById("answer").addEventListener("keyup", function(event) {
   });
 
 setNewPicture()
-
-//help2 wie viele Buchstaben, help3 den Anfangsbuchstaben -> nachdem der Button gedrückt wurde oder ein mal eingegeben wurde wird es umgeändert
