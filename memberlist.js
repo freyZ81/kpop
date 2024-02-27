@@ -2239,7 +2239,7 @@ let allMembers = [
         birthday: new Date("2008-10-14"),
     },
     {
-        name: ["Haram"],
+        name: ["Rami"],
         group: ["Babymonster"],
         birthday: new Date("2007-10-17"),
     },
@@ -2781,7 +2781,7 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 /*
 Bilder hinzufügen:
-exo, rq, cherry bullet, lightsum, monstax, ab6ix, enhypen, oneus, bang yedam, babymon haram, chuu, mml, dc, purki, bvndit, stayc
+exo, ab6ix, enhypen, oneus
 
 
 Daten hinzufügen:
