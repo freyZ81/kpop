@@ -844,7 +844,7 @@ let allMembers = [
         birthday: new Date("1998-10-25"),
     },
     {
-        name: ["D.O."],
+        name: ["D.O.", "DO"],
         group: ["Exo"],
         birthday: new Date("1993-01-12"),
     },
@@ -2789,4 +2789,8 @@ Shinee, April, ANS
 
 komplett hinzufügen:
 The Rose, VCHA, NiziU
+
+
+Wenn aufgeteilt auf Gruppen und Leute, dann kann man es wie bei CLC Yujin und Iz*One machen, dass mehrere Gruppen drinne sein können,
+aber bei den Bildern eben nur die letzten genommen werden, aber bei group guess können alle drinne sein
 */
