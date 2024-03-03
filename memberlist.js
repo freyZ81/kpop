@@ -86,6 +86,11 @@ let allMembers = [
         group: [""],
         birthday: new Date("1986-11-05"),
     },
+    {
+        name: ["Holland"],
+        group: [""],
+        birthday: new Date("1996-03-04"),
+    },
 
     //Gruppen
     {
