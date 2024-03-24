@@ -2249,6 +2249,11 @@ let allMembers = [
         birthday: new Date("2007-10-17"),
     },
     {
+        name: ["Ruka"],
+        group: ["Babymonster"],
+        birthday: new Date("2002-3-20"),
+    },
+    {
         name: ["Chisa"],
         group: ["XG"],
         birthday: new Date("2002-01-17"),
