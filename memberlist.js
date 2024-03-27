@@ -899,7 +899,7 @@ let allMembers = [
         birthday: new Date("1991-10-07"),
     },
     {
-        name: ["Kris"],
+        name: ["Kris Wu", "Kris", "KrisWu"],
         group: ["Ex-Exo"],
         birthday: new Date("1990-11-06"),
     },
@@ -1094,7 +1094,7 @@ let allMembers = [
         birthday: new Date("2002-12-08"),
     },
     {
-        name: ["Ni-Ki"],
+        name: ["Ni-Ki", "Niki"],
         group: ["Enhypen"],
         birthday: new Date("2005-12-09"),
     },
@@ -1459,7 +1459,7 @@ let allMembers = [
         birthday: new Date("1997-03-30"),
     },
     {
-        name: ["So Junghwan", "SoJunghwan"],
+        name: ["So Junghwan", "SoJunghwan", "Junghwan"],
         group: ["Treasure"],
         birthday: new Date("2005-02-18"),
     },
@@ -1775,7 +1775,7 @@ let allMembers = [
     },
     {
         name: ["Songyee"],
-        group: ["Ex-WOO!AH!"],
+        group: ["Ex-WOO!AH!", "Ex-WOOAH"],
         birthday: new Date("2004-09-25"),
     },
     {
@@ -2790,17 +2790,21 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 
 /*
-Bilder hinzufügen:
-exo, ab6ix, enhypen, oneus
-
-
 Daten hinzufügen:
 Shinee, April, ANS
 
 komplett hinzufügen:
-The Rose, VCHA, NiziU
+The Rose, VCHA, NiziU, lovelyz (El7z Up)
 
 
 Wenn aufgeteilt auf Gruppen und Leute, dann kann man es wie bei CLC Yujin und Iz*One machen, dass mehrere Gruppen drinne sein können,
-aber bei den Bildern eben nur die letzten genommen werden, aber bei group guess können alle drinne sein
+aber bei den Bildern eben nur die letzten genommen werden, aber bei group guess können alle drinne sein, hier dann die Gruppengröße nehmen und wenn die erreicht ist, dann beenden
+
+Gruppen:
+Id (0) int
+Name (Soloist) array
+Size int
+Fandom array
+Debut date
+Disband date
 */
