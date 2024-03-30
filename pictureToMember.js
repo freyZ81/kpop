@@ -1,4 +1,5 @@
 // Werte aus dem Local Storage abrufen und verwenden
+allGroups = JSON.parse(localStorage.getItem('groupsArray'));
 allMembers = JSON.parse(localStorage.getItem('membersArray'));
 
 const memberPicture = document.getElementById("memberPicture");
@@ -31,17 +32,20 @@ function setNewPicture() {
     }
 
     //das Bild wird gesetzt
-    if (currentMember.group[0] != '') {
+    if (currentMember.group[0] != 0) {
         //Gruppenmember
-        let groupStr = currentMember.group[currentMember.group.length-1].toString().toLowerCase();
-        
-        //wenn es ein Ex-Member ist
-        groupStr = groupStr.startsWith("ex-".toLowerCase()) ? groupStr.replace("ex-".toLowerCase(), "") : groupStr;
-        
+        let groupStr;
+        if (currentMember.group[0] > 0) {
+            groupStr = allGroups[currentMember.group[0]].name[(allGroups[currentMember.group[0]].name.length)-1].toLowerCase();
+        } else {
+            //wenn es ein Ex-Member ist
+            groupStr = allGroups[(currentMember.group[0]*-1)].name[(allGroups[(currentMember.group[0]*-1)].name.length)-1].toLowerCase();
+        }
+                
         let source = folder + groupStr + "/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
         memberPicture.src = source;
-    } else if (currentMember.group[0] == '') {
+    } else if (currentMember.group[0] == 0) {
         //Soloist
         let source = folder + "solo/" + currentMember.name[currentMember.name.length-1].toString().toLowerCase() + ".jpg";
         memberPicture.alt = source;
@@ -60,12 +64,16 @@ function checkAnswer() {
             skip();
         } else {
             let correctMemberNames = currentMember.name.map(name => name.toLowerCase());
-            let correctGroupNames = currentMember.group.map(group => group.startsWith("ex-".toLowerCase()) ? group.replace("ex-".toLowerCase(), "").toLowerCase() : group.toLowerCase());
+            //let correctGroupNames = getGroupNames();
             if (correctMemberNames.includes(answer)) {
                 result.innerHTML = "You guessed it correct."
                     + " It was " + currentMember.name[0];
-                if (currentMember.group[0] != '') {
-                    result.innerHTML += " from " + currentMember.group[0];
+                if (currentMember.group[0] != 0) {
+                    if (currentMember.group[0] > 0) {
+                    result.innerHTML += " from " + allGroups[currentMember.group[0]].name[0];
+                    } else {
+                    result.innerHTML += " who was in " + allGroups[(currentMember.group[0]*-1)].name[0];
+                    }
                 }
                 result.innerHTML += ".";
                 guesses = "Wrong guesses: ";
@@ -75,10 +83,10 @@ function checkAnswer() {
                 document.getElementById("answer").value = "";
                 document.getElementById("hint").innerHTML = "";
                 setNewPicture();
-            } else if (correctGroupNames.includes(answer) || correctGroupNames.includes("ex-" + answer)) {
-                hint.innerHTML = "You are right. The member is from the group '"
-                    + currentMember.group[0] + "'.";
-                document.getElementById("answer").value = "";                    
+            //} else if (correctGroupNames.includes(answer) || correctGroupNames.includes("ex-" + answer)) {
+            //    hint.innerHTML = "You are right. The member is from the group '"
+            //        + currentMember.group[0] + "'.";
+            //    document.getElementById("answer").value = "";                    
             } else {
                 result.innerHTML = "That was wrong. It is not '" + answer + "'.";
                 streakCounter = 0;
@@ -90,6 +98,14 @@ function checkAnswer() {
         }
     }
 }
+
+//function getGroupNames() {
+//    let groupNames;
+//    for (let i = 0; i < currentMember.group.length; i++) {
+//        groupNames = allGroups[currentMember.group[i]].map(group => group.startsWith("ex-".toLowerCase()) ? group.replace("ex-".toLowerCase(), "").toLowerCase() : group.toLowerCase());
+//    }
+//    return groupNames;
+//}
 
 function reset() {
     document.getElementById("answer").value = "";
@@ -106,7 +122,11 @@ function skip() {
     streak.innerHTML = "";
     result.innerHTML = "The member was '" + currentMember.name[0] + "'";
     if (currentMember.group[0] != '') {
-        result.innerHTML += " from " + currentMember.group[0];
+        if (currentMember.group[0] > 0) {
+        result.innerHTML += " from " + allGroups[currentMember.group[0]].name[0];
+        } else {
+            result.innerHTML += " who was in " + allGroups[(currentMember.group[0]*-1)].name[0];
+        }
     }
     result.innerHTML += ".";
     setNewPicture();
@@ -115,8 +135,11 @@ function skip() {
 function getHelp() {
     buttonHelp = document.getElementById("buttonHelp");
     if (helpCounter == 1) {
-        if (currentMember.group[0] != "") {
-            hint.innerHTML = "The member is from the group " + currentMember.group[0] + ".";
+        if (currentMember.group[0] > 0) {
+            hint.innerHTML = "The member is from the group " + allGroups[currentMember.group[0]].name[0] + ".";
+        } else if (currentMember.group[0] < 0) {
+            hint.innerHTML = "The member was in the group " + allGroups[(currentMember.group[0]*-1)].name[0] + ".";
+
         } else {
             hint.innerHTML = "The member is a soloist.";
         }
@@ -136,21 +159,34 @@ function getHelp() {
 function setGroupToGuess() {
     if (randomGuess) {
         const groupInput = document.getElementById("answer").value.toLowerCase().trim()
+        let groupToGuesSId;
+
         if (groupInput != "") {
-            for (let i = 0; i < allMembers.length; i++) {
-                if (allMembers[i].group != "") {
-                    let correctGroupNames = allMembers[i].group.map(group => group.toLowerCase());
+            for (let i = 0; i < allGroups.length; i++) {
+                if (allGroups[i].id > 0) {
+                    let correctGroupNames = allGroups[i].name.map(name => name.toLowerCase());
                     if (correctGroupNames.includes(groupInput)) {
-                        groupToGuess.push(allMembers[i]);
+                        //wenn der Gruppenname gefunden wurde
+                        groupToGuesSId = allGroups[i].id;
                         randomGuess = false;
+                        break;
                     }
                 }
             }
+            
+            if (groupToGuesSId != undefined) {
+                // hier werden alle Member dem Array hinzugefügt
+                for (let i = 0; i < allMembers.length; i++) {
+                    if (allMembers[i].group.includes(groupToGuesSId)) {
+                        groupToGuess.push(allMembers[i]);
+                    }
+                }
+            }
+
             if (groupToGuess.length == 0) {
                 result.innerHTML = "There was no group found with the name '"
                     + groupInput + "'.";
                 document.getElementById("answer").value = "";
-
             } else {
                 buttonGroupGuesses.innerHTML = "Random guess"
                 document.getElementById("answer").value = "";
