@@ -1,4 +1,5 @@
 // Werte aus dem Local Storage abrufen und verwenden
+allGroups = JSON.parse(localStorage.getItem('groupsArray'));
 allMembers = JSON.parse(localStorage.getItem('membersArray'));
 
 const question = document.getElementById("question")
@@ -25,6 +26,7 @@ document.getElementById("inputGroupMember").addEventListener("keyup", function(e
 
 function checkAnswer() {
     let userInput = document.getElementById("inputGroupMember").value.toLowerCase().trim()
+    let groupId
     if (userInput == "give up" || userInput == "giveup") {
         //es wird aufgegeben
         giveUp()
@@ -32,15 +34,23 @@ function checkAnswer() {
         //wenn ein Name oder Gruppe eingegeben wird
         if (!groupSelected) {
             //die Gruppe wird ausgewählt
-            for (let i = 0; i < allMembers.length; i++) {
-                let currentMember = allMembers[i]
-                if (currentMember.group != "") {
-                    let groupNames = currentMember.group.map(group => group.toLowerCase())
+            for (let i = 0; i < allGroups.length; i++) {
+                let currentGroup = allGroups[i]
+                if (currentGroup.id != 0) {
+                    let groupNames = currentGroup.name.map(name => name.toLowerCase())
                     if (groupNames.includes(userInput)) {
                         //der Gruppenname entspricht der Eingabe
-                        choosedGroupMembers.push(allMembers[i].name)
                         groupSelected = true
-                        selectedGroup = currentMember.group[0]
+                        selectedGroup = currentGroup.name[0]
+                        groupId = currentGroup.id
+                        break
+                    }
+                }
+            }
+            if (groupId != undefined) {
+                for (let i = 0; i < allMembers.length; i++) {
+                    if (allMembers[i].group[0] == groupId) {
+                        choosedGroupMembers.push(allMembers[i].name)
                     }
                 }
             }
@@ -93,7 +103,7 @@ function giveUp() {
     //wenn aufgegeben wird
     if (choosedGroupMembers.length != 0) {
         //Text wird angepasst, wenn noch Member fehlen
-        counter.innerHTML = "The last " + choosedGroupMembers.length + " members of '" + selectedGroup + "' are "
+        counter.innerHTML = "The remaining " + choosedGroupMembers.length + " members of '" + selectedGroup + "' were "
         for (let i = 0; i < choosedGroupMembers.length; i++) {
             if (i == (choosedGroupMembers.length-1)) {
                 counter.innerHTML += " and "
