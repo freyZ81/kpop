@@ -1,11 +1,12 @@
 // Werte aus dem Local Storage abrufen und verwenden
+allGroups = JSON.parse(localStorage.getItem('groupsArray'));
 allMembers = JSON.parse(localStorage.getItem('membersArray'));
 
 const tableMembersGroupsAndBirthdays = document.getElementById("tableMembersGroupsAndBirthdays");
 let todaysBirthdays = document.getElementById("birthdays");
 let nextBirthdays = [];
 const counter = document.getElementById("counter");
-counter.innerHTML = "In the list are " + allMembers.length + " members.";
+counter.innerHTML = "In the list are " + allMembers.length + " members from " + (allGroups.length-2) + " groups and soloists.";
 
 function fuehrendeNullWennEinstellig(num) {
     return num < 10 ? "0" + num : num;
@@ -19,15 +20,19 @@ function setMembers(memberArray) {
         memberbirthday = new Date(member.birthday);
         const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
         
-        const countryCell = newRow.insertCell(0);
-        countryCell.innerHTML = member.name[0];
+        const nameCell = newRow.insertCell(0);
+        nameCell.innerHTML = member.name[0];
     
-        const countryCell2 = newRow.insertCell(-1);
-        countryCell2.innerHTML = member.group[0];
+        const groupCell = newRow.insertCell(-1);
+        if (member.group[0] >= 0) {
+            groupCell.innerHTML = allGroups[member.group[0]].name[0];
+        } else {
+            groupCell.innerHTML = "Ex-" + allGroups[(member.group[0]*-1)].name[0];
+        }
 
-        const countryCell3 = newRow.insertCell(-1);
+        const birthdayCell = newRow.insertCell(-1);
         //countryCell3.innerHTML = birthdayParts;
-        countryCell3.innerHTML = fuehrendeNullWennEinstellig(memberbirthday.getDate())
+        birthdayCell.innerHTML = fuehrendeNullWennEinstellig(memberbirthday.getDate())
         + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1)
         + "." + memberbirthday.getFullYear();
     }
@@ -85,8 +90,8 @@ function sortGroup() {
     allMembers.sort(function(a, b) {
         var dateA = new Date(a.birthday);
         var dateB = new Date(b.birthday);
-        var groupA = removeExPrefix(a.group[0]);
-        var groupB = removeExPrefix(b.group[0]);
+        var groupA = getGroupNameById(a.group[0]);
+        var groupB = getGroupNameById(b.group[0]);
     
         // Zuerst nach Gruppe sortieren
         if (groupA < groupB) {
@@ -181,10 +186,13 @@ function setBirthdays() {
         const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
     
         if (koreaDate.getDate() === memberbirthday.getDate() && koreaDate.getMonth() === memberbirthday.getMonth()) {
-            if (member.group != "") {
-                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " aus " + member.group[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+            if (member.group[0] > 0) {
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " aus " + allGroups[member.group[0]].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
             }
-            if (member.group == "") {
+            if (member.group[0] < 0) {
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " aus Ex-" + allGroups[(member.group[0]*-1)].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+            }
+            if (member.group[0] == 0) {
                 todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
             }
         }
@@ -248,14 +256,16 @@ function setNextBirthdays(membersWithNextBirthdays) {
         // Zeitzone für das Datumobjekt festlegen
         const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
     
-        if (member.group != "") {
-            todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + (memberbirthday.getMonth()+1) + " hat " + member.name[0] + " aus " + member.group[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+        if (member.group[0] > 0) {
+            todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + (memberbirthday.getMonth()+1) + " hat " + member.name[0] + " aus " + allGroups[member.group[0]].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
         }
-        if (member.group == "") {
+        if (member.group[0] < 0) {
+            todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + (memberbirthday.getMonth()+1) + " hat " + member.name[0] + " aus Ex-" + allGroups[(member.group[0]*-1)].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+        }
+        if (member.group[0] == 0) {
             todaysBirthdays.innerHTML += ("Am " + memberbirthday.getDate() + "." + (memberbirthday.getMonth()+1) + " hat " + member.name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
         }
     }
-
 }
 
 function removeExPrefix(groupName) {
@@ -266,6 +276,17 @@ function removeExPrefix(groupName) {
         }
     }
         
+    return groupName;
+}
+
+function getGroupNameById(groupId) {
+    let groupName;
+    if (groupId >= 0) {
+        groupName = allGroups[groupId].name[0];
+    } else {
+        groupName = allGroups[(groupId*-1)].name[0];
+    }
+    
     return groupName;
 }
 
