@@ -33,7 +33,7 @@ let allGroups = [
     },
     {
         id: 4,
-        name: ["Mamamoo"],
+        name: ["Mamamoo", "MMM"],
         size: 4,
         fandom: ["Moomoo"],
         debut: new Date(""),

@@ -64,7 +64,7 @@ function checkAnswer() {
             skip();
         } else {
             let correctMemberNames = currentMember.name.map(name => name.toLowerCase());
-            //let correctGroupNames = getGroupNames();
+            //let correctGroupNames = getGroupNames(); //damit eine Gruppe geguesst werden kann und überprüft wird, ob die richtig ist
             if (correctMemberNames.includes(answer)) {
                 result.innerHTML = "You guessed it correct."
                     + " It was " + currentMember.name[0];
@@ -84,6 +84,7 @@ function checkAnswer() {
                 document.getElementById("hint").innerHTML = "";
                 setNewPicture();
             //} else if (correctGroupNames.includes(answer) || correctGroupNames.includes("ex-" + answer)) {
+                //wenn eine Gruppe geguesst wurde
             //    hint.innerHTML = "You are right. The member is from the group '"
             //        + currentMember.group[0] + "'.";
             //    document.getElementById("answer").value = "";                    
