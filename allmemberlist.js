@@ -6,7 +6,7 @@ const tableMembersGroupsAndBirthdays = document.getElementById("tableMembersGrou
 let todaysBirthdays = document.getElementById("birthdays");
 let nextBirthdays = [];
 const counter = document.getElementById("counter");
-counter.innerHTML = "In the list are " + allMembers.length + " members from " + (allGroups.length-2) + " groups and soloists.";
+counter.innerHTML = "In the list are " + allMembers.length + " members from " + (allGroups.length-1) + " groups and soloists.";
 
 function fuehrendeNullWennEinstellig(num) {
     return num < 10 ? "0" + num : num;

@@ -88,14 +88,6 @@ let allGroups = [
         disband: new Date(""),
     },
     {
-        id: 79,
-        name: ["Iz*One", "IzOne"],
-        size: 12,
-        fandom: ["Wiz*One"],
-        debut: new Date(""),
-        disband: new Date(""),
-    },
-    {
         id: 11,
         name: ["Le Sserafim", "LeSserafim"],
         size: 5,
@@ -636,6 +628,14 @@ let allGroups = [
         name: ["CLC"],
         size: 0,
         fandom: [""],
+        debut: new Date(""),
+        disband: new Date(""),
+    },
+    {
+        id: 79,
+        name: ["Iz*One", "IzOne"],
+        size: 12,
+        fandom: ["Wiz*One"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -3446,11 +3446,4 @@ The Rose, VCHA, NiziU, lovelyz (El7z Up)
 Wenn aufgeteilt auf Gruppen und Leute, dann kann man es wie bei CLC Yujin und Iz*One machen, dass mehrere Gruppen drinne sein können,
 aber bei den Bildern eben nur die letzten genommen werden, aber bei group guess können alle drinne sein
 
-Gruppen:
-Id (0) int
-Name (Soloist) array
-Size int
-Fandom array
-Debut date
-Disband date
 */
