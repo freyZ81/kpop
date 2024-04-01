@@ -88,6 +88,14 @@ let allGroups = [
         disband: new Date(""),
     },
     {
+        id: 79,
+        name: ["Iz*One", "IzOne"],
+        size: 12,
+        fandom: ["Wiz*One"],
+        debut: new Date(""),
+        disband: new Date(""),
+    },
+    {
         id: 11,
         name: ["Le Sserafim", "LeSserafim"],
         size: 5,
@@ -122,15 +130,15 @@ let allGroups = [
     {
         id: 15,
         name: ["Artms"],
-        size: 6,
+        size: 5,
         fandom: [""],
         debut: new Date(""),
         disband: new Date(""),
     },
     {
         id: 16,
-        name: ["Odd Eye Circle", "OddEyeCircle"],
-        size: 6,
+        name: ["Loossemble"],
+        size: 5,
         fandom: [""],
         debut: new Date(""),
         disband: new Date(""),
@@ -628,14 +636,6 @@ let allGroups = [
         name: ["CLC"],
         size: 0,
         fandom: [""],
-        debut: new Date(""),
-        disband: new Date(""),
-    },
-    {
-        id: 79,
-        name: ["Iz*One", "IzOne"],
-        size: 12,
-        fandom: ["Wiz*One"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -1155,7 +1155,7 @@ let allMembers = [
     },
     {
         name: ["Kim Lip", "KimLip"],
-        group: [14],
+        group: [14], //15
         birthday: new Date("1999-02-10"),
     },
     {
@@ -1165,22 +1165,22 @@ let allMembers = [
     },
     {
         name: ["Choerry"],
-        group: [14],
+        group: [14], //15
         birthday: new Date("2001-06-04"),
     },
     {
         name: ["Jinsoul"],
-        group: [14],
+        group: [14], //15
         birthday: new Date("1997-06-13"),
     },
     {
         name: ["Haseul"],
-        group: [14],
+        group: [14], //15
         birthday: new Date("1997-08-18"),
     },
     {
         name: ["Heejin"],
-        group: [14],
+        group: [14], //15
         birthday: new Date("2000-10-19"),
     },
     {
@@ -1190,27 +1190,27 @@ let allMembers = [
     },
     {
         name: ["Yeojin"],
-        group: [14],
+        group: [14], //16
         birthday: new Date("2002-11-11"),
     },
     {
         name: ["Hyejoo"],
-        group: [14],
+        group: [14], //16
         birthday: new Date("2001-11-13"),
     },
     {
         name: ["Hyunjin"],
-        group: [14],
+        group: [14], //16
         birthday: new Date("2000-11-15"),
     },
     {
         name: ["Gowon"],
-        group: [14],
+        group: [14], //16
         birthday: new Date("2000-11-19"),
     },
     {
         name: ["Vivi"],
-        group: [14],
+        group: [14], //16
         birthday: new Date("1996-12-09"),
     },
     {
