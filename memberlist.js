@@ -1030,12 +1030,12 @@ let allMembers = [
     },
     {
         name: ["Sakura"],
-        group: [11],
+        group: [11, 79],
         birthday: new Date("1998-03-19"),
     },
     {
         name: ["Chaewon"],
-        group: [11],
+        group: [11, 79],
         birthday: new Date("2000-08-01"),
     },
     {
@@ -1080,12 +1080,12 @@ let allMembers = [
     },
     {
         name: ["Wonyoung"],
-        group: [12],
+        group: [12, 79],
         birthday: new Date("2004-08-31"),
     },
     {
         name: ["Yujin"],
-        group: [12],
+        group: [12, 79],
         birthday: new Date("2003-09-01"),
     },
     {
@@ -1155,7 +1155,7 @@ let allMembers = [
     },
     {
         name: ["Kim Lip", "KimLip"],
-        group: [14], //15
+        group: [15, 14],
         birthday: new Date("1999-02-10"),
     },
     {
@@ -1165,22 +1165,22 @@ let allMembers = [
     },
     {
         name: ["Choerry"],
-        group: [14], //15
+        group: [15, 14],
         birthday: new Date("2001-06-04"),
     },
     {
         name: ["Jinsoul"],
-        group: [14], //15
+        group: [15, 14],
         birthday: new Date("1997-06-13"),
     },
     {
         name: ["Haseul"],
-        group: [14], //15
+        group: [15, 14],
         birthday: new Date("1997-08-18"),
     },
     {
         name: ["Heejin"],
-        group: [14], //15
+        group: [15, 14],
         birthday: new Date("2000-10-19"),
     },
     {
@@ -1190,27 +1190,27 @@ let allMembers = [
     },
     {
         name: ["Yeojin"],
-        group: [14], //16
+        group: [16, 14],
         birthday: new Date("2002-11-11"),
     },
     {
         name: ["Hyejoo"],
-        group: [14], //16
+        group: [16, 14],
         birthday: new Date("2001-11-13"),
     },
     {
         name: ["Hyunjin"],
-        group: [14], //16
+        group: [16, 14],
         birthday: new Date("2000-11-15"),
     },
     {
         name: ["Gowon"],
-        group: [14], //16
+        group: [16, 14],
         birthday: new Date("2000-11-19"),
     },
     {
         name: ["Vivi"],
-        group: [14], //16
+        group: [16, 14],
         birthday: new Date("1996-12-09"),
     },
     {

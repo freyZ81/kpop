@@ -24,10 +24,17 @@ function setMembers(memberArray) {
         nameCell.innerHTML = member.name[0];
     
         const groupCell = newRow.insertCell(-1);
-        if (member.group[0] >= 0) {
-            groupCell.innerHTML = allGroups[member.group[0]].name[0];
+        if (member.group.length == 1) {
+            if (member.group[0] >= 0) {
+                groupCell.innerHTML = allGroups[member.group[0]].name[0];
+            } else {
+                groupCell.innerHTML = "Ex-" + allGroups[(member.group[0]*-1)].name[0];
+            }
         } else {
-            groupCell.innerHTML = "Ex-" + allGroups[(member.group[0]*-1)].name[0];
+            groupCell.innerHTML = allGroups[member.group[0]].name[0];
+            for (let i = 1; i < member.group.length; i++) {
+                groupCell.innerHTML += ", " + allGroups[member.group[i]].name[0];
+            }
         }
 
         const birthdayCell = newRow.insertCell(-1);
