@@ -2749,6 +2749,26 @@ let allMembers = [
         birthday: new Date("2009-01-16"),
     },
     {
+        name: ["Chaewon"],
+        group: [55],
+        birthday: new Date(""),
+    },
+    {
+        name: ["Sullin"],
+        group: [55],
+        birthday: new Date(""),
+    },
+    {
+        name: ["Haerin"],
+        group: [55],
+        birthday: new Date(""),
+    },
+    {
+        name: ["JiSuhYeon"],
+        group: [55],
+        birthday: new Date(""),
+    },
+    {
         name: ["Yuto"],
         group: [56],
         birthday: new Date("1998-01-23"),
