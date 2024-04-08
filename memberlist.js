@@ -166,7 +166,8 @@ let allGroups = [
         name: ["Cignature"],
         size: 8,
         fandom: ["Signfan"],
-        debut: new Date(""),
+        entertainment: ["J9"],
+        debut: new Date("2020-02-03"),
         disband: new Date(""),
     },
     {
@@ -174,7 +175,7 @@ let allGroups = [
         name: ["Dreamcatcher"],
         size: 7,
         fandom: ["Insomnia"],
-        entertainment: ["Dreamcatcher Company", "Dreamcatcher Company"],
+        entertainment: ["Dreamcatcher Company", "DreamcatcherCompany"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -676,7 +677,16 @@ let allGroups = [
         size: 0,
         fandom: ["WithU"],
         entertainment: ["JYP"],
-        debut: new Date(""),
+        debut: new Date("2020-12-02"),
+        disband: new Date(""),
+    },
+    {
+        id: 82,
+        name: ["UNIS"],
+        size: 8,
+        fandom: [""],
+        entertainment: ["F&F"],
+        debut: new Date("2024-03-27"),
         disband: new Date(""),
     },
 
@@ -3562,6 +3572,46 @@ let allMembers = [
         name: ["Nina"],
         group: [81],
         birthday: new Date("2005-02-27"),
+    },
+    {
+        name: ["Hyeonju aka Belle", "Belle", "Hyeonju"],
+        group: [82],
+        birthday: new Date("2001-11-03"),
+    },
+    {
+        name: ["Nana"],
+        group: [82],
+        birthday: new Date("2007-06-06"),
+    },
+    {
+        name: ["Gehlee"],
+        group: [82],
+        birthday: new Date("2007-08-19"),
+    },
+    {
+        name: ["Kotoko"],
+        group: [82],
+        birthday: new Date("2007-10-28"),
+    },
+    {
+        name: ["Yunha"],
+        group: [82],
+        birthday: new Date("2009-02-28"),
+    },
+    {
+        name: ["Elisia"],
+        group: [82],
+        birthday: new Date("2009-04-18"),
+    },
+    {
+        name: ["Yoona"],
+        group: [82],
+        birthday: new Date("2009-10-07"),
+    },
+    {
+        name: ["Seowon"],
+        group: [82],
+        birthday: new Date("2011-01-27"),
     },
 ]
 
