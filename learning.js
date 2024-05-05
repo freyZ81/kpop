@@ -73,10 +73,8 @@ function checkAnswer() {
             }
         } else {
             //die Membernamen werden eingegeben
-            console.log("guessedCounter: " + guessedCounter)
             let currentMember = revealedMembers[guessedCounter]
             let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
-            console.log(memberNames)
             if (memberNames.includes(userInput)) {
                 if (guessedCounter == 0) {
                     tableBody.innerHTML = ""
@@ -90,7 +88,6 @@ function checkAnswer() {
                 document.getElementById("inputGroupMember").value = ""
                 
                 guessedCounter += 1
-                console.log(guessedCounter, revealedCounter)
                 if (guessedCounter == revealedCounter) {
                     revealNextMember();
                 }
@@ -114,6 +111,7 @@ function giveUp() {
         }
         reset()
     }*/
+    member.innerHTML = "The searched member was '" + revealedMembers[guessedCounter][0] + "'."
     reset()
 }
 
@@ -126,18 +124,18 @@ function reset() {
     //member.innerHTML = ""
     groupSelected = false
     choosedGroupMembers = []
+    revealedMembers = []
+    revealedCounter = 0
     tableBody.innerHTML = ""
     tableHeader.innerHTML = "Group"
 }
 
 function revealNextMember() {
-    console.log(choosedGroupMembers)
     if (choosedGroupMembers != "") {
         member.innerHTML = "The next member is '" + choosedGroupMembers[0] + "'.";
         revealedMembers.push(choosedGroupMembers[0])
         guessedCounter = 0;
         revealedCounter += 1;
-        console.log("revealedCounter: " + revealedCounter)
         choosedGroupMembers.splice(0,1)
         //console.log(revealedMembers)
     } else {
