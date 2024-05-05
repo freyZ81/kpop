@@ -8,10 +8,13 @@ const tableMembers = document.getElementById("tableMembers")
 const buttonGroupMember = document.getElementById("buttonGroupMember")
 let tableBody = document.getElementById("tableBody")
 let tableHeader = document.getElementById("tableHeader")
-let counter = document.getElementById("counter")
+let member = document.getElementById("member")
 let groupSelected = false
 let choosedGroupMembers = []
 let selectedGroup
+let revealedCounter = 0
+let guessedCounter = 0
+let revealedMembers = []
 
 // Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("inputGroupMember").addEventListener("keyup", function(event) {
@@ -66,64 +69,79 @@ function checkAnswer() {
                 inputGroupMember.value = ""
                 inputGroupMember.placeholder = "member"
                 buttonGroupMember.innerHTML = "Enter member"
-                counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
+                revealNextMember();
             }
         } else {
-            //die Mambernamen werden eingegeben
-            for (let i = 0; i < choosedGroupMembers.length; i++) {
-                let currentMember = choosedGroupMembers[i]
-                let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
-                if (memberNames.includes(userInput)) {
-                    //Name in der Tabelle hinzufügen
-                    const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
-                    const newCell = newRow.insertCell(0);
-                    newCell.innerHTML = choosedGroupMembers[i][0]
-                    
-                    //Name aus der Liste nehmen
-                    choosedGroupMembers.splice(i, 1)
+            //die Membernamen werden eingegeben
+            console.log("guessedCounter: " + guessedCounter)
+            let currentMember = revealedMembers[guessedCounter]
+            let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
+            console.log(memberNames)
+            if (memberNames.includes(userInput)) {
+                if (guessedCounter == 0) {
+                    tableBody.innerHTML = ""
+                }
+                //Name in der Tabelle hinzufügen
+                const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
+                const newCell = newRow.insertCell(0);
+                newCell.innerHTML = revealedMembers[guessedCounter][0]
 
-                    //Eingabefeld leeren
-                    document.getElementById("inputGroupMember").value = ""
-                    
-                    //Text updaten
-                    counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
-                    if (choosedGroupMembers.length == 0) {
-                        //wenn alle Member genannt wurden
-                        counter.innerHTML = "You named all members of '" + selectedGroup + "'."
-                        reset()
-                    }
+                //Eingabefeld leeren
+                document.getElementById("inputGroupMember").value = ""
+                
+                guessedCounter += 1
+                console.log(guessedCounter, revealedCounter)
+                if (guessedCounter == revealedCounter) {
+                    revealNextMember();
                 }
             }
-            
         }
     }
 }
 
 function giveUp() {
     //wenn aufgegeben wird
-    if (choosedGroupMembers.length != 0) {
+    /*if (choosedGroupMembers.length != 0) {
         //Text wird angepasst, wenn noch Member fehlen
-        counter.innerHTML = "The remaining " + choosedGroupMembers.length + " members of '" + selectedGroup + "' were "
+        member.innerHTML = "The remaining " + choosedGroupMembers.length + " members of '" + selectedGroup + "' were "
         for (let i = 0; i < choosedGroupMembers.length; i++) {
             if (i == (choosedGroupMembers.length-1)) {
-                counter.innerHTML += " and "
-                counter.innerHTML += choosedGroupMembers[i][0] + "."
+                member.innerHTML += " and "
+                member.innerHTML += choosedGroupMembers[i] + "."
             } else {
-                counter.innerHTML += choosedGroupMembers[i][0] + ", "
+                member.innerHTML += choosedGroupMembers[i] + ", "
             }
         }
         reset()
-    }
+    }*/
+    reset()
 }
 
 function reset() {
     //alles wird zurückgesetzt
-    question.innerHTML = "Which group do you want to name?"
+    question.innerHTML = "Which group do you want to learn?"
     inputGroupMember.value = ""
     inputGroupMember.placeholder = "group"
     buttonGroupMember.innerHTML = "Enter group"
-    //counter.innerHTML = ""
+    //member.innerHTML = ""
     groupSelected = false
     choosedGroupMembers = []
     tableBody.innerHTML = ""
+    tableHeader.innerHTML = "Group"
+}
+
+function revealNextMember() {
+    console.log(choosedGroupMembers)
+    if (choosedGroupMembers != "") {
+        member.innerHTML = "The next member is '" + choosedGroupMembers[0] + "'.";
+        revealedMembers.push(choosedGroupMembers[0])
+        guessedCounter = 0;
+        revealedCounter += 1;
+        console.log("revealedCounter: " + revealedCounter)
+        choosedGroupMembers.splice(0,1)
+        //console.log(revealedMembers)
+    } else {
+        member.innerHTML = "You named all members of " + selectedGroup + "."
+        reset()
+    }
 }

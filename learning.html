@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name the group members</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>
+        Learn the group members
+    </h1>
+
+    <p id=""></p>
+
+    <p id="question">Which group do you want to learn?</p>
+    <p id="member"></p>
+
+    <input type="text" id="inputGroupMember" placeholder="group"> <button id="buttonGroupMember" onclick="checkAnswer()">Enter group</button> <button id="giveUp" onclick="giveUp()">Give up</button>
+
+    <br>
+    <br>
+
+    <table id="tableMembers">
+        <thead>
+            <tr>
+                <th id="tableHeader">
+                    Group
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+
+    <button onclick="window.location.href = 'allmemberlist.html';">Back to birthdaylist</button><br>
+
+
+    <script src="memberlist.js"></script>
+    <script src="learning.js"></script>
+</body>
+</html>
