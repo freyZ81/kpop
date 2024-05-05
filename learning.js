@@ -15,17 +15,19 @@ let selectedGroup
 let revealedCounter = 0
 let guessedCounter = 0
 let revealedMembers = []
+let groupSize
 
 // Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("inputGroupMember").addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
+    let userInput = document.getElementById("inputGroupMember").value.toLowerCase().trim()
     if (event.keyCode === 13) {
       event.preventDefault();
       checkAnswer();
+    } else if (groupSelected) {
+        checkMemberName(userInput)
     }
 });
-
-
 
 function checkAnswer() {
     let userInput = document.getElementById("inputGroupMember").value.toLowerCase().trim()
@@ -56,6 +58,7 @@ function checkAnswer() {
                         choosedGroupMembers.push(allMembers[i].name)
                     }
                 }
+                groupSize = choosedGroupMembers.length
             }
             if (!groupSelected) {
                 //wenn ein unbekannter Gruppenname eingegeben wurde
@@ -73,44 +76,13 @@ function checkAnswer() {
             }
         } else {
             //die Membernamen werden eingegeben
-            let currentMember = revealedMembers[guessedCounter]
-            let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
-            if (memberNames.includes(userInput)) {
-                if (guessedCounter == 0) {
-                    tableBody.innerHTML = ""
-                }
-                //Name in der Tabelle hinzufügen
-                const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
-                const newCell = newRow.insertCell(0);
-                newCell.innerHTML = revealedMembers[guessedCounter][0]
-
-                //Eingabefeld leeren
-                document.getElementById("inputGroupMember").value = ""
-                
-                guessedCounter += 1
-                if (guessedCounter == revealedCounter) {
-                    revealNextMember();
-                }
-            }
+            checkMemberName(userInput)
         }
     }
 }
 
 function giveUp() {
     //wenn aufgegeben wird
-    /*if (choosedGroupMembers.length != 0) {
-        //Text wird angepasst, wenn noch Member fehlen
-        member.innerHTML = "The remaining " + choosedGroupMembers.length + " members of '" + selectedGroup + "' were "
-        for (let i = 0; i < choosedGroupMembers.length; i++) {
-            if (i == (choosedGroupMembers.length-1)) {
-                member.innerHTML += " and "
-                member.innerHTML += choosedGroupMembers[i] + "."
-            } else {
-                member.innerHTML += choosedGroupMembers[i] + ", "
-            }
-        }
-        reset()
-    }*/
     member.innerHTML = "The searched member was '" + revealedMembers[guessedCounter][0] + "'."
     reset()
 }
@@ -121,7 +93,6 @@ function reset() {
     inputGroupMember.value = ""
     inputGroupMember.placeholder = "group"
     buttonGroupMember.innerHTML = "Enter group"
-    //member.innerHTML = ""
     groupSelected = false
     choosedGroupMembers = []
     revealedMembers = []
@@ -137,9 +108,34 @@ function revealNextMember() {
         guessedCounter = 0;
         revealedCounter += 1;
         choosedGroupMembers.splice(0,1)
-        //console.log(revealedMembers)
     } else {
         member.innerHTML = "You named all members of " + selectedGroup + "."
         reset()
+    }
+}
+
+function checkMemberName(userInput) {
+    let currentMember = revealedMembers[guessedCounter]
+    let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
+    if (memberNames.includes(userInput)) {
+        if (guessedCounter == 0) {
+            tableBody.innerHTML = ""
+        }
+        //Name in der Tabelle hinzufügen
+        const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
+        const newCell = newRow.insertCell(0);
+        newCell.innerHTML = revealedMembers[guessedCounter][0]
+
+        //Eingabefeld leeren
+        document.getElementById("inputGroupMember").value = ""
+        
+        guessedCounter += 1
+
+        member.innerHTML = "You guessed " + guessedCounter + "/" + revealedCounter + " revealed from "
+            + groupSize + " in total."
+
+        if (guessedCounter == revealedCounter) {
+            revealNextMember();
+        }
     }
 }
