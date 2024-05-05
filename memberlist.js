@@ -2801,22 +2801,22 @@ let allMembers = [
     {
         name: ["Chaewon"],
         group: [55],
-        birthday: new Date(""),
+        birthday: new Date("2007-05-02"),
     },
     {
         name: ["Sullin"],
         group: [55],
-        birthday: new Date(""),
+        birthday: new Date("2006-11-30"),
     },
     {
-        name: ["Haerin"],
+        name: ["SeoAh"],
         group: [55],
-        birthday: new Date(""),
+        birthday: new Date("2010-06-11"),
     },
     {
-        name: ["JiSuhYeon"],
+        name: ["JiYeon"],
         group: [55],
-        birthday: new Date(""),
+        birthday: new Date("2004-02-13"),
     },
     {
         name: ["Yuto"],
