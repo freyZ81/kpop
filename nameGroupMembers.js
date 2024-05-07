@@ -64,12 +64,13 @@ function checkAnswer() {
                 tableHeader.innerHTML = "Group: " + selectedGroup
                 question.innerHTML = "Which member is in the group '" + selectedGroup + "'?"
                 inputGroupMember.value = ""
+                tableBody.innerHTML = ""
                 inputGroupMember.placeholder = "member"
                 buttonGroupMember.innerHTML = "Enter member"
                 counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
             }
         } else {
-            //die Mambernamen werden eingegeben
+            //die Membernamen werden eingegeben
             for (let i = 0; i < choosedGroupMembers.length; i++) {
                 let currentMember = choosedGroupMembers[i]
                 let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
@@ -125,5 +126,4 @@ function reset() {
     //counter.innerHTML = ""
     groupSelected = false
     choosedGroupMembers = []
-    tableBody.innerHTML = ""
 }

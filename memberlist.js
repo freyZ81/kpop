@@ -664,7 +664,7 @@ let allGroups = [
     },
     {
         id: 80,
-        name: ["Xdinary Heroes", "XdinaryHeroes"],
+        name: ["Xdinary Heroes", "Xdi", "XdinaryHeroes"],
         size: 6,
         fandom: ["VILLAINS"],
         entertainment: ["JYP"],
