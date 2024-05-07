@@ -131,9 +131,11 @@ function checkMemberName(userInput) {
         
         guessedCounter += 1
 
+        //counter updaten
         member.innerHTML = "You guessed " + guessedCounter + "/" + revealedCounter + " revealed from "
             + groupSize + " in total."
 
+        //nächsten member revealen
         if (guessedCounter == revealedCounter) {
             revealNextMember();
         }
