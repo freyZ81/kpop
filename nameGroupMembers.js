@@ -13,6 +13,8 @@ let groupSelected = false
 let choosedGroupMembers = []
 let selectedGroup
 
+inputGroupMember.focus()
+
 // Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("inputGroupMember").addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort

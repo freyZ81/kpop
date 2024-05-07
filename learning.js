@@ -17,6 +17,8 @@ let guessedCounter = 0
 let revealedMembers = []
 let groupSize
 
+inputGroupMember.focus()
+
 // Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("inputGroupMember").addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
