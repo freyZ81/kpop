@@ -72,6 +72,7 @@ function checkAnswer() {
                 inputGroupMember.value = ""
                 inputGroupMember.placeholder = "member"
                 buttonGroupMember.innerHTML = "Enter member"
+                tableBody.innerHTML = ""
                 revealNextMember();
             }
         } else {
@@ -97,7 +98,6 @@ function reset() {
     choosedGroupMembers = []
     revealedMembers = []
     revealedCounter = 0
-    tableBody.innerHTML = ""
     tableHeader.innerHTML = "Group"
 }
 
