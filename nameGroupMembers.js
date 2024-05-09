@@ -18,9 +18,12 @@ inputGroupMember.focus()
 // Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("inputGroupMember").addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
+    let userInput = document.getElementById("inputGroupMember").value.toLowerCase().trim()
     if (event.keyCode === 13) {
       event.preventDefault();
       checkAnswer();
+    } else if (groupSelected) {
+        checkMemberName(userInput)
     }
 });
 
@@ -73,31 +76,7 @@ function checkAnswer() {
             }
         } else {
             //die Membernamen werden eingegeben
-            for (let i = 0; i < choosedGroupMembers.length; i++) {
-                let currentMember = choosedGroupMembers[i]
-                let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
-                if (memberNames.includes(userInput)) {
-                    //Name in der Tabelle hinzufügen
-                    const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
-                    const newCell = newRow.insertCell(0);
-                    newCell.innerHTML = choosedGroupMembers[i][0]
-                    
-                    //Name aus der Liste nehmen
-                    choosedGroupMembers.splice(i, 1)
-
-                    //Eingabefeld leeren
-                    document.getElementById("inputGroupMember").value = ""
-                    
-                    //Text updaten
-                    counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
-                    if (choosedGroupMembers.length == 0) {
-                        //wenn alle Member genannt wurden
-                        counter.innerHTML = "You named all members of '" + selectedGroup + "'."
-                        reset()
-                    }
-                }
-            }
-            
+            checkMemberName(userInput)
         }
     }
 }
@@ -128,4 +107,31 @@ function reset() {
     //counter.innerHTML = ""
     groupSelected = false
     choosedGroupMembers = []
+}
+
+function checkMemberName(userInput) {
+    for (let i = 0; i < choosedGroupMembers.length; i++) {
+        let currentMember = choosedGroupMembers[i]
+        let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
+        if (memberNames.includes(userInput)) {
+            //Name in der Tabelle hinzufügen
+            const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
+            const newCell = newRow.insertCell(0);
+            newCell.innerHTML = choosedGroupMembers[i][0]
+            
+            //Name aus der Liste nehmen
+            choosedGroupMembers.splice(i, 1)
+
+            //Eingabefeld leeren
+            document.getElementById("inputGroupMember").value = ""
+            
+            //Text updaten
+            counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
+            if (choosedGroupMembers.length == 0) {
+                //wenn alle Member genannt wurden
+                counter.innerHTML = "You named all members of '" + selectedGroup + "'."
+                reset()
+            }
+        }
+    }
 }

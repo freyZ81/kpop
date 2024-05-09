@@ -105,7 +105,7 @@ function reset() {
 
 function revealNextMember() {
     if (choosedGroupMembers != "") {
-        member.innerHTML = "The next member is '" + choosedGroupMembers[0] + "'.";
+        member.innerHTML = "The next member is '" + choosedGroupMembers[0].join("/") + "'.";
         revealedMembers.push(choosedGroupMembers[0])
         guessedCounter = 0;
         revealedCounter += 1;
