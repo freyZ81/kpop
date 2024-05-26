@@ -24,8 +24,8 @@ document.getElementById("inputGroupMember").addEventListener("keyup", function(e
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
     let userInput = document.getElementById("inputGroupMember").value.toLowerCase().trim()
     if (event.keyCode === 13) {
-      event.preventDefault();
-      checkAnswer();
+        event.preventDefault();
+        checkAnswer();
     } else if (groupSelected) {
         checkMemberName(userInput)
     }

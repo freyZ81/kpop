@@ -3221,7 +3221,7 @@ let allMembers = [
     {
         name: ["Hyunbin"],
         group: [66],
-        birthday: new Date("2004-03-26"),
+        birthday: new Date("2004-05-26"),
     },
     {
         name: ["Mire"],
