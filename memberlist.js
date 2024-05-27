@@ -1,1 +1,1 @@
-undefined
+Neuer Inhalt der Datei
