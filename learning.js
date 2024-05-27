@@ -68,7 +68,7 @@ function checkAnswer() {
                 + "Please check and try again."
             } else {
                 //wenn der Gruppenname gefunden wurde
-                choosedGroupMembers.sort()
+                //choosedGroupMembers.sort()
                 tableHeader.innerHTML = "Group: " + selectedGroup
                 question.innerHTML = "Which member is in the group '" + selectedGroup + "'?"
                 inputGroupMember.value = ""
