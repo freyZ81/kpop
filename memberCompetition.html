@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member competition</title>
+    <style>
+        img {
+            height: 200px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Member competition
+    </h1>
+
+    <form>
+        <label for="gender">Choose the gender:</label>
+        <select name="gender" id="genderChoose">
+            <option value="girls">Girls</option>
+            <option value="boys">Boys</option>
+            <option value="girlsAndBoys">Girls and Boys</option>
+        </select>
+    </form>
+
+    <button id="newRound" onclick="newRound()">New round</button>
+
+    <table>
+        <tr>
+            <td><img id="memberOne" onclick="chooseMemberOne()" src="pics/ive/yujin.jpg" alt="pics/ive/yujin.jpg"></td>
+            <td><img id="memberTwo" onclick="chooseMemberTwo()" src="pics/kep1er/xt.jpg" alt="pics/kep1er/xt.jpg"></td>
+        </tr>
+
+    </table>
+
+    <button onclick="window.location.href = 'allmemberlist.html';">Back to birthdaylist</button><br>
+
+    <script src="memberlist.js"></script>
+    <script src="memberCompetition.js"></script>
+
+</body>
+</html>

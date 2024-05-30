@@ -42,6 +42,9 @@ function setMembers(memberArray) {
         birthdayCell.innerHTML = fuehrendeNullWennEinstellig(memberbirthday.getDate())
         + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1)
         + "." + memberbirthday.getFullYear();
+
+        const genderCell = newRow.insertCell(-1);
+        genderCell.innerHTML = member.gender == 1 ? "Girl" : "Boy";
     }
 }
 
