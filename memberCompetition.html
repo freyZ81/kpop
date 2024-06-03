@@ -10,6 +10,7 @@
             width: 150px;
         }
     </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>
@@ -24,16 +25,38 @@
             <option value="girlsAndBoys">Girls and Boys</option>
         </select>
     </form>
+    <form>
+        <label for="countMaxSize">How many members do you want:</label>
+        <select name="countMaxSize" id="countMaxSize">
+            <option value="64">64</option>
+            <option value="32">32</option>
+            <option value="16" selected>16</option>
+            <option value="8">8</option>
+            <option value="4">4</option>
+            <option value="2">2</option>
+        </select>
+    </form>
+
+    <br>
 
     <button id="newRound" onclick="newRound()">New round</button>
+
+    <br>
+    <br>
 
     <table>
         <tr>
             <td><img id="memberOne" onclick="chooseMemberOne()" src="pics/ive/yujin.jpg" alt="pics/ive/yujin.jpg"></td>
             <td><img id="memberTwo" onclick="chooseMemberTwo()" src="pics/kep1er/xt.jpg" alt="pics/kep1er/xt.jpg"></td>
         </tr>
+        <tr>
+            <td><p id="memberOneTxt" onclick="chooseMemberOne()">Member from Group</p></td>
+            <td><p id="memberTwoTxt" onclick="chooseMemberTwo()">Member from Group</p></td>
+        </tr>
 
     </table>
+
+    <br>
 
     <button onclick="window.location.href = 'allmemberlist.html';">Back to birthdaylist</button><br>
 

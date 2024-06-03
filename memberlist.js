@@ -689,6 +689,24 @@ let allGroups = [
         debut: new Date("2024-03-27"),
         disband: new Date(""),
     },
+    {
+        id: 83,
+        name: ["BADVILLAIN"],
+        size: 7,
+        fandom: [""],
+        entertainment: ["BPM Entertainment"],
+        debut: new Date("2024-06-03"),
+        disband: new Date(""),
+    },
+    {
+        id: 84,
+        name: ["Vcha"],
+        size: 6,
+        fandom: ["VLIGHTS"],
+        entertainment: ["JYP Entertainment"],
+        debut: new Date("2024-01-26"),
+        disband: new Date(""),
+    },
 
     
 ]
@@ -801,7 +819,7 @@ let allMembers = [
     {
         name: ["Holland"],
         group: [0],
-        gender: 1,
+        gender: 2,
         birthday: new Date("1996-03-04"),
     },
 
@@ -3941,31 +3959,31 @@ let allMembers = [
     {
         name: ["Castle J", "CastleJ"],
         group: [71],
-        gender: 1,
+        gender: 2,
         birthday: new Date("1999-05-31"),
     },
     {
         name: ["BIC"],
         group: [71],
-        gender: 1,
+        gender: 2,
         birthday: new Date("2001-04-25"),
     },
     {
         name: ["Minjae"],
         group: [71],
-        gender: 1,
+        gender: 2,
         birthday: new Date("2003-08-23"),
     },
     {
         name: ["Huijun"],
         group: [71],
-        gender: 1,
+        gender: 2,
         birthday: new Date("2003-10-07"),
     },
     {
         name: ["Win"],
         group: [71],
-        gender: 1,
+        gender: 2,
         birthday: new Date("2004-12-19"),
     },
     {
@@ -4220,6 +4238,90 @@ let allMembers = [
         gender: 1,
         birthday: new Date("2011-01-27"),
     },
+    {
+        name: ["Emma"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2000-04-26"),
+    },
+    {
+        name: ["Chloe Young", "ChloeYoung"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2001-10-31"),
+    },
+    {
+        name: ["Hu'e", "Hue"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2003-11-20"),
+    },
+    {
+        name: ["Ina"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2004-06-08"),
+    },
+    {
+        name: ["YunSeo"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2004-07-03"),
+    },
+    {
+        name: ["Vin"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2004-11-27"),
+    },
+    {
+        name: ["Kelly"],
+        group: [83],
+        gender: 1,
+        birthday: new Date("2006-06-16"),
+    },
+    {
+        name: ["Camila"],
+        group: [84],
+        gender: 1,
+        ranking: 3,
+        birthday: new Date("2005-08-10"),
+    },
+    {
+        name: ["Lexi"],
+        group: [84],
+        gender: 1,
+        ranking: 1,
+        birthday: new Date("2005-11-22"),
+    },
+    {
+        name: ["Kendall"],
+        group: [84],
+        gender: 1,
+        ranking: 6,
+        birthday: new Date("2006-06-01"),
+    },
+    {
+        name: ["Savanna"],
+        group: [84],
+        gender: 1,
+        ranking: 4,
+        birthday: new Date("2006-07-26"),
+    },
+    {
+        name: ["KG"],
+        group: [84],
+        gender: 1,
+        ranking: 2,
+        birthday: new Date("2007-06-17"),
+    },
+    {
+        name: ["Kaylee"],
+        group: [84],
+        gender: 1,
+        ranking: 5,
+        birthday: new Date("2009-11-24"),
+    },
 ]
 
 //localStorage.removeItem('membersArray');
@@ -4231,11 +4333,9 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 Daten hinzufügen:
 Shinee, April, ANS
 
+Bilder:
+Xdi
+
 komplett hinzufügen:
-The Rose, VCHA, NiziU, lovelyz (El7z Up)
-
-
-Wenn aufgeteilt auf Gruppen und Leute, dann kann man es wie bei CLC Yujin und Iz*One machen, dass mehrere Gruppen drinne sein können,
-aber bei den Bildern eben nur die letzten genommen werden, aber bei group guess können alle drinne sein
-
+The Rose, NiziU, lovelyz (El7z Up)
 */

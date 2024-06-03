@@ -2,8 +2,13 @@
 allGroups = JSON.parse(localStorage.getItem('groupsArray'));
 allMembers = JSON.parse(localStorage.getItem('membersArray'));
 let choosenMemberList = []
+let newRoundMembers = []
 let memberOne = document.getElementById("memberOne")
 let memberTwo = document.getElementById("memberTwo")
+let memberOneTxt = document.getElementById("memberOneTxt")
+let memberTwoTxt = document.getElementById("memberTwoTxt")
+let memberOneObj
+let memberTwoObj
 
 newRound()
 
@@ -23,7 +28,19 @@ function newRound() {
         choosenMemberList = getChoosenMembers(2)
     }
     console.log("Choosen value: " + selectedGender)
+    choosenMemberList = reduceMembers(choosenMemberList);
     setNewMembers(choosenMemberList)
+}
+
+function reduceMembers(choosenMemberList) {
+    let countDropdown = document.getElementById("countMaxSize");
+    while (choosenMemberList.length > countDropdown.value) {
+        let randomNumber = Math.floor(Math.random() * choosenMemberList.length);
+        choosenMemberList.splice(randomNumber, 1);
+    }
+
+    console.log(choosenMemberList.length, countDropdown.value)
+    return choosenMemberList
 }
 
 function getChoosenMembers(genderValue) {
@@ -43,13 +60,34 @@ function getChoosenMembers(genderValue) {
 
 function setNewMembers(choosenMemberList) {
     let numberMemberOne = Math.floor(Math.random() * choosenMemberList.length);
-    let numberMemberTwo = Math.floor(Math.random() * choosenMemberList.length);
-    numberMemberTwo = numberMemberTwo != numberMemberOne ? numberMemberTwo :
-    numberMemberOne != 0 ? (numberMemberTwo - 1) : (numberMemberTwo + 1);
+    memberOneObj = choosenMemberList[numberMemberOne]
     memberOne.alt = getMemberStr(numberMemberOne)
     memberOne.src = memberOne.alt
+    //console.log(memberOneObj)
+    if (memberOneObj.group == 0) {
+        memberOneTxt.innerHTML = memberOneObj.name[0]    
+    } else if (memberOneObj.group > 0) {
+        memberOneTxt.innerHTML = memberOneObj.name[0] + " from " + allGroups[memberOneObj.group].name[0]
+    } else if (memberOneObj.group < 0) {
+        memberOneTxt.innerHTML = memberOneObj.name[0] + " who was in " + allGroups[memberOneObj.group*-1].name[0]
+    }
+
+    let numberMemberTwo = Math.floor(Math.random() * choosenMemberList.length);
+    memberTwoObj = choosenMemberList[numberMemberTwo]
+    //console.log(memberTwoObj)
     memberTwo.alt = getMemberStr(numberMemberTwo)
     memberTwo.src = memberTwo.alt
+    if (memberTwoObj.group[0] == 0) {
+        memberTwoTxt.innerHTML = memberTwoObj.name[0]    
+    } else if (memberTwoObj.group[0] > 0) {
+        memberTwoTxt.innerHTML = memberTwoObj.name[0] + " from " + allGroups[memberTwoObj.group[0]].name[0]
+    } else if (memberTwoObj.group[0] < 0) {
+        memberTwoTxt.innerHTML = memberTwoObj.name[0] + " who was in " + allGroups[memberTwoObj.group[0]*(-1)].name[0]
+    }
+
+    //numberMemberTwo = numberMemberTwo != numberMemberOne ? numberMemberTwo :
+    //numberMemberOne != 0 ? (numberMemberTwo - 1) : (numberMemberTwo + 1);
+    
 }
 
 function getMemberStr(numberOfMember) {
@@ -80,21 +118,37 @@ function getMemberStr(numberOfMember) {
     }
 
     strMember += ".jpg"
-
+    choosenMemberList.splice(numberOfMember, 1)
     return strMember.toLowerCase()
 }
 
+function resetLists() {
+    choosenMemberList = newRoundMembers
+    newRoundMembers = []
+}
+
 function chooseMemberOne() {
-    console.log("Member One was choosen")
+    newRoundMembers.push(memberOneObj)
+    if (choosenMemberList.length == 0) {
+        resetLists()   
+    }
+    console.log(choosenMemberList.length)
     if (choosenMemberList.length > 1) {
         setNewMembers(choosenMemberList)
+    } else {
+        console.log("Ende " + memberOneObj.name)
     }
 }
 
 function chooseMemberTwo() {
-    console.log("Member Two was choosen")
-
+    newRoundMembers.push(memberTwoObj)
+    if (choosenMemberList.length == 0) {
+        resetLists()   
+    }
+    console.log(choosenMemberList.length)
     if (choosenMemberList.length > 1) {
         setNewMembers(choosenMemberList)
+    } else {
+        console.log("Ende " + memberTwoObj.name)
     }
 }
