@@ -789,7 +789,7 @@ let allMembers = [
     {
         name: ["G-Dragon", "GDragon"],
         group: [0],
-        gender: 1,
+        gender: 2,
         birthday: new Date("1988-08-18"),
     },
     {
