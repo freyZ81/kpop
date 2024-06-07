@@ -32,6 +32,20 @@
                 <th onclick="sortDate()">Birthday</th>
                 <th>Gender</th>
             </tr>
+            <tr id="filterRow">
+                <td><input type="text" id="filterName" class="filter-input" placeholder="name"></td>
+                <td><input type="text" id="filterGroup" class="filter-input" placeholder="group"></td>
+                <td><input type="text" id="filterDate" class="filter-input" placeholder="date"></td>
+                <td>
+                    <form>
+                        <select name="gender" id="filterGender" class="filter-input">
+                            <option value="girlAndBoy">Girls and Boys</option>
+                            <option value="girl">Girls</option>
+                            <option value="boy">Boys</option>
+                        </select>
+                    </form>    
+                </td>
+            </tr>
         </thead>
         <tbody id="tableBody">
 

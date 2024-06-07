@@ -1,23 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tabellenfilter mit JavaScript</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .filter-input {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- Hier wird das Bild durch JavaScript eingefügt -->
-    <div id="bild-container"></div>
 
-    <script>
-        const zahl = 6;
-        let ergebnis;
+<input type="text" id="nameFilter" class="filter-input" placeholder="Nach Namen filtern...">
+<input type="text" id="ageFilter" class="filter-input" placeholder="Nach Alter filtern...">
+<input type="text" id="cityFilter" class="filter-input" placeholder="Nach Stadt filtern...">
 
-        // Mit dem ternären Operator:
-        ergebnis = zahl <= 5 ? "größer als 5" : null;
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Alter</th>
+            <th>Stadt</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Max</td>
+            <td>24</td>
+            <td>Berlin</td>
+        </tr>
+        <tr>
+            <td>Anna</td>
+            <td>30</td>
+            <td>Hamburg</td>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>22</td>
+            <td>München</td>
+        </tr>
+        <tr>
+            <td>Lisa</td>
+            <td>28</td>
+            <td>Frankfurt</td>
+        </tr>
+    </tbody>
+</table>
 
-        console.log(ergebnis)
-    </script>
+<script>
+    document.querySelectorAll('.filter-input').forEach(input => {
+        input.addEventListener('keyup', filterTable);
+    });
+
+    function filterTable() {
+        let nameFilter = document.getElementById('nameFilter').value.toLowerCase();
+        let ageFilter = document.getElementById('ageFilter').value.toLowerCase();
+        let cityFilter = document.getElementById('cityFilter').value.toLowerCase();
+        
+        let table = document.getElementById('myTable');
+        let tr = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < tr.length; i++) {
+            let tdName = tr[i].getElementsByTagName('td')[0];
+            let tdAge = tr[i].getElementsByTagName('td')[1];
+            let tdCity = tr[i].getElementsByTagName('td')[2];
+            
+            if (tdName && tdAge && tdCity) {
+                let nameValue = tdName.textContent || tdName.innerText;
+                let ageValue = tdAge.textContent || tdAge.innerText;
+                let cityValue = tdCity.textContent || tdCity.innerText;
+
+                if (nameValue.toLowerCase().indexOf(nameFilter) > -1 &&
+                    ageValue.toLowerCase().indexOf(ageFilter) > -1 &&
+                    cityValue.toLowerCase().indexOf(cityFilter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }       
+        }
+    }
+</script>
+
 </body>
 </html>

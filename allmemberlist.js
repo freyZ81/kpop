@@ -8,6 +8,46 @@ let nextBirthdays = [];
 const counter = document.getElementById("counter");
 counter.innerHTML = "In the list are " + allMembers.length + " members from " + (allGroups.length-1) + " groups and soloists.";
 
+
+document.querySelectorAll('.filter-input').forEach(input => {
+    input.addEventListener('keyup', filterTable);
+    input.addEventListener('change', filterTable);
+});
+
+function filterTable() {
+    let nameFilter = document.getElementById('filterName').value.toLowerCase();
+    let groupFilter = document.getElementById('filterGroup').value.toLowerCase();
+    let dateFilter = document.getElementById('filterDate').value.toLowerCase();
+    let genderFilter = document.getElementById('filterGender').value.toLowerCase();
+
+    let table = document.getElementById('tableBody');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 0; i < tr.length; i++) {
+        let tdName = tr[i].getElementsByTagName('td')[0];
+        let tdGroup = tr[i].getElementsByTagName('td')[1];
+        let tdDate = tr[i].getElementsByTagName('td')[2];
+        let tdGender = tr[i].getElementsByTagName('td')[3];
+
+        if (tdName && tdGroup) {
+            let nameValue = tdName.textContent || tdName.innerText;
+            let groupValue = tdGroup.textContent || tdGroup.innerText;
+            let dateValue = tdDate.textContent || tdDate.innerText;
+            let genderValue = tdGender.textContent || tdGender.innerText;
+            
+            if (nameValue.toLowerCase().indexOf(nameFilter) > -1 &&
+                groupValue.toLowerCase().indexOf(groupFilter) > -1 &&
+                dateValue.toLowerCase().indexOf(dateFilter) > -1 &&
+                genderFilter.toLowerCase().includes(genderValue.toLowerCase()))
+            {
+                tr[i].style.display = '';
+            } else {
+                tr[i].style.display = 'none';
+            }
+        }       
+    }
+}
+
 function fuehrendeNullWennEinstellig(num) {
     return num < 10 ? "0" + num : num;
 }
@@ -93,6 +133,7 @@ function sortName() {
     });
     tableBody.innerHTML = '';
     setMembers(allMembers);
+    filterTable();
 }
 
 function sortGroup() {
@@ -142,6 +183,7 @@ function sortGroup() {
     });
     tableBody.innerHTML = '';
     setMembers(allMembers);
+    filterTable();
 }
 
 function sortDate() {
@@ -179,6 +221,7 @@ function sortDate() {
     });
     tableBody.innerHTML = '';
     setMembers(allMembers);
+    filterTable();
 }
 
 function setBirthdays() {
