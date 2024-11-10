@@ -11,7 +11,7 @@ let allGroups = [
         id: 1,
         name: ["Weeekly"],
         size: 6,
-        fandom: [""],
+        fandom: ["Daileee"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -133,7 +133,7 @@ let allGroups = [
         id: 15,
         name: ["Artms"],
         size: 5,
-        fandom: [""],
+        fandom: ["OURII"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -141,7 +141,7 @@ let allGroups = [
         id: 16,
         name: ["Loossemble"],
         size: 5,
-        fandom: [""],
+        fandom: ["C.Loo"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -251,7 +251,7 @@ let allGroups = [
         id: 29,
         name: ["Monsta X", "MonstaX"],
         size: 6,
-        fandom: [""],
+        fandom: ["Monbebe"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -259,7 +259,7 @@ let allGroups = [
         id: 30,
         name: ["Ab6ix"],
         size: 4,
-        fandom: [""],
+        fandom: ["Abnew"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -267,7 +267,7 @@ let allGroups = [
         id: 31,
         name: ["Enhypen"],
         size: 6,
-        fandom: [""],
+        fandom: ["ENGENE"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -823,7 +823,7 @@ let allMembers = [
         birthday: new Date("1996-03-04"),
     },
 
-    //Gruppen
+    //Group members
     {
         name: ["Jiyoon"],
         group: [-1],
@@ -1791,12 +1791,6 @@ let allMembers = [
         birthday: new Date("1991-10-07"),
     },
     {
-        name: ["Kris Wu", "Kris", "KrisWu"],
-        group: [-25],
-        gender: 2,
-        birthday: new Date("1990-11-06"),
-    },
-    {
         name: ["Chanyeol"],
         group: [25],
         gender: 2,
@@ -2131,12 +2125,6 @@ let allMembers = [
         group: [33],
         gender: 2,
         birthday: new Date("2000-06-06"),
-    },
-    {
-        name: ["Taeil"],
-        group: [33],
-        gender: 2,
-        birthday: new Date("1994-06-14"),
     },
     {
         name: ["Taeyong"],
