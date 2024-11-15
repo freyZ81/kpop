@@ -707,6 +707,15 @@ let allGroups = [
         debut: new Date("2024-01-26"),
         disband: new Date(""),
     },
+    {
+        id: 85,
+        name: ["izna"],
+        size: 7,
+        fandom: [""],
+        entertainment: ["THEBLACKLABEL"],
+        debut: new Date("2024-11-25"),
+        disband: new Date(""),
+    },
 
     
 ]
@@ -4309,6 +4318,55 @@ let allMembers = [
         gender: 1,
         ranking: 5,
         birthday: new Date("2009-11-24"),
+    },
+    {
+        name: ["Mai"],
+        group: [85],
+        gender: 1,
+        ranking: 6,
+        birthday: new Date("2004-10-28"),
+    },
+    {
+        name: ["Jeemin"],
+        group: [85],
+        gender: 1,
+        ranking: 2,
+        birthday: new Date("2005-05-08"),
+    },
+    {
+        name: ["Jiyoon"],
+        group: [85],
+        gender: 1,
+        ranking: 3,
+        birthday: new Date("2005-07-14"),
+    },
+    {
+        name: ["Koko"],
+        group: [85],
+        gender: 1,
+        ranking: 4,
+        birthday: new Date("2006-04-18"),
+    },
+    {
+        name: ["Sarang"],
+        group: [85],
+        gender: 1,
+        ranking: 5,
+        birthday: new Date("2007-04-18"),
+    },
+    {
+        name: ["Jungeun"],
+        group: [85],
+        gender: 1,
+        ranking: 1,
+        birthday: new Date("2007-08-04"),
+    },
+    {
+        name: ["Saebi"],
+        group: [85],
+        gender: 1,
+        ranking: 7,
+        birthday: new Date("2008-01-22"),
     },
 ]
 
