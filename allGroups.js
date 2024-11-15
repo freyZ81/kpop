@@ -5,6 +5,47 @@ const tableGroups = document.getElementById("tableGroups")
 const counter = document.getElementById("counter")
 counter.innerHTML = "In the list are " + (allGroups.length-1) + " groups."
 
+document.querySelectorAll('.filter-input').forEach(input => {
+    input.addEventListener('keyup', filterTable);
+    input.addEventListener('change', filterTable);
+});
+
+function filterTable() {
+    let groupFilter = document.getElementById('filterGroup').value.toLowerCase();
+    let fandomFilter = document.getElementById('filterFandom').value.toLowerCase();
+    let sizeFilter = document.getElementById('filterSize').value.toLowerCase();
+    let debutdateFilter = document.getElementById('filterDebut').value.toLowerCase();
+    let disbanddateFilter = document.getElementById('filterDisband').value.toLowerCase();
+
+    let table = document.getElementById('tableBody');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 0; i < tr.length; i++) {
+        let tdGroup = tr[i].getElementsByTagName('td')[0];
+        let tdFandom = tr[i].getElementsByTagName('td')[1];
+        let tdSize = tr[i].getElementsByTagName('td')[2];
+        let tdDebutdate = tr[i].getElementsByTagName('td')[3];
+        let tdDisbanddate = tr[i].getElementsByTagName('td')[4];
+
+        let groupValue = tdGroup.textContent || tdGroup.innerText;
+        let fandomValue = tdFandom.textContent || tdFandom.innerText;
+        let sizeValue = tdSize.textContent || tdSize.innerText;
+        let debutdateValue = tdDebutdate.textContent || tdDebutdate.innerText;
+        let disbanddateValue = tdDisbanddate.textContent || tdDisbanddate.innerText;
+        
+        if (groupValue.toLowerCase().indexOf(groupFilter) > -1 &&
+            fandomValue.toLowerCase().indexOf(fandomFilter) > -1 &&
+            sizeValue.toLowerCase().indexOf(sizeFilter) > -1 &&
+            debutdateValue.toLowerCase().indexOf(debutdateFilter) > -1 &&
+            disbanddateValue.toLowerCase().includes(disbanddateFilter))
+        {
+            tr[i].style.display = '';
+        } else {
+            tr[i].style.display = 'none';
+        }
+    }
+}
+
 function fuehrendeNullWennEinstellig(num) {
     return num < 10 ? "0" + num : num;
 }
