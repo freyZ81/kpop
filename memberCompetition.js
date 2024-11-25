@@ -9,6 +9,7 @@ let memberOneTxt = document.getElementById("memberOneTxt")
 let memberTwoTxt = document.getElementById("memberTwoTxt")
 let memberOneObj
 let memberTwoObj
+let memberleftText = document.getElementById("memberleftText")
 
 newRound()
 
@@ -28,7 +29,7 @@ function newRound() {
         choosenMemberList = getChoosenMembers(2)
     }
     console.log("Choosen value: " + selectedGender)
-    choosenMemberList = reduceMembers(choosenMemberList);
+    choosenMemberList = reduceMembers(choosenMemberList)
     setNewMembers(choosenMemberList)
 }
 
@@ -63,7 +64,6 @@ function setNewMembers(choosenMemberList) {
     memberOneObj = choosenMemberList[numberMemberOne]
     memberOne.alt = getMemberStr(numberMemberOne)
     memberOne.src = memberOne.alt
-    //console.log(memberOneObj)
     if (memberOneObj.group == 0) {
         memberOneTxt.innerHTML = memberOneObj.name[0]    
     } else if (memberOneObj.group > 0) {
@@ -74,7 +74,6 @@ function setNewMembers(choosenMemberList) {
 
     let numberMemberTwo = Math.floor(Math.random() * choosenMemberList.length);
     memberTwoObj = choosenMemberList[numberMemberTwo]
-    //console.log(memberTwoObj)
     memberTwo.alt = getMemberStr(numberMemberTwo)
     memberTwo.src = memberTwo.alt
     if (memberTwoObj.group[0] == 0) {
@@ -87,7 +86,11 @@ function setNewMembers(choosenMemberList) {
 
     //numberMemberTwo = numberMemberTwo != numberMemberOne ? numberMemberTwo :
     //numberMemberOne != 0 ? (numberMemberTwo - 1) : (numberMemberTwo + 1);
-    
+    setLeftMemberText()
+}
+
+function setLeftMemberText() {
+    memberleftText.innerHTML = choosenMemberList.length
 }
 
 function getMemberStr(numberOfMember) {
