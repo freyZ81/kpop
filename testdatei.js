@@ -4,5 +4,8 @@
   },
   {
     "name": "Bob"
+  },
+  {
+    "name": "Charles"
   }
 ]
