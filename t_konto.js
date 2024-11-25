@@ -1,4 +1,4 @@
-const GITHUB_TOKEN = '';
+const GITHUB_TOKEN = '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';
 const REPO_OWNER = 'freyz81';
 const REPO_NAME = 'kpop';
 const FILE_PATH = 't_konto_daten.js';
