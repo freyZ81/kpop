@@ -83,7 +83,7 @@ function getCardCodeToChange() {
     let cardsToUnlock = ""
     
     // Text in einzelne Elemente aufteilen und in Objekte umwandeln
-    let allEras = erasAsText.split(", ").map(entry => ({ eraLetters: entry }));
+    let allEras = erasAsText.split(/\s*,\s*/).map(entry => ({ eraLetters: entry }));
 
     //console.log(allEras);
 
