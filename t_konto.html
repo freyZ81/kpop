@@ -6,7 +6,50 @@
     <title></title>
 </head>
 <body>
+    <input type="text" id="bezeichnung" placeholder="bezeichnung">
+    <input type="number" id="preis" placeholder="preis">
+    <input type="number" id="dateMonth" placeholder="month">
+    <input type="number" id="dateYear" placeholder="year">
+    <label for="monthly">Monthly:</label><input type="checkbox" id="monthly">
+    <label for="verlust">Verlust:</label><input type="checkbox" id="verlust" checked="true">
+    <button id="add" onclick="addNewPayment()">Add new payment</button>
 
-    <script src="test.js"></script>
+    <form>
+        <select name="monthSelector" id="monthSelector" class="filter-input">
+            <option value="0">Alles</option>
+            <option value="1">Januar</option>
+            <option value="2">Februar</option>
+            <option value="3">März</option>
+            <option value="4">April</option>
+            <option value="5">Mai</option>
+            <option value="6">Juni</option>
+            <option value="7">Juli</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Dezember</option>
+        </select>
+    </form>
+    <input type="number" id="yearSelector" class="filter-input" placeholder="Year">
+
+    <table id="monthlyCosts" colspan="5">
+        <thead>
+            <tr>
+                <th colspan="2">Verlust</th>
+                <th colspan="2">Gewinn</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr>
+                <td>eins</td>
+                <td>zwei</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="t_konto_daten.js"></script>
+    <script src="t_konto.js"></script>
 </body>
 </html>

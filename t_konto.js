@@ -3,90 +3,111 @@ const REPO_OWNER = 'freyz81';
 const REPO_NAME = 'kpop';
 const FILE_PATH = 't_konto_daten.js';
 const BRANCH = 'develop';
-let newMembers;
+let winTotal = 0
+let lossTotal = 0
 
-async function updateFile(newContent) {
-  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+showPayments()
 
-  // Dateiinhalt (bestehend) abrufen, um die `sha` zu erhalten
-  const getFileResponse = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github.v3+json',
-    },
-  });
+document.querySelectorAll('.filter-input').forEach(input => {
+  input.addEventListener('keyup', filterTable);
+  input.addEventListener('change', filterTable);
+});
 
-  if (!getFileResponse.ok) {
-    throw new Error('Fehler beim Abrufen der Datei.');
+function filterTable() {
+  var tableBody = document.getElementById("tableBody");
+  var monthSelector = document.getElementById("monthSelector").value;
+  var yearSelector = document.getElementById("yearSelector").value;
+  tableBody.innerHTML = ""
+  winTotal = 0
+  lossTotal = 0
+  for (let i = 0; i < zahlungen.length; i++) {
+    var payment = zahlungen[i];
+    console.log(payment.bezeichnung, payment.monatlich)
+    if ((payment.monat == monthSelector && payment.jahr == yearSelector) ||
+        (monthSelector == 0) ||
+        (payment.monatlich)) {
+
+      const newRow = tableBody.insertRow(-1);
+      const lossDescriptionCell = newRow.insertCell(0);
+      const lossPriceCell = newRow.insertCell(-1);
+      const winDescriptionCell = newRow.insertCell(-1);
+      const winPriceCell = newRow.insertCell(-1);
+      if (payment.verlust == true) {
+        lossDescriptionCell.innerHTML = payment.bezeichnung + ": "
+        lossPriceCell.innerHTML = payment.preis;
+        lossTotal += parseFloat(payment.preis);
+      } else {
+        winDescriptionCell.innerHTML = payment.bezeichnung + ": "
+        winPriceCell.innerHTML = payment.preis;
+        winTotal += parseFloat(payment.preis);
+      }
+    }
   }
-
-  const fileData = await getFileResponse.json();
-
-  // Neue Datei hochladen
-  const updatedFileResponse = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      message: 'Update members.json',
-      content: btoa(JSON.stringify(newContent, null, 2)), // Inhalt Base64-codieren
-      sha: fileData.sha, // SHA der bestehenden Datei
-      branch: BRANCH,
-    }),
-  });
-
-  if (updatedFileResponse.ok) {
-    console.log('Datei erfolgreich aktualisiert!');
-  } else {
-    console.error('Fehler beim Aktualisieren der Datei:', await updatedFileResponse.json());
-  }
+  const newRow = tableBody.insertRow(-1);
+  newRow.insertCell(0).innerHTML = "Verlust:"
+  newRow.insertCell(-1).innerHTML = parseFloat(lossTotal).toFixed(2)
+  newRow.insertCell(-1).innerHTML = "Gewinn:"
+  newRow.insertCell(-1).innerHTML = parseFloat(winTotal).toFixed(2)
+  newRow.insertCell(-1).innerHTML = "Diff: " + (winTotal - lossTotal).toFixed(2)
 }
 
-// Beispiel-Daten aktualisieren
-newMembers = [{ name: 'Alice' },
-    { name: 'Bob' },
-    { name: 'Charles' }]
+function addNewPayment() {
+  const bezeichnung = document.getElementById("bezeichnung").value
+  const preis = document.getElementById("preis").value
+  const month = document.getElementById("dateMonth").value.toLowerCase()
+  const year = document.getElementById("dateYear").value.toLowerCase()
+  const monthly = document.getElementById("monthly").checked
+  const verlust = document.getElementById("verlust").checked
 
-;
-updateFile(newMembers);
+  //console.log("Bezeichnung", bezeichnung)
+  //console.log("Preis", preis)
+  //console.log("Month", month)
+  //console.log("year", year)
+  //console.log("Monthly", monthly)
+  //console.log("verlust", verlust)
 
-/*
-  let daten = [
-    {
-      name: "Testname",
-      zahlungen: [
-        {
-          "bezeichnung": "Testbezeichnung",
-          "jahr": 2024,
-          "monat": 12,
-          "preis": 12.99,
-          "monatlich": false,
-          "ratenzahlung": false,
-          "verlust": true
-        },
-        {
-          "bezeichnung": "Testbezeichnung2",
-          "jahr": 2024,
-          "monat": 12,
-          "preis": 19.99,
-          "monatlich": true,
-          "ratenzahlung": false,
-          "verlust": true
-        }
+  if (monthly == true || (year != "" && month != "")){
+    if (bezeichnung != "" && preis != "") {
+      zahlungen.push({bezeichnung: bezeichnung, preis: parseFloat(preis),
+        monat: month, jahr: year, monatlich: monthly, verlust: verlust});
+        console.log("Wurde hinzugefügt")
+    } else {
+      console.log("wurde nicht hinzugefügt")
+    }
+  } else {
+    console.log("wurde nicht hinzugefügt 2")
+  }
+  
+  filterTable()
+}
 
-      ]
-    },
-  ]
+function showPayments() {
+  var tableBody = document.getElementById("tableBody");
+  tableBody.innerHTML = ""
+  winTotal = 0
+  lossTotal = 0
+  for (let i = 0; i < zahlungen.length; i++) {
+    var payment = zahlungen[i];
+    const newRow = tableBody.insertRow(-1);
+    const lossDescriptionCell = newRow.insertCell(0);
+    const lossPriceCell = newRow.insertCell(-1);
+    const winDescriptionCell = newRow.insertCell(-1);
+    const winPriceCell = newRow.insertCell(-1);
+    if (payment.verlust == true) {
+      lossDescriptionCell.innerHTML = payment.bezeichnung + ": "
+      lossPriceCell.innerHTML = payment.preis;
+      lossTotal += parseFloat(payment.preis);
+    } else {
+      winDescriptionCell.innerHTML = payment.bezeichnung + ": "
+      winPriceCell.innerHTML = payment.preis;
+      winTotal += parseFloat(payment.preis);
+    }
+  }
+  const newRow = tableBody.insertRow(-1);
+  newRow.insertCell(0).innerHTML = "Verlust:"
+  newRow.insertCell(-1).innerHTML = parseFloat(lossTotal).toFixed(2)
+  newRow.insertCell(-1).innerHTML = "Gewinn:"
+  newRow.insertCell(-1).innerHTML = parseFloat(winTotal).toFixed(2)
+  newRow.insertCell(-1).innerHTML = "Diff: " + (winTotal - lossTotal).toFixed(2)
+}
 
-
-  bezeichnung
-  jahr
-  monat
-  preis
-  monatlich: boolean
-  ratenzahlung: boolean
-  verlust: boolean //bei false ist es Gewinn
-*/
