@@ -716,6 +716,33 @@ let allGroups = [
         debut: new Date("2024-11-25"),
         disband: new Date(""),
     },
+    {
+        id: 86,
+        name: ["kiiikiii"],
+        size: 5,
+        fandom: ["N/A"],
+        entertainment: ["Starship Entertainment"],
+        debut: new Date("2025-03-24"),
+        disband: new Date(""),
+    },
+    {
+        id: 87,
+        name: ["Hearts2Hearts"],
+        size: 8,
+        fandom: ["S2U"],
+        entertainment: ["SM Entertainment"],
+        debut: new Date("2025-02-24"),
+        disband: new Date(""),
+    },
+    {
+        id: 88,
+        name: ["Rescene"],
+        size: 5,
+        fandom: ["Remine"],
+        entertainment: ["The Muze Entertainment"],
+        debut: new Date("2024-03-26"),
+        disband: new Date(""),
+    },
 
     
 ]
@@ -4173,7 +4200,7 @@ let allMembers = [
         name: ["Rima"],
         group: [81],
         gender: 1,
-        birthday: new Date("2004-05-26"),
+        birthday: new Date("2004-03-26"),
     },
     {
         name: ["Miihi"],
@@ -4368,6 +4395,114 @@ let allMembers = [
         ranking: 7,
         birthday: new Date("2008-01-22"),
     },
+    {
+        name: ["Jiyu"],
+        group: [86],
+        gender: 1,
+        birthday: new Date("2006-05-14"),
+    },
+    {
+        name: ["Leesol"],
+        group: [86],
+        gender: 1,
+        birthday: new Date("2005-09-18"),
+    },
+    {
+        name: ["Sui"],
+        group: [86],
+        gender: 1,
+        birthday: new Date("2006-04-10"),
+    },
+    {
+        name: ["Haum"],
+        group: [86],
+        gender: 1,
+        birthday: new Date("2006-11-14"),
+    },
+    {
+        name: ["Kya"],
+        group: [86],
+        gender: 1,
+        birthday: new Date("2010-12-18"),
+    },
+    {
+        name: ["Jiwoo"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2006-09-07"),
+    },
+    {
+        name: ["Carmen"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2006-03-28"),
+    },
+    {
+        name: ["Yuha"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2007-04-12"),
+    },
+    {
+        name: ["Stella"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2007-06-18"),
+    },
+    {
+        name: ["Juun"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2008-12-03"),
+    },
+    {
+        name: ["A-na"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2008-12-20"),
+    },
+    {
+        name: ["Ian"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2009-10-09"),
+    },
+    {
+        name: ["Ye-on"],
+        group: [87],
+        gender: 1,
+        birthday: new Date("2010-04-19"),
+    },
+    {
+        name: ["Woni"],
+        group: [88],
+        gender: 1,
+        birthday: new Date("2004-05-25"),
+    },
+    {
+        name: ["Liv"],
+        group: [88],
+        gender: 1,
+        birthday: new Date("2006-10-11"),
+    },
+    {
+        name: ["Minami"],
+        group: [88],
+        gender: 1,
+        birthday: new Date("2006-11-29"),
+    },
+    {
+        name: ["May"],
+        group: [88],
+        gender: 1,
+        birthday: new Date("2008-08-19"),
+    },
+    {
+        name: ["Zena"],
+        group: [88],
+        gender: 1,
+        birthday: new Date("2008-11-27"),
+    },
 ]
 
 //localStorage.removeItem('membersArray');
@@ -4383,5 +4518,5 @@ Bilder:
 Xdi
 
 komplett hinzufügen:
-The Rose, NiziU, lovelyz (El7z Up)
+The Rose, lovelyz (El7z Up)
 */

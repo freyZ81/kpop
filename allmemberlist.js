@@ -24,8 +24,8 @@ function filterTable() {
     let tr = table.getElementsByTagName('tr');
 
     for (let i = 0; i < tr.length; i++) {
-        let tdName = tr[i].getElementsByTagName('td')[0];
-        let tdGroup = tr[i].getElementsByTagName('td')[1];
+        let tdGroup = tr[i].getElementsByTagName('td')[0];
+        let tdName = tr[i].getElementsByTagName('td')[1];
         let tdDate = tr[i].getElementsByTagName('td')[2];
         let tdGender = tr[i].getElementsByTagName('td')[3];
 
@@ -59,11 +59,8 @@ function setMembers(memberArray) {
         var member = memberArray[i];
         memberbirthday = new Date(member.birthday);
         const newRow = tableBody.insertRow(-1); // -1 fügt die Zeile am Ende der Tabelle ein
-        
-        const nameCell = newRow.insertCell(0);
-        nameCell.innerHTML = member.name[0];
-    
-        const groupCell = newRow.insertCell(-1);
+            
+        const groupCell = newRow.insertCell(0);
         if (member.group.length == 1) {
             if (member.group[0] >= 0) {
                 groupCell.innerHTML = allGroups[member.group[0]].name[0];
@@ -76,6 +73,9 @@ function setMembers(memberArray) {
                 groupCell.innerHTML += ", " + allGroups[member.group[i]].name[0];
             }
         }
+
+        const nameCell = newRow.insertCell(-1);
+        nameCell.innerHTML = member.name[0];
 
         const birthdayCell = newRow.insertCell(-1);
         //countryCell3.innerHTML = birthdayParts;
