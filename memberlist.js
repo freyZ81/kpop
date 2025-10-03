@@ -4632,9 +4632,9 @@ let allGroups = [
         id: 91,
         name: ["KickFlip"],
         size: 7,
-        fandom: [""],
-        entertainment: [""],
-        debut: new Date(""),
+        fandom: ["WeFlip"],
+        entertainment: ["JYP Entertainment"],
+        debut: new Date("2025-01-20"),
         disband: new Date(""),
     },
     
