@@ -236,7 +236,7 @@ function setBirthdays() {
         const currentDate = new Date();
         // Zeitzone für das Datumobjekt festlegen
         const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
-        if (groupDebut != null) {
+        if (groupDebut != null | groupDebut != "") {
             if (koreaDate.getDate() === groupDebut.getDate() && koreaDate.getMonth() === groupDebut.getMonth()) {
                 todaysBirthdays.innerHTML += ("Heute hat " + group.name + " ihr " + (koreaDate.getYear()-groupDebut.getYear()) + ". Anniversary.<br>")
             }

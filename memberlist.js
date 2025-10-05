@@ -4329,8 +4329,8 @@ let allGroups = [
     {
         id: 55,
         name: ["tripleS"],
-        size: 0,
-        fandom: [""],
+        size: 24,
+        fandom: ["WAV"],
         debut: new Date(""),
         disband: new Date(""),
     },
@@ -4518,7 +4518,7 @@ let allGroups = [
         size: 0,
         fandom: [""],
         entertainment: ["Cube"],
-        debut: new Date("2024-10-05"),
+        debut: new Date(""),
         disband: new Date(""),
     },
     {
@@ -4647,7 +4647,7 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 
 /*
-EXID
+EXID, Madein
 
 
 
