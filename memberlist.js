@@ -4518,7 +4518,7 @@ let allGroups = [
         size: 0,
         fandom: [""],
         entertainment: ["Cube"],
-        debut: new Date(""),
+        debut: new Date("2024-10-05"),
         disband: new Date(""),
     },
     {
@@ -4647,7 +4647,7 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 
 /*
-
+EXID
 
 
 

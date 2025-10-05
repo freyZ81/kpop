@@ -227,6 +227,22 @@ function sortDate() {
 function setBirthdays() {
     todaysBirthdays.innerHTML = "";
 
+    for (let i = 0; i < allGroups.length; i++) {
+        var group = allGroups[i];
+        var groupDebut = new Date(group.debut);
+        // Zeitzone für Südkorea festlegen
+        const koreaTimezone = 'Asia/Seoul';
+        // Aktuelles Datum und Uhrzeitobjekt erstellen
+        const currentDate = new Date();
+        // Zeitzone für das Datumobjekt festlegen
+        const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
+        if (groupDebut != null) {
+            if (koreaDate.getDate() === groupDebut.getDate() && koreaDate.getMonth() === groupDebut.getMonth()) {
+                todaysBirthdays.innerHTML += ("Heute hat " + group.name + " ihr " + (koreaDate.getYear()-groupDebut.getYear()) + ". Anniversary.<br>")
+            }
+        }
+    }
+
     for (let i = 0; i < allMembers.length; i++) {
         var member = allMembers[i];
         memberbirthday = new Date(member.birthday);
