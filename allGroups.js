@@ -13,6 +13,7 @@ document.querySelectorAll('.filter-input').forEach(input => {
 function filterTable() {
     let groupFilter = document.getElementById('filterGroup').value.toLowerCase();
     let fandomFilter = document.getElementById('filterFandom').value.toLowerCase();
+    let entertainmentFilter = document.getElementById('filterEntertainment').value.toLowerCase();
     let sizeFilter = document.getElementById('filterSize').value.toLowerCase();
     let debutdateFilter = document.getElementById('filterDebut').value.toLowerCase();
     let disbanddateFilter = document.getElementById('filterDisband').value.toLowerCase();
@@ -23,18 +24,21 @@ function filterTable() {
     for (let i = 0; i < tr.length; i++) {
         let tdGroup = tr[i].getElementsByTagName('td')[0];
         let tdFandom = tr[i].getElementsByTagName('td')[1];
-        let tdSize = tr[i].getElementsByTagName('td')[2];
-        let tdDebutdate = tr[i].getElementsByTagName('td')[3];
-        let tdDisbanddate = tr[i].getElementsByTagName('td')[4];
+        let tdEntertainment = tr[i].getElementsByTagName('td')[2];
+        let tdSize = tr[i].getElementsByTagName('td')[3];
+        let tdDebutdate = tr[i].getElementsByTagName('td')[4];
+        let tdDisbanddate = tr[i].getElementsByTagName('td')[5];
 
         let groupValue = tdGroup.textContent || tdGroup.innerText;
         let fandomValue = tdFandom.textContent || tdFandom.innerText;
+        let entertainmentValue = tdEntertainment.textContent || tdEntertainment.innerText;
         let sizeValue = tdSize.textContent || tdSize.innerText;
         let debutdateValue = tdDebutdate.textContent || tdDebutdate.innerText;
         let disbanddateValue = tdDisbanddate.textContent || tdDisbanddate.innerText;
         
         if (groupValue.toLowerCase().indexOf(groupFilter) > -1 &&
             fandomValue.toLowerCase().indexOf(fandomFilter) > -1 &&
+            entertainmentValue.toLowerCase().indexOf(entertainmentFilter) > -1 &&
             sizeValue.toLowerCase().indexOf(sizeFilter) > -1 &&
             debutdateValue.toLowerCase().indexOf(debutdateFilter) > -1 &&
             disbanddateValue.toLowerCase().includes(disbanddateFilter))
@@ -62,6 +66,11 @@ function setGroups() {
 
         const fandomCell = newRow.insertCell(-1)
         fandomCell.innerHTML = group.fandom[0]
+        
+        const entertainmentCell = newRow.insertCell(-1)
+        if (group.entertainment != null) {
+            entertainmentCell.innerHTML = group.entertainment[0]
+        }
 
         const sizeCell = newRow.insertCell(-1)
         sizeCell.innerHTML = group.size > 0 ? group.size : ""
