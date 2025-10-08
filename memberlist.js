@@ -3862,6 +3862,36 @@ let allMembers = [
         gender: 2,
         birthday: new Date("2005-10-21"),
     },
+    {
+        name: ["Yunah"],
+        group: [93],
+        gender: 1,
+        birthday: new Date("2004-01-15"),
+    },
+    {
+        name: ["Minju"],
+        group: [93],
+        gender: 1,
+        birthday: new Date("2004-05-11"),
+    },
+    {
+        name: ["Moka"],
+        group: [93],
+        gender: 1,
+        birthday: new Date("2004-10-08"),
+    },
+    {
+        name: ["Wonhee"],
+        group: [93],
+        gender: 1,
+        birthday: new Date("2007-06-26"),
+    },
+    {
+        name: ["Iroha"],
+        group: [93],
+        gender: 1,
+        birthday: new Date("2008-02-04"),
+    },
 
 ]
 
@@ -4654,6 +4684,15 @@ let allGroups = [
         debut: new Date("2025-09-10"),
         disband: new Date(""),
     },
+    {
+        id: 93,
+        name: ["Illit"],
+        size: 5,
+        fandom: ["Gllit"],
+        entertainment: ["BE:LIFT Lab"],
+        debut: new Date("2024-03-25"),
+        disband: new Date(""),
+    },
     
 ]
 
@@ -4665,6 +4704,8 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 
 /*
 EXID, Madein
+
+Skript, wo mal alle durchgezählt werden, damit man auch die size hat
 
 
 
