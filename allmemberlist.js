@@ -359,6 +359,26 @@ function getGroupNameById(groupId) {
     return groupName;
 }
 
+function setTimes() {
+    // Zeitzone für Südkorea festlegen
+    const koreaTimezone = 'Asia/Seoul';
+    // Aktuelles Datum und Uhrzeitobjekt erstellen
+    const currentDate = new Date();
+    
+    const koreaTime = currentDate.toLocaleTimeString('de-DE', {
+        timeZone: 'Asia/Seoul',
+        hour12: true,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    let timeField = document.getElementById("time")
+    timeField.innerHTML = "Es ist gerade " + koreaTime + " Uhr in Südkorea."
+}
+
 setBirthdays();
 setNextBirthdays(nextBirthdays)
-setMembers(allMembers);
+setTimes()
+setInterval(setTimes,1000)
+setMembers(allMembers)
