@@ -225,7 +225,7 @@ function sortDate() {
 }
 
 function setBirthdays() {
-    todaysBirthdays.innerHTML = "";
+    todaysBirthdays.innerHTML = '<span class="colored-text">';
 
     for (let i = 0; i < allGroups.length; i++) {
         var group = allGroups[i];
@@ -277,6 +277,9 @@ function setBirthdays() {
             nextBirthdays.push(member);
         }   
     }
+
+    todaysBirthdays.innerHTML = todaysBirthdays.innerHTML.replace("</span>", "").trim()
+    todaysBirthdays.innerHTML += "</span><br>"
 }
 
 function setNextBirthdays(membersWithNextBirthdays) {
