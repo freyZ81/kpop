@@ -65,7 +65,7 @@ function setMembers(memberArray) {
             if (member.group[0] >= 0) {
                 groupCell.innerHTML = allGroups[member.group[0]].name[0];
             } else {
-                groupCell.innerHTML = "Ex-" + allGroups[(member.group[0]*-1)].name[0];
+                groupCell.innerHTML = "Former " + allGroups[(member.group[0]*-1)].name[0];
             }
         } else {
             groupCell.innerHTML = allGroups[member.group[0]].name[0];
@@ -259,7 +259,7 @@ function setBirthdays() {
                 todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " aus " + allGroups[member.group[0]].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
             }
             if (member.group[0] < 0) {
-                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " aus Ex-" + allGroups[(member.group[0]*-1)].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+                todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + ", former " + allGroups[(member.group[0]*-1)].name[0] + ", Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
             }
             if (member.group[0] == 0) {
                 todaysBirthdays.innerHTML += ("Heute hat " + member.name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
@@ -332,7 +332,7 @@ function setNextBirthdays(membersWithNextBirthdays) {
             todaysBirthdays.innerHTML += ("Am " + fuehrendeNullWennEinstellig(memberbirthday.getDate()) + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1) + " hat " + member.name[0] + " aus " + allGroups[member.group[0]].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
         }
         if (member.group[0] < 0) {
-            todaysBirthdays.innerHTML += ("Am " + fuehrendeNullWennEinstellig(memberbirthday.getDate()) + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1) + " hat " + member.name[0] + " aus Ex-" + allGroups[(member.group[0]*-1)].name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
+            todaysBirthdays.innerHTML += ("Am " + fuehrendeNullWennEinstellig(memberbirthday.getDate()) + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1) + " hat " + member.name[0] + ", former " + allGroups[(member.group[0]*-1)].name[0] + ", Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
         }
         if (member.group[0] == 0) {
             todaysBirthdays.innerHTML += ("Am " + fuehrendeNullWennEinstellig(memberbirthday.getDate()) + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1) + " hat " + member.name[0] + " Geburtstag. " + member.name[0] + " wird " + (koreaDate.getYear()-memberbirthday.getYear()) + " Jahre alt.<br>");
@@ -341,6 +341,7 @@ function setNextBirthdays(membersWithNextBirthdays) {
 }
 
 function removeExPrefix(groupName) {
+    // wird aktuell nicht verwendet
     groupName = groupName.toLowerCase();
     if (groupName != "") {
         if (groupName.startsWith("ex-".toLowerCase())) {
