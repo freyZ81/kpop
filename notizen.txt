@@ -1,0 +1,11 @@
+Ein Memory Game erstellen, wo man dann auf einer Karte die Gruppe hat und auf einer anderen die member
+    choosen, ob gg/bg/both
+    vllt auch, ob man dann mehrere member gleichzeitig hat (dann muss man auch mehrere auswählen können, bevor es aufgelöst wird)
+    wenn es möglich ist vllt auch das member Bild anzeigen (vllt auch Gruppe)
+
+hangman
+    choosen, ob gg/bg/both
+    wenn nur ein Buchstabe eingegeben wird, dann den setzen wenn es passt
+    wenn ein ganzes Wort eingegeben wird, dann gucken, ob das richtig ist
+    vllt mit Tipps, wo man dann je nachdem ob es die Gruppe ist, nen paar member namen bekommt oder andersherum die Gruppe
+

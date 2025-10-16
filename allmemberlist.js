@@ -368,7 +368,8 @@ function setTimes() {
     const koreaTimezone = 'Asia/Seoul';
     // Aktuelles Datum und Uhrzeitobjekt erstellen
     const currentDate = new Date();
-    
+    //currentDate.timeZone = 'Europe/Berlin'
+
     const koreaTime = currentDate.toLocaleTimeString('de-DE', {
         timeZone: 'Asia/Seoul',
         hour12: true,
@@ -377,8 +378,23 @@ function setTimes() {
         second: '2-digit'
     });
 
+    function getOffsetMinutes(timeZone) {
+        const now = new Date();
+        const localTime = new Date(now.toLocaleString("en-US", { timeZone }));
+        return (localTime - now) / 60000;
+    }
+
+    function timezoneDifference(tz1, tz2) {
+        const diff = Math.round((getOffsetMinutes(tz2) - getOffsetMinutes(tz1)) / 60);
+        return diff;
+    }
+
+
+
+    console.log(timezoneDifference("Europe/Berlin", "Asia/Seoul"))
+
     let timeField = document.getElementById("time")
-    timeField.innerHTML = "Es ist gerade " + koreaTime + " Uhr in Südkorea."
+    timeField.innerHTML = "Es ist gerade " + koreaTime + " (+" + timezoneDifference("Europe/Berlin", "Asia/Seoul") + " Stunden) Uhr in Südkorea."
 }
 
 setBirthdays();
