@@ -6,7 +6,7 @@ const tableMembersGroupsAndBirthdays = document.getElementById("tableMembersGrou
 let todaysBirthdays = document.getElementById("birthdays");
 let nextBirthdays = [];
 const counter = document.getElementById("counter");
-counter.innerHTML = "In the list are " + allMembers.length + " members from " + (allGroups.length-1) + " groups and soloists.";
+counter.innerHTML = "In the list are " + allMembers.length + " members (" + allMembers.filter(member => member.gender === 1).length + " girls and " + allMembers.filter(member => member.gender === 2).length + " boys) from " + (allGroups.length-1) + " groups and soloists.";
 
 
 document.querySelectorAll('.filter-input').forEach(input => {
