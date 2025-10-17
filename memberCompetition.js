@@ -17,16 +17,15 @@ function newRound() {
     console.log("New round was clicked")
     let genderDropdown = document.getElementById("genderChoose")
     let selectedGender = genderDropdown.value
-    //get new list
-    
     choosenMemberList = []
+    
     if (genderDropdown.value == "girlsAndBoys") {
         choosenMemberList = allMembers;
         console.log("Both gender")
     } else if (genderDropdown.value == "girls") {
-        choosenMemberList = getChoosenMembers(1)
+        choosenMemberList = allMembers.filter(member => member.gender == 1)
     } else if (genderDropdown.value == "boys") {
-        choosenMemberList = getChoosenMembers(2)
+        choosenMemberList = allMembers.filter(member => member.gender == 2)
     }
     console.log("Choosen value: " + selectedGender)
     choosenMemberList = reduceMembers(choosenMemberList)
@@ -34,6 +33,7 @@ function newRound() {
 }
 
 function reduceMembers(choosenMemberList) {
+    //werden hier aus allen möglichen membern so viele rausgeschmissen bis die gewünschte Anzahl erreicht ist?
     let countDropdown = document.getElementById("countMaxSize");
     while (choosenMemberList.length > countDropdown.value) {
         let randomNumber = Math.floor(Math.random() * choosenMemberList.length);
@@ -44,22 +44,41 @@ function reduceMembers(choosenMemberList) {
     return choosenMemberList
 }
 
-function getChoosenMembers(genderValue) {
-    for (const member of allMembers) {
-        if (member.gender == undefined) {
-            console.log(member.name)
-        }
-
-        if (member.gender == genderValue) {
-            console.log(member.gender, genderValue)
-            choosenMemberList.push(member)
-        }
-    }
-    //console.log(choosenMemberList)
-    return choosenMemberList
-}
-
 function setNewMembers(choosenMemberList) {
+
+    function getMemberStr(numberOfMember) {
+        let strMember = "pics/"
+        
+        let member
+        member = choosenMemberList[numberOfMember]
+
+        if (allGroups[choosenMemberList[numberOfMember].group[0]] != 0) {
+            //Gruppe
+            let groupStr
+            let group
+            if (member.group > 0) {
+                //active member
+                group = allGroups[member.group[0]]
+                groupStr = group.name[group.name.length - 1]
+            } else {
+                //Ex member
+                group = allGroups[member.group[0] * -1]
+                groupStr = group.name[group.name.length - 1]
+            }
+
+            strMember += groupStr + "/" + member.name[member.name.length - 1]
+
+        } else {
+            //Solo
+            strMember += "solo/" + member.name[member.name.length - 1]
+        }
+
+        strMember += ".jpg"
+        choosenMemberList.splice(numberOfMember, 1)
+        return strMember.toLowerCase()
+    }
+
+    //TODO: ist die Nummer immer die richtige wegen 0 und so?
     let numberMemberOne = Math.floor(Math.random() * choosenMemberList.length);
     memberOneObj = choosenMemberList[numberMemberOne]
     memberOne.alt = getMemberStr(numberMemberOne)
@@ -71,6 +90,7 @@ function setNewMembers(choosenMemberList) {
     } else if (memberOneObj.group < 0) {
         memberOneTxt.innerHTML = memberOneObj.name[0] + " who was in " + allGroups[memberOneObj.group*-1].name[0]
     }
+    //TODO: hier sollte der member am besten schon aus der Liste erst einmal entfernt werden
 
     let numberMemberTwo = Math.floor(Math.random() * choosenMemberList.length);
     memberTwoObj = choosenMemberList[numberMemberTwo]
@@ -86,43 +106,7 @@ function setNewMembers(choosenMemberList) {
 
     //numberMemberTwo = numberMemberTwo != numberMemberOne ? numberMemberTwo :
     //numberMemberOne != 0 ? (numberMemberTwo - 1) : (numberMemberTwo + 1);
-    setLeftMemberText()
-}
-
-function setLeftMemberText() {
     memberleftText.innerHTML = choosenMemberList.length
-}
-
-function getMemberStr(numberOfMember) {
-    let strMember = "pics/"
-    
-    let member
-    member = choosenMemberList[numberOfMember]
-
-    if (allGroups[choosenMemberList[numberOfMember].group[0]] != 0) {
-        //Gruppe
-        let groupStr
-        let group
-        if (member.group > 0) {
-            //active member
-            group = allGroups[member.group[0]]
-            groupStr = group.name[group.name.length - 1]
-        } else {
-            //Ex member
-            group = allGroups[member.group[0] * -1]
-            groupStr = group.name[group.name.length - 1]
-        }
-
-        strMember += groupStr + "/" + member.name[member.name.length - 1]
-
-    } else {
-        //Solo
-        strMember += "solo/" + member.name[member.name.length - 1]
-    }
-
-    strMember += ".jpg"
-    choosenMemberList.splice(numberOfMember, 1)
-    return strMember.toLowerCase()
 }
 
 function resetLists() {
@@ -154,4 +138,20 @@ function chooseMemberTwo() {
     } else {
         console.log("Ende " + memberTwoObj.name)
     }
+}
+
+function getChoosenMembers(genderValue) {
+    // wird scheinbar nicht verwendet
+    for (const member of allMembers) {
+        if (member.gender == undefined) {
+            console.log(member.name)
+        }
+
+        if (member.gender == genderValue) {
+            console.log(member.gender, genderValue)
+            choosenMemberList.push(member)
+        }
+    }
+    //console.log(choosenMemberList)
+    return choosenMemberList
 }

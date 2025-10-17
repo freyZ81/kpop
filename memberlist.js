@@ -4966,7 +4966,7 @@ let allGroups = [
     },
     {
         id: 96,
-        name: ["ALL(H)OURS"],
+        name: ["ALL(H)OURS", "Allhours"],
         size: 7,
         fandom: ["Min(ut)e"],
         entertainment: ["EDEN Entertainment"],
