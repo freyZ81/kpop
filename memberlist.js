@@ -875,25 +875,25 @@ let allMembers = [
     },
     {
         name: ["Onda"],
-        group: [92, 21],
+        group: [21],
         gender: 1,
         birthday: new Date("2000-05-18"),
     },
     {
         name: ["E:U", "EU"],
-        group: [92, 21],
+        group: [21],
         gender: 1,
         birthday: new Date("1998-05-19"),
     },
     {
         name: ["Aisha"],
-        group: [92, 21],
+        group: [21],
         gender: 1,
         birthday: new Date("2000-07-21"),
     },
     {
         name: ["Sihyeon"],
-        group: [92, 21],
+        group: [21],
         gender: 1,
         birthday: new Date("1999-08-05"),
     },
@@ -1223,7 +1223,7 @@ let allMembers = [
     },
     {
         name: ["Wonho"],
-        group: [-29],
+        group: [0, -29],
         gender: 2,
         birthday: new Date("1993-03-01"),
     },
@@ -3809,7 +3809,7 @@ let allMembers = [
         birthday: new Date("2008-12-03"),
     },
     {
-        name: ["A-na"],
+        name: ["A-na", "Ana"],
         group: [87],
         gender: 1,
         birthday: new Date("2008-12-20"),
@@ -3821,7 +3821,7 @@ let allMembers = [
         birthday: new Date("2009-10-09"),
     },
     {
-        name: ["Ye-on"],
+        name: ["Ye-on", "Yeon"],
         group: [87],
         gender: 1,
         birthday: new Date("2010-04-19"),
@@ -4930,7 +4930,7 @@ let allGroups = [
     },
     {
         id: 92,
-        name: ["CHXXTA"],
+        name: [""],
         size: 4,
         fandom: ["FOREVER"],
         entertainment: ["CHXXTA Company"],
@@ -5020,7 +5020,9 @@ counters()
 //countSize()
 
 /*
-EXID, Madein
+EXID, Madein, Bigbang, luminous
+
+92 kann verwendet werden !!
 
 
 

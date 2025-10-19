@@ -238,7 +238,7 @@ function setBirthdays() {
         const koreaDate = new Date(currentDate.toLocaleString('en-US', {timeZone: koreaTimezone}));
         if (groupDebut != null | groupDebut != "") {
             if (koreaDate.getDate() === groupDebut.getDate() && koreaDate.getMonth() === groupDebut.getMonth()) {
-                todaysBirthdays.innerHTML += ("Heute hat " + group.name[0] + " ihr " + (koreaDate.getYear()-groupDebut.getYear()) + ". Anniversary.<br>")
+                todaysBirthdays.innerHTML += ("Heute hat " + group.name[0] + " (" + group.entertainment[0] + ") ihr " + (koreaDate.getYear()-groupDebut.getYear()) + ". Anniversary.<br>")
             }
         }
     }
@@ -364,6 +364,8 @@ function getGroupNameById(groupId) {
 }
 
 function setTimes() {
+    //TODO: neu laden, wenn es 17 Uhr hier oder Mitternacht KST ist
+
     // Zeitzone für Südkorea festlegen
     const koreaTimezone = 'Asia/Seoul';
     // Aktuelles Datum und Uhrzeitobjekt erstellen
@@ -388,10 +390,6 @@ function setTimes() {
         const diff = Math.round((getOffsetMinutes(tz2) - getOffsetMinutes(tz1)) / 60);
         return diff;
     }
-
-
-
-    console.log(timezoneDifference("Europe/Berlin", "Asia/Seoul"))
 
     let timeField = document.getElementById("time")
     timeField.innerHTML = "Es ist gerade " + koreaTime + " (+" + timezoneDifference("Europe/Berlin", "Asia/Seoul") + " Stunden) Uhr in Südkorea."
