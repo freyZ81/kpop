@@ -1,4 +1,4 @@
-// Werte aus dem Local Storage abrufen und verwenden
+    // Werte aus dem Local Storage abrufen und verwenden
 allGroups = JSON.parse(localStorage.getItem('groupsArray'));
 allMembers = JSON.parse(localStorage.getItem('membersArray'));
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambling</title>
+    <style>
+        .btn-disabled {
+            color:black;
+            background-color: rgba(255, 50, 50, 0.8);
+        }
+        .btn-enabled {
+            color:white;
+            background-color: green;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>
+        Gambling
+    </h1>
+
+    <p id="titleHint">Select the gender you want to hit and press start</p>
+
+    <p id="text">Spin to win</p>
+
+    <button id="startButton" style="display: block;" onclick="start()">Start</button>
+    <button id="spinButton" style="display: none;" onclick="spin()">Spin</button>
+    
+    <button id="btnUpgradeMoney" style="display:none" onClick="upgradeMoney()"></button>
+    <button id="btnAddMembers" style="display:none" onClick="addNewMembers()"></button>
+    <button id="btnRemoveMembers" style="display:none" onClick="removeMembers()"></button>
+
+    <form id="form">
+        <select name="gender" style="display:block" id="filterGender" class="filter-input">
+            <option value="1">Girls</option>
+            <option value="2">Boys</option>
+        </select>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <button onclick="window.location.href = 'allmemberlist.html';">Back to birthdaylist</button><br>
+
+    <script src="memberlist.js"></script>
+    <script src="gambling.js"></script>
+</body>
+</html>

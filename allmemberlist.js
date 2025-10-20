@@ -70,7 +70,11 @@ function setMembers(memberArray) {
         } else {
             groupCell.innerHTML = allGroups[member.group[0]].name[0];
             for (let i = 1; i < member.group.length; i++) {
-                groupCell.innerHTML += ", " + allGroups[member.group[i]].name[0];
+                if (member.group[i] >= 0) {
+                    groupCell.innerHTML += ", " + allGroups[member.group[i]].name[0];
+                } else {
+                    groupCell.innerHTML += ", former " + allGroups[(member.group[i]*-1)].name[0];
+                }
             }
         }
 
@@ -78,7 +82,6 @@ function setMembers(memberArray) {
         nameCell.innerHTML = member.name[0];
 
         const birthdayCell = newRow.insertCell(-1);
-        //countryCell3.innerHTML = birthdayParts;
         birthdayCell.innerHTML = fuehrendeNullWennEinstellig(memberbirthday.getDate())
         + "." + fuehrendeNullWennEinstellig(memberbirthday.getMonth()+1)
         + "." + memberbirthday.getFullYear();
