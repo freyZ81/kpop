@@ -114,11 +114,11 @@ function spin() {
         countStreak += 1
         let gainedMoney = currentMoneyValue * countStreak
         money += gainedMoney
-        text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "), Streak: " + countStreak
-            + ", Money: " + money + " (+" + gainedMoney + ")"
+        text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "),<br>Streak: " + countStreak
+            + ",<br>Money: " + money + " (+" + gainedMoney + ")"
     } else {
-        text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "), Streak was on: " + countStreak
-            + ", Money: " + money
+        text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "),<br>Streak was on: " + countStreak
+            + ",<br>Money: " + money
         countStreak = 0
     }
 
@@ -136,7 +136,8 @@ function upgradeMoney() {
         currentMoneyValue *= 2
         costsUpgradeMoney *= 2
         document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>Costs: " + costsUpgradeMoney
-        text.innerHTML = "Money value was upgraded. New base value: " + currentMoneyValue + ", Money: " + money
+        text.innerHTML = "Money value was upgraded. New base value: " + currentMoneyValue + "<br>Streak was on: " + countStreak
+            + "<br>Money: " + money
         checkButtons()
     }    
 }
@@ -149,7 +150,7 @@ function addNewMembers() {
             costsAddMembers = Math.ceil((costsAddMembers*1.5) / 50) * 50
             
             document.getElementById("btnAddMembers").innerHTML = "Add new members<br>Costs: " + costsAddMembers
-            text.innerHTML = "New members were added, Money: " + money
+            text.innerHTML = "New members were added<br>Streak was on: " + countStreak + "<br>Money: " + money
             setChanceText()
             checkButtons()
         }
@@ -170,7 +171,7 @@ function removeMembers() {
             }
 
             document.getElementById("btnRemoveMembers").innerHTML = "Remove other members<br>Costs: " + costsRemoveMembers
-            text.innerHTML = "Members were removed, Money: " + money
+            text.innerHTML = "Members were removed<br>Streak was on: " + countStreak + "<br>Money: " + money
             setChanceText()
             checkButtons()
         }
@@ -179,4 +180,5 @@ function removeMembers() {
 
 // hinzufügen, dass der Button immer wieder ne bestimmte Zeit disabled ist
 // den höchsten Streak count anzeigen
-//vlt generell die letzten immer wieder anzeigen
+// vlt generell die letzten immer wieder anzeigen
+// wenn mal alle Bilder drinne sind, die dann vllt anzeigen
