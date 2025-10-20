@@ -153,14 +153,16 @@ function spin() {
         function wartezeit() {
             spinButton.disabled = true;
             let currentSpinTime = spinTime
-
+            
             const timer = setInterval(() => {
             spinButton.textContent = `Warte ${Math.floor(currentSpinTime)} Sek.`;
+            spinButton.classList.add("btn-loading")
             currentSpinTime -= 0.5;
 
                 if (currentSpinTime < 0) {
                     clearInterval(timer);
                     spinButton.disabled = false;
+                    spinButton.classList.remove("btn-loading")
                     spinButton.textContent = "Spin";
                 }
             }, 500);
@@ -227,8 +229,6 @@ function removeMembers() {
         }
     }
 }
-
-start()
 
 // hinzufügen, dass der Button immer wieder ne bestimmte Zeit disabled ist
 // den höchsten Streak count anzeigen
