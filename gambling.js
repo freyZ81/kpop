@@ -1,7 +1,8 @@
-allGroups = JSON.parse(localStorage.getItem('groupsArray'));
-allMembers = JSON.parse(localStorage.getItem('membersArray'));
+allGroups = JSON.parse(localStorage.getItem('groupsArray'))
+allMembers = JSON.parse(localStorage.getItem('membersArray'))
 const text = document.getElementById("text")
 const titleHint = document.getElementById("titleHint")
+const spinButton = document.getElementById("spinButton")
 let wishedGender
 let otherGender
 let runningGame = false
@@ -10,6 +11,8 @@ let choosenMembers = []
 let countStreak = 0
 let money = 0
 let currentMoneyValue = 1
+let spinTime = 5
+let costsReduceTime = 50
 let costsUpgradeMoney = 25
 let costsAddMembers = 100
 let costsRemoveMembers = 200
@@ -43,6 +46,7 @@ function restart() {
     document.getElementById("startButton").style = "display: block"
     document.getElementById("form").style = "display: block"
     document.getElementById("spinButton").style = "display: none"
+    document.getElementById("btnReduceSpinTime").style = "display: none"
     document.getElementById("btnUpgradeMoney").style = "display: none"
     document.getElementById("btnAddMembers").style = "display: none"
     document.getElementById("btnRemoveMembers").style = "display: none"
@@ -53,6 +57,8 @@ function restart() {
     countStreak = 0
     money = 0
     currentMoneyValue = 1
+    spinTime = 5
+    costsReduceTime = 50
     costsUpgradeMoney = 25
     costsAddMembers = 100
     costsRemoveMembers = 200
@@ -62,6 +68,8 @@ function start() {
     document.getElementById("startButton").style = "display: none"
     document.getElementById("form").style = "display: none"
     document.getElementById("spinButton").style = "display: block"
+    document.getElementById("btnReduceSpinTime").style = "display: block"
+    document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time<br>Costs: " + costsReduceTime
     document.getElementById("btnUpgradeMoney").style = "display: block"
     document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>Costs: " + costsUpgradeMoney
     document.getElementById("btnAddMembers").style = "display: block"
@@ -73,8 +81,8 @@ function start() {
     wishedGender = parseInt(document.getElementById("filterGender").value)
     otherGender = wishedGender == 1 ? 2 : 1
     
-    addMembers(30, wishedGender)
-    addMembers(70, otherGender)
+    addMembers(60, wishedGender)
+    addMembers(140, otherGender)
     
     setChanceText()
     checkButtons()
@@ -82,7 +90,16 @@ function start() {
 }
 
 function checkButtons() {
-
+    //Button spin time
+    if (money >= costsReduceTime && spinTime > 1) {
+        document.getElementById("btnReduceSpinTime").classList.add("btn-enabled")
+    } else if (money < costsReduceTime) {
+        document.getElementById("btnReduceSpinTime").classList.remove("btn-enabled")
+        document.getElementById("btnReduceSpinTime").classList.add("btn-disabled")
+    }
+    if (spinTime == 1) {
+        document.getElementById("btnReduceSpinTime").style = "display: none"
+    }
     //Button Money value
     if (money >= costsUpgradeMoney) {
         document.getElementById("btnUpgradeMoney").classList.add("btn-enabled")
@@ -104,30 +121,63 @@ function checkButtons() {
         document.getElementById("btnRemoveMembers").classList.remove("btn-enabled")
         document.getElementById("btnRemoveMembers").classList.add("btn-disabled")
     }
+    if (choosenMembers.filter(member => member.gender === otherGender).length == 50) {
+        document.getElementById("btnRemoveMembers").style = "display: none"
+    }
 }
 
 function spin() {
-    let randomMemberNumber = Math.floor(Math.random() * choosenMembers.length)
-    let spinnedMember = choosenMembers[randomMemberNumber]
-    
-    if (spinnedMember.gender == wishedGender) {
-        countStreak += 1
-        let gainedMoney = currentMoneyValue * countStreak
-        money += gainedMoney
-        text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "),<br>Streak: " + countStreak
+    if (spinButton.disabled == false) {
+        let randomMemberNumber = Math.floor(Math.random() * choosenMembers.length)
+        let spinnedMember = choosenMembers[randomMemberNumber]
+        
+        if (spinnedMember.gender == wishedGender) {
+            countStreak += 1
+            let gainedMoney = currentMoneyValue * countStreak
+            money += gainedMoney
+            text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "),<br>Streak: " + countStreak
             + ",<br>Money: " + money + " (+" + gainedMoney + ")"
-    } else {
-        text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "),<br>Streak was on: " + countStreak
+        } else {
+            text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + "),<br>Streak was on: " + countStreak
             + ",<br>Money: " + money
-        countStreak = 0
-    }
+            countStreak = 0
+        }
+        
+        if (countStreak == 10) {
+            text.innerHTML = "You won!"
+            restart()
+        }
+        checkButtons()
+        wartezeit()
 
-    if (countStreak == 10) {
-        text.innerHTML = "You won!"
-        restart()
-    }
-    checkButtons()
+        function wartezeit() {
+            spinButton.disabled = true;
+            let currentSpinTime = spinTime
 
+            const timer = setInterval(() => {
+            spinButton.textContent = `Warte ${Math.floor(currentSpinTime)} Sek.`;
+            currentSpinTime -= 0.5;
+
+                if (currentSpinTime < 0) {
+                    clearInterval(timer);
+                    spinButton.disabled = false;
+                    spinButton.textContent = "Spin";
+                }
+            }, 500);
+        }
+    }
+}
+
+function reduceSpinTime() {
+    if (money >= costsReduceTime && spinTime > 1) {
+        money -= costsReduceTime
+        spinTime -= 0.5
+        costsReduceTime *= 2
+        document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time<br>Costs: " + costsReduceTime
+        text.innerHTML = "Spintime was reduced. New spin time: " + spinTime + " seconds<br>Streak was on: " + countStreak
+            + "<br>Money: " + money
+        checkButtons()
+    }
 }
 
 function upgradeMoney() {
@@ -177,6 +227,8 @@ function removeMembers() {
         }
     }
 }
+
+start()
 
 // hinzufügen, dass der Button immer wieder ne bestimmte Zeit disabled ist
 // den höchsten Streak count anzeigen
