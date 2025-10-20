@@ -11,7 +11,7 @@ let choosenMembers = []
 let countStreak = 0
 let money = 0
 let currentMoneyValue = 1
-let spinTime = 5
+let spinTime = 3
 let costsReduceTime = 50
 let costsUpgradeMoney = 25
 let costsAddMembers = 100
@@ -57,7 +57,7 @@ function restart() {
     countStreak = 0
     money = 0
     currentMoneyValue = 1
-    spinTime = 5
+    spinTime = 3
     costsReduceTime = 50
     costsUpgradeMoney = 25
     costsAddMembers = 100
@@ -81,8 +81,8 @@ function start() {
     wishedGender = parseInt(document.getElementById("filterGender").value)
     otherGender = wishedGender == 1 ? 2 : 1
     
-    addMembers(60, wishedGender)
-    addMembers(140, otherGender)
+    addMembers(30, wishedGender)
+    addMembers(70, otherGender)
     
     setChanceText()
     checkButtons()
@@ -155,7 +155,7 @@ function spin() {
             let currentSpinTime = spinTime
             
             const timer = setInterval(() => {
-            spinButton.textContent = `Warte ${Math.floor(currentSpinTime)} Sek.`;
+            spinButton.textContent = `Wait ${Math.floor(currentSpinTime)} sec.`;
             spinButton.classList.add("btn-loading")
             currentSpinTime -= 0.5;
 
@@ -230,7 +230,9 @@ function removeMembers() {
     }
 }
 
-// hinzufügen, dass der Button immer wieder ne bestimmte Zeit disabled ist
-// den höchsten Streak count anzeigen
+// Buttons breiter machen
+
+// den höchsten Streak count anzeigen am Ende
+// Anzahl spins zählen und am Ende anzeigen
 // vlt generell die letzten immer wieder anzeigen
 // wenn mal alle Bilder drinne sind, die dann vllt anzeigen
