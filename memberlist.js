@@ -978,7 +978,7 @@ let allMembers = [
     {
         name: ["I.N", "IN"],
         group: [24],
-        gender: 1,
+        gender: 2,
         birthday: new Date("2001-02-08"),
     },
     {
@@ -1092,7 +1092,7 @@ let allMembers = [
     {
         name: ["Yeongeun"],
         group: [26],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1996-07-08"),
     },
     {
