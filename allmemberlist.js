@@ -369,8 +369,6 @@ function getGroupNameById(groupId) {
 function setTimes() {
     //TODO: neu laden, wenn es 17 Uhr hier oder Mitternacht KST ist
 
-    // Zeitzone für Südkorea festlegen
-    const koreaTimezone = 'Asia/Seoul';
     // Aktuelles Datum und Uhrzeitobjekt erstellen
     const currentDate = new Date();
     //currentDate.timeZone = 'Europe/Berlin'
@@ -382,6 +380,13 @@ function setTimes() {
         minute: '2-digit',
         second: '2-digit'
     });
+
+    const midnight = "12:00:00 PM"
+    const koreaMidnight = koreaTime
+
+    if (midnight == koreaMidnight) {
+        location.reload()
+    }
 
     function getOffsetMinutes(timeZone) {
         const now = new Date();
