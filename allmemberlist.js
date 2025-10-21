@@ -367,7 +367,7 @@ function getGroupNameById(groupId) {
 }
 
 function setTimes() {
-    //TODO: neu laden, wenn es 17 Uhr hier oder Mitternacht KST ist
+    //TODO: absichern, dass niht mehrmals in der Sekunde neu geladen wird
 
     // Aktuelles Datum und Uhrzeitobjekt erstellen
     const currentDate = new Date();
@@ -381,8 +381,9 @@ function setTimes() {
         second: '2-digit'
     });
 
-    const midnight = "12:00:00 PM"
+    const midnight = "12:00:00 AM"
     const koreaMidnight = koreaTime
+    koreaMidnight.hour12 = false
 
     if (midnight == koreaMidnight) {
         location.reload()

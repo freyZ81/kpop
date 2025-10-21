@@ -15,6 +15,7 @@ let countHits = 0
 let countMisses = 0
 let money = 0
 let currentMoneyValue = 1
+let countStreakMoney = 0
 let spinTime = 3
 let costsReduceTime = 50
 let costsUpgradeMoney = 25
@@ -22,9 +23,13 @@ let costsAddMembers = 100
 let costsRemoveMembers = 200
 let startTime
 let endTime
+let countWishedGender = 30
+let countOtherGender = 70
 
 document.addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
+
+    // TODO: nur wenn ein aktives game ist
     if (event.keyCode === 32) {
       event.preventDefault();
       spin()
@@ -37,33 +42,7 @@ function setChanceText() {
         + "%"
 }
 
-function addMembers(countMembers, gender) {
-    for (let i = 0; i < countMembers; i++) {
-        let genderMembers = possibleMembers.filter(member => member.gender == gender)
-        let randomNewNumber = Math.floor(Math.random() * genderMembers.length)
-        let randomMember = genderMembers[randomNewNumber]
-        choosenMembers.push(randomMember)
-
-        possibleMembers = possibleMembers.filter(member => member !== randomMember)
-    }
-}
-
 function start() {
-    document.getElementById("startButton").style = "display: none"
-    document.getElementById("form").style = "display: none"
-    document.getElementById("spinButton").style = "display: block"
-    document.getElementById("btnReduceSpinTime").style = "display: block"
-    document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time<br>Costs: " + costsReduceTime
-    document.getElementById("btnUpgradeMoney").style = "display: block"
-    document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>Costs: " + costsUpgradeMoney
-    document.getElementById("btnAddMembers").style = "display: block"
-    document.getElementById("btnAddMembers").innerHTML = "Add new members<br>Costs: " + costsAddMembers
-    document.getElementById("btnRemoveMembers").style = "display: block"
-    document.getElementById("btnRemoveMembers").innerHTML = "Remove other members<br>Costs: " + costsRemoveMembers
-    startTime = new Date()
-
-    text.innerHTML = "Spin to win"
-
     possibleMembers = allMembers
     choosenMembers = []
     countStreak = 0
@@ -73,21 +52,55 @@ function start() {
     countMisses = 0
     money = 0
     currentMoneyValue = 1
+    countStreakMoney = 0
     spinTime = 3
     costsReduceTime = 50
     costsUpgradeMoney = 25
     costsAddMembers = 100
     costsRemoveMembers = 200
+    countWishedGender = 30
+    countOtherGender = 70
 
     wishedGender = parseInt(document.getElementById("filterGender").value)
     otherGender = wishedGender == 1 ? 2 : 1
     
-    addMembers(30, wishedGender)
-    addMembers(70, otherGender)
+    addMembers(countWishedGender, wishedGender)
+    addMembers(countOtherGender, otherGender)
+
+    document.getElementById("startButton").style = "display: none"
+    document.getElementById("form").style = "display: none"
+    document.getElementById("spinButton").style = "display: block"
+    document.getElementById("btnReduceSpinTime").style = "display: block"
+    document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time (" + spinTime + " -> " + (spinTime-0.5)
+        + ")<br>Costs: " + costsReduceTime
+    document.getElementById("btnUpgradeMoney").style = "display: block"
+    document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value (" + currentMoneyValue + " -> " + (currentMoneyValue*2)
+        + ")<br>Costs: " + costsUpgradeMoney
+    document.getElementById("btnAddMembers").style = "display: block"
+    document.getElementById("btnAddMembers").innerHTML = "Add new members (" + countWishedGender + " -> " + (countWishedGender+5)
+        + ")<br>Costs: " + costsAddMembers
+    document.getElementById("btnRemoveMembers").style = "display: block"
+    document.getElementById("btnRemoveMembers").innerHTML = "Remove other members (" + countOtherGender + " -> " + (countOtherGender-5)
+        + ")<br>Costs: " + costsRemoveMembers
+    startTime = new Date()
+
+    text.innerHTML = "Spin to win"
+
     
     setChanceText()
     checkButtons()
     
+}
+
+function addMembers(countMembers, gender) {
+    for (let i = 0; i < countMembers; i++) {
+        let genderMembers = possibleMembers.filter(member => member.gender == gender)
+        let randomNewNumber = Math.floor(Math.random() * genderMembers.length)
+        let randomMember = genderMembers[randomNewNumber]
+        choosenMembers.push(randomMember)
+
+        possibleMembers = possibleMembers.filter(member => member !== randomMember)
+    }
 }
 
 function checkButtons() {
@@ -132,6 +145,7 @@ function spin() {
         countSpins++
         let randomMemberNumber = Math.floor(Math.random() * choosenMembers.length)
         let spinnedMember = choosenMembers[randomMemberNumber]
+        spinnedMember.timesSpinned++
         
         if (spinnedMember.gender == wishedGender) {
             // es wurde getroffen
@@ -139,13 +153,14 @@ function spin() {
             countStreak++
             let gainedMoney = currentMoneyValue * countStreak
             money += gainedMoney
+            countStreakMoney += gainedMoney
             text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0]
             + ")<br>Streak: " + countStreak 
             if (countStreak == 1) {
                 text.innerHTML += " after " + countMissStreak + " fails"
                 countMissStreak = 0
             }
-            text.innerHTML += "<br>Money: " + money + " (+" + gainedMoney + ")"
+            text.innerHTML += "<br>Money: " + money + " (+" + gainedMoney + ", money this streak: " + countStreakMoney + ")"
         } else {
             // es wurde nicht getroffen
             countHighestStreakBeforeWin = countStreak > countHighestStreakBeforeWin ? countStreak : countHighestStreakBeforeWin
@@ -159,6 +174,7 @@ function spin() {
             }
             text.innerHTML += "<br>Money: " + money
             countStreak = 0
+            countStreakMoney = 0
         }
         
         if (countStreak == 10) {
@@ -192,7 +208,8 @@ function reduceSpinTime() {
         money -= costsReduceTime
         spinTime -= 0.5
         costsReduceTime *= 2
-        document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time<br>Costs: " + costsReduceTime
+        document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time (" + spinTime + " -> " + (spinTime-0.5)
+            + ")<br>Costs: " + costsReduceTime
         text.innerHTML = "Spintime was reduced. New spin time: " + spinTime + " seconds<br>Streak was on: " + countStreak
             + "<br>Money: " + money
         checkButtons()
@@ -204,7 +221,8 @@ function upgradeMoney() {
         money -= costsUpgradeMoney
         currentMoneyValue *= 2
         costsUpgradeMoney *= 2
-        document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>Costs: " + costsUpgradeMoney
+        document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value (" + currentMoneyValue + " -> " + (currentMoneyValue*2)
+            + ")<br>Costs: " + costsUpgradeMoney
         text.innerHTML = "Money value was upgraded. New base value: " + currentMoneyValue + "<br>Streak was on: " + countStreak
             + "<br>Money: " + money
         checkButtons()
@@ -215,10 +233,12 @@ function addNewMembers() {
     if (money >= costsAddMembers) {
         if (possibleMembers.filter(member => member.gender === wishedGender).length >= 100) {
             addMembers(5, wishedGender)
+            countWishedGender += 5
             money -= costsAddMembers
             costsAddMembers = Math.ceil((costsAddMembers*1.5) / 50) * 50
             
-            document.getElementById("btnAddMembers").innerHTML = "Add new members<br>Costs: " + costsAddMembers
+            document.getElementById("btnAddMembers").innerHTML = "Add new members (" + countWishedGender + " -> " + (countWishedGender+5)
+            + ")<br>Costs: " + costsAddMembers
             text.innerHTML = "New members were added<br>Streak was on: " + countStreak + "<br>Money: " + money
             setChanceText()
             checkButtons()
@@ -239,7 +259,10 @@ function removeMembers() {
                 choosenMembers = choosenMembers.filter(member => member !== randomMember)
             }
 
-            document.getElementById("btnRemoveMembers").innerHTML = "Remove other members<br>Costs: " + costsRemoveMembers
+            countOtherGender -= 5
+
+            document.getElementById("btnRemoveMembers").innerHTML = "Remove other members (" + countOtherGender + " -> " + (countOtherGender-5)
+            + ")<br>Costs: " + costsRemoveMembers
             text.innerHTML = "Members were removed<br>Streak was on: " + countStreak + "<br>Money: " + money
             setChanceText()
             checkButtons()
@@ -253,9 +276,11 @@ function finishGame() {
     text.innerHTML += "Spins: " + countSpins + ", hits: " + countHits + ", misses: " + countMisses + "<br>"
     // den höchsten Streak count anzeigen am Ende, der es dann vorher aber noch nicht zum win geschafft hat
     text.innerHTML += "The highest streak before winning was: " + countHighestStreakBeforeWin + "<br>"
+    // Highestmisstreak
+    
     // Wahrscheinlichkeit mit den settings (Chance zu hitten hoch 10) 10er Streak zu schaffen
     text.innerHTML += "Probability to win now was: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender).length / choosenMembers.length), 10)*100).toFixed(4) + "%<br>"
-    // Most played idol
+    // TODO: Most played idol
 
     // Zeit, wie lange gebraucht wurde
     endTime = new Date()
@@ -267,6 +292,8 @@ function finishGame() {
 
     text.innerHTML += "Select the gender you want to hit and press start"
 
+    console.log(text.innerHTML)
+
     document.getElementById("startButton").style = "display: block"
     document.getElementById("form").style = "display: block"
     document.getElementById("spinButton").style = "display: none"
@@ -277,9 +304,15 @@ function finishGame() {
 }
 
 
+// Most spinned idol anzeigen
+// maybe dafür ein Attribut bei den allen hinzufügen, dass sie verwendet werden können (vllt auch mal nützlich für andere Sachen)
+// und dann hier noch ein Attribut mit dem counter
+
 // maybe am Ende die letzten settings nochmal auflisten
 
 // vlt generell die letzten immer wieder anzeigen
 
 // wenn mal alle Bilder drinne sind, die dann vllt anzeigen
-// die Bilder dann immer (Zeit bis zum nächsten spin - 0.5 Sekunden drehen)
+// die Bilder dann immer (Zeit bis zum nächsten spin - 0.5 Sekunden) drehen
+
+start()
