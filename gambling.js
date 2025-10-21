@@ -231,6 +231,8 @@ function removeMembers() {
 }
 
 // Buttons breiter machen
+// Zeit anzeigen
+// maybe am Ende die letzten settings nochmal auflisten
 
 // den höchsten Streak count anzeigen am Ende
 // Anzahl spins zählen und am Ende anzeigen
