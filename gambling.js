@@ -17,6 +17,8 @@ let countMisses = 0
 let money
 let currentMoneyValue = 1
 let countStreakMoney = 0
+let countEarnedMoney
+let countSpentMoney
 let spinTime = 3
 let costsReduceTime = 50
 let costsUpgradeMoney = 25
@@ -51,9 +53,11 @@ function start() {
     countSpins = 0
     countHits = 0
     countMisses = 0
-    money = 0
+    money = 1000000000000000000000000//D0
     currentMoneyValue = 1
     countStreakMoney = 0
+    countEarnedMoney = 0
+    countSpentMoney = 0
     spinTime = 3
     costsReduceTime = 50
     costsUpgradeMoney = 25
@@ -77,7 +81,7 @@ function start() {
         + ")<br>Costs: " + costsReduceTime
     document.getElementById("btnUpgradeMoney").style = "display: block"
     document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>(" + currentMoneyValue + " -> " + (currentMoneyValue*2)
-        + ")<br>Costs: " + costsUpgradeMoney
+        + ")<br>Costs: " + costsUpgradeMoney.toLocaleString('de-DE')
     document.getElementById("btnAddMembers").style = "display: block"
     document.getElementById("btnAddMembers").innerHTML = "Add new members (" + countWishedGender + " -> " + (countWishedGender+5)
         + ")<br>Costs: " + costsAddMembers
@@ -160,13 +164,14 @@ function spin() {
             let gainedMoney = currentMoneyValue * countStreak
             money += gainedMoney
             countStreakMoney += gainedMoney
+            countEarnedMoney += gainedMoney
             text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0]
             + ")<br>Streak: " + countStreak 
             if (countStreak == 1) {
                 text.innerHTML += " after " + countMissStreak + " fails"
                 countMissStreak = 0
             }
-            text.innerHTML += "<br>Money: " + money + " (+" + gainedMoney + ", streak money: " + countStreakMoney + ")"
+            text.innerHTML += "<br>Money: " + money.toLocaleString('de-DE') + " (+" + gainedMoney.toLocaleString('de-DE') + ", streak money: " + countStreakMoney.toLocaleString('de-DE') + ")"
         } else {
             // es wurde nicht getroffen
             countHighestStreakBeforeWin = countStreak > countHighestStreakBeforeWin ? countStreak : countHighestStreakBeforeWin
@@ -174,11 +179,11 @@ function spin() {
             countMissStreak++
             text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + ")"
             if (countStreak != 0) {
-                text.innerHTML += "<br>Streak was on: " + countStreak + ", gained money: " + countStreakMoney
+                text.innerHTML += "<br>Streak was on: " + countStreak + ", gained money: " + countStreakMoney.toLocaleString('de-DE')
             } else {
                 text.innerHTML += "<br>Fails: " + countMissStreak
             }
-            text.innerHTML += "<br>Money: " + money
+            text.innerHTML += "<br>Money: " + money.toLocaleString('de-DE')
             countStreak = 0
             countStreakMoney = 0
         }
@@ -212,12 +217,13 @@ function spin() {
 function reduceSpinTime() {
     if (money >= costsReduceTime && spinTime > 1) {
         money -= costsReduceTime
+        countSpentMoney += costsReduceTime
         spinTime -= 0.5
         costsReduceTime *= 2
         document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time (" + spinTime + " -> " + (spinTime-0.5)
             + ")<br>Costs: " + costsReduceTime
         text.innerHTML = "Spintime was reduced. New spin time: " + spinTime + " seconds<br>Streak was on: " + countStreak
-            + "<br>Money: " + money
+            + "<br>Money: " + money.toLocaleString('de-DE')
         checkButtons()
     }
 }
@@ -225,12 +231,13 @@ function reduceSpinTime() {
 function upgradeMoney() {
     if (money >= costsUpgradeMoney) {
         money -= costsUpgradeMoney
+        countSpentMoney += costsUpgradeMoney
         currentMoneyValue *= 2
         costsUpgradeMoney *= 2
-        document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>(" + currentMoneyValue + " -> " + (currentMoneyValue*2)
-            + ")<br>Costs: " + costsUpgradeMoney
-        text.innerHTML = "Money value was upgraded. New base value: " + currentMoneyValue + "<br>Streak was on: " + countStreak
-            + "<br>Money: " + money
+        document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>(" + currentMoneyValue.toLocaleString('de-DE') + " -> " + (currentMoneyValue*2).toLocaleString('de-DE')
+            + ")<br>Costs: " + costsUpgradeMoney.toLocaleString('de-DE')
+        text.innerHTML = "Money value was upgraded. New base value: " + currentMoneyValue.toLocaleString('de-DE') + "<br>Streak was on: " + countStreak
+            + "<br>Money: " + money.toLocaleString('de-DE')
         checkButtons()
     }    
 }
@@ -241,11 +248,12 @@ function addNewMembers() {
             addMembers(5, wishedGender)
             countWishedGender += 5
             money -= costsAddMembers
+            countSpentMoney += costsAddMembers
             costsAddMembers = Math.ceil((costsAddMembers*1.5) / 50) * 50
             
             document.getElementById("btnAddMembers").innerHTML = "Add new members (" + countWishedGender + " -> " + (countWishedGender+5)
-            + ")<br>Costs: " + costsAddMembers
-            text.innerHTML = "New members were added<br>Streak was on: " + countStreak + "<br>Money: " + money
+            + ")<br>Costs: " + costsAddMembers.toLocaleString('de-DE')
+            text.innerHTML = "New members were added<br>Streak was on: " + countStreak + "<br>Money: " + money.toLocaleString('de-DE')
             setChanceText()
             checkButtons()
         }
@@ -257,6 +265,7 @@ function removeMembers() {
         let membersToDelete = choosenMembers.filter(member => member.gender === otherGender && member.usable  == true)
         if (membersToDelete.length >= 55) {
             money -= costsRemoveMembers
+            countSpentMoney += costsRemoveMembers
             costsRemoveMembers = Math.ceil((costsRemoveMembers*1.5) / 50) * 50
 
             for (let i = 0; i < 5; i++) {
@@ -269,8 +278,8 @@ function removeMembers() {
             countOtherGender -= 5
 
             document.getElementById("btnRemoveMembers").innerHTML = "Remove other members (" + countOtherGender + " -> " + (countOtherGender-5)
-            + ")<br>Costs: " + costsRemoveMembers
-            text.innerHTML = "Members were removed<br>Streak was on: " + countStreak + "<br>Money: " + money
+            + ")<br>Costs: " + costsRemoveMembers.toLocaleString('de-DE')
+            text.innerHTML = "Members were removed<br>Streak was on: " + countStreak + "<br>Money: " + money.toLocaleString('de-DE')
             setChanceText()
             checkButtons()
         }
@@ -280,9 +289,9 @@ function removeMembers() {
 function finishGame() {
     text.innerHTML = "You won!<br><br>"
     // Anzahl spins zählen und am Ende anzeigen
-    // TODO: earned money und vllt wie viel insgesamt ausgegeben wurde
-
     text.innerHTML += "Spins: " + countSpins + ", hits: " + countHits + ", misses: " + countMisses + "<br>"
+    // earned money und vllt wie viel insgesamt ausgegeben wurde
+    text.innerHTML += "You earned " + countEarnedMoney.toLocaleString('de-DE') + " and spent " + countSpentMoney.toLocaleString('de-DE') + " of it<br>"
     // den höchsten Streak count anzeigen am Ende, der es dann vorher aber noch nicht zum win geschafft hat
     text.innerHTML += "The highest streak before winning was: " + countHighestStreakBeforeWin + "<br>"
     // Highestmisstreak
@@ -326,6 +335,8 @@ function finishGame() {
 }
 
 // maybe am Ende die letzten settings nochmal auflisten
+
+// vllt die Sachen speichern, damit man dann ein eigenes Leaderboard haben kann
 
 // vllt generell die letzten immer wieder anzeigen
 
