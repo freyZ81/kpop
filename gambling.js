@@ -53,7 +53,7 @@ function start() {
     countSpins = 0
     countHits = 0
     countMisses = 0
-    money = 1000000000000000000000000//D0
+    money = 0
     currentMoneyValue = 1
     countStreakMoney = 0
     countEarnedMoney = 0
@@ -312,6 +312,7 @@ function finishGame() {
         + " (" + allGroups[Math.abs(member.group[0])].name[0] + ")").join(", ")
         + " for " + maxSpinOther + " times<br>"
     // Zeit, wie lange gebraucht wurde
+    // TODO: SOLLTE man mal ü1h sein, dann auch das schöner anzeigen
     endTime = new Date()
     const diffSec = Math.floor((endTime - startTime) / 1000)
     const minutes = Math.floor(diffSec/60)

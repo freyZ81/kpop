@@ -5013,18 +5013,16 @@ function counters() {
     let countEnt = allGroups.filter(allGroups => allGroups.entertainment[0].length === 0).length
 
     console.log("Debut:" + countDebut)
-    console.log("Entertainment: " + countEnt)//allGroups[70].entertainment[0].length)
+    console.log("Entertainment: " + countEnt)
 }
 
 counters()
 //countSize()
 
 /*
-EXID, Madein, Bigbang, luminous
+EXID, Madein, Bigbang, luminous, cosmosy
 
-92 kann verwendet werden !!
-
-
+92 kann verwendet werden !! z.B. für A2O May
 
 komplett hinzufügen:
 The Rose, lovelyz (El7z Up)
