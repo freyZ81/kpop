@@ -14,7 +14,7 @@ let countMissStreak = 0
 let countSpins = 0
 let countHits = 0
 let countMisses = 0
-let money = 0
+let money
 let currentMoneyValue = 1
 let countStreakMoney = 0
 let spinTime = 3
@@ -37,8 +37,8 @@ document.addEventListener("keyup", function(event) {
 });
 
 function setChanceText() {
-    titleHint.innerHTML = Math.round((choosenMembers.filter(member => member.gender === wishedGender).length / choosenMembers.length) * 100)
-        + "% chance to hit. Probability to win is: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender).length / choosenMembers.length), 10)*100).toFixed(4)
+    titleHint.innerHTML = Math.round((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable).length) * 100)
+        + "% chance to hit. Probability to win is: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable === true).length), 10)*100).toFixed(4)
         + "%"
 }
 
@@ -76,7 +76,7 @@ function start() {
     document.getElementById("btnReduceSpinTime").innerHTML = "Reduce spin time (" + spinTime + " -> " + (spinTime-0.5)
         + ")<br>Costs: " + costsReduceTime
     document.getElementById("btnUpgradeMoney").style = "display: block"
-    document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value (" + currentMoneyValue + " -> " + (currentMoneyValue*2)
+    document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>(" + currentMoneyValue + " -> " + (currentMoneyValue*2)
         + ")<br>Costs: " + costsUpgradeMoney
     document.getElementById("btnAddMembers").style = "display: block"
     document.getElementById("btnAddMembers").innerHTML = "Add new members (" + countWishedGender + " -> " + (countWishedGender+5)
@@ -139,7 +139,7 @@ function checkButtons() {
         document.getElementById("btnRemoveMembers").classList.remove("btn-enabled")
         document.getElementById("btnRemoveMembers").classList.add("btn-disabled")
     }
-    if (choosenMembers.filter(member => member.gender === otherGender).length == 50) {
+    if (choosenMembers.filter(member => member.gender === otherGender && member.usable === true).length == 50) {
         document.getElementById("btnRemoveMembers").style = "display: none"
     }
 }
@@ -166,7 +166,7 @@ function spin() {
                 text.innerHTML += " after " + countMissStreak + " fails"
                 countMissStreak = 0
             }
-            text.innerHTML += "<br>Money: " + money + " (+" + gainedMoney + ", money this streak: " + countStreakMoney + ")"
+            text.innerHTML += "<br>Money: " + money + " (+" + gainedMoney + ", streak money: " + countStreakMoney + ")"
         } else {
             // es wurde nicht getroffen
             countHighestStreakBeforeWin = countStreak > countHighestStreakBeforeWin ? countStreak : countHighestStreakBeforeWin
@@ -174,7 +174,7 @@ function spin() {
             countMissStreak++
             text.innerHTML = spinnedMember.name[0] + " (" + allGroups[Math.abs(spinnedMember.group[0])].name[0] + ")"
             if (countStreak != 0) {
-                text.innerHTML += "<br>Streak was on: " + countStreak
+                text.innerHTML += "<br>Streak was on: " + countStreak + ", gained money: " + countStreakMoney
             } else {
                 text.innerHTML += "<br>Fails: " + countMissStreak
             }
@@ -194,7 +194,7 @@ function spin() {
             let currentSpinTime = spinTime
             
             const timer = setInterval(() => {
-            spinButton.textContent = `Wait ${Math.floor(currentSpinTime)} sec.`;
+            spinButton.textContent = `Wait ${Math.floor(currentSpinTime)} seconds`;
             spinButton.classList.add("btn-loading")
             currentSpinTime -= 0.5;
 
@@ -227,7 +227,7 @@ function upgradeMoney() {
         money -= costsUpgradeMoney
         currentMoneyValue *= 2
         costsUpgradeMoney *= 2
-        document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value (" + currentMoneyValue + " -> " + (currentMoneyValue*2)
+        document.getElementById("btnUpgradeMoney").innerHTML = "Upgrade money value<br>(" + currentMoneyValue + " -> " + (currentMoneyValue*2)
             + ")<br>Costs: " + costsUpgradeMoney
         text.innerHTML = "Money value was upgraded. New base value: " + currentMoneyValue + "<br>Streak was on: " + countStreak
             + "<br>Money: " + money
@@ -260,7 +260,7 @@ function removeMembers() {
             costsRemoveMembers = Math.ceil((costsRemoveMembers*1.5) / 50) * 50
 
             for (let i = 0; i < 5; i++) {
-                let genderMembers = choosenMembers.filter(member => member.gender == otherGender)
+                let genderMembers = choosenMembers.filter(member => member.gender == otherGender && member.usable == true)
                 let randomNewNumber = Math.floor(Math.random() * genderMembers.length)
                 let randomMember = membersToDelete[randomNewNumber]
                 randomMember.usable = false
@@ -280,6 +280,8 @@ function removeMembers() {
 function finishGame() {
     text.innerHTML = "You won!<br><br>"
     // Anzahl spins zählen und am Ende anzeigen
+    // TODO: earned money und vllt wie viel insgesamt ausgegeben wurde
+
     text.innerHTML += "Spins: " + countSpins + ", hits: " + countHits + ", misses: " + countMisses + "<br>"
     // den höchsten Streak count anzeigen am Ende, der es dann vorher aber noch nicht zum win geschafft hat
     text.innerHTML += "The highest streak before winning was: " + countHighestStreakBeforeWin + "<br>"
@@ -325,9 +327,7 @@ function finishGame() {
 
 // maybe am Ende die letzten settings nochmal auflisten
 
-// vlt generell die letzten immer wieder anzeigen
+// vllt generell die letzten immer wieder anzeigen
 
 // wenn mal alle Bilder drinne sind, die dann vllt anzeigen
 // die Bilder dann immer (Zeit bis zum nächsten spin - 0.5 Sekunden) drehen
-
-start()
