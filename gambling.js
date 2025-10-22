@@ -9,6 +9,7 @@ let possibleMembers = allMembers
 let choosenMembers = []
 let countStreak = 0
 let countHighestStreakBeforeWin = 0
+let countHighestMissStreak = 0
 let countMissStreak = 0
 let countSpins = 0
 let countHits = 0
@@ -25,12 +26,11 @@ let startTime
 let endTime
 let countWishedGender = 30
 let countOtherGender = 70
+let isRunning = false
 
 document.addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
-
-    // TODO: nur wenn ein aktives game ist
-    if (event.keyCode === 32) {
+    if (event.keyCode === 32 && isRunning) {
       event.preventDefault();
       spin()
     }
@@ -47,6 +47,7 @@ function start() {
     choosenMembers = []
     countStreak = 0
     countMissStreak = 0
+    countHighestMissStreak = 0
     countSpins = 0
     countHits = 0
     countMisses = 0
@@ -60,6 +61,7 @@ function start() {
     costsRemoveMembers = 200
     countWishedGender = 30
     countOtherGender = 70
+    isRunning = true
 
     wishedGender = parseInt(document.getElementById("filterGender").value)
     otherGender = wishedGender == 1 ? 2 : 1
@@ -97,6 +99,8 @@ function addMembers(countMembers, gender) {
         let genderMembers = possibleMembers.filter(member => member.gender == gender)
         let randomNewNumber = Math.floor(Math.random() * genderMembers.length)
         let randomMember = genderMembers[randomNewNumber]
+        randomMember.usable = true
+        randomMember.timesSpinned = 0
         choosenMembers.push(randomMember)
 
         possibleMembers = possibleMembers.filter(member => member !== randomMember)
@@ -143,12 +147,14 @@ function checkButtons() {
 function spin() {
     if (spinButton.disabled == false) {
         countSpins++
-        let randomMemberNumber = Math.floor(Math.random() * choosenMembers.length)
-        let spinnedMember = choosenMembers[randomMemberNumber]
+        let membersToSpin = choosenMembers.filter(member => member.usable === true)
+        let randomMemberNumber = Math.floor(Math.random() * membersToSpin.length)
+        let spinnedMember = membersToSpin[randomMemberNumber]
         spinnedMember.timesSpinned++
         
         if (spinnedMember.gender == wishedGender) {
             // es wurde getroffen
+            countHighestMissStreak = countMissStreak > countHighestMissStreak ? countMissStreak : countHighestMissStreak
             countHits++
             countStreak++
             let gainedMoney = currentMoneyValue * countStreak
@@ -248,15 +254,16 @@ function addNewMembers() {
 
 function removeMembers() {
     if (money >= costsRemoveMembers) {
-        if (choosenMembers.filter(member => member.gender === otherGender).length >= 55) {
+        let membersToDelete = choosenMembers.filter(member => member.gender === otherGender && member.usable  == true)
+        if (membersToDelete.length >= 55) {
             money -= costsRemoveMembers
             costsRemoveMembers = Math.ceil((costsRemoveMembers*1.5) / 50) * 50
 
             for (let i = 0; i < 5; i++) {
                 let genderMembers = choosenMembers.filter(member => member.gender == otherGender)
                 let randomNewNumber = Math.floor(Math.random() * genderMembers.length)
-                let randomMember = genderMembers[randomNewNumber]
-                choosenMembers = choosenMembers.filter(member => member !== randomMember)
+                let randomMember = membersToDelete[randomNewNumber]
+                randomMember.usable = false
             }
 
             countOtherGender -= 5
@@ -277,11 +284,22 @@ function finishGame() {
     // den höchsten Streak count anzeigen am Ende, der es dann vorher aber noch nicht zum win geschafft hat
     text.innerHTML += "The highest streak before winning was: " + countHighestStreakBeforeWin + "<br>"
     // Highestmisstreak
-    
+    text.innerHTML += "The highest failing streak was: " + countHighestMissStreak + "<br>"
     // Wahrscheinlichkeit mit den settings (Chance zu hitten hoch 10) 10er Streak zu schaffen
     text.innerHTML += "Probability to win now was: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender).length / choosenMembers.length), 10)*100).toFixed(4) + "%<br>"
-    // TODO: Most played idol
-
+    // Most played idol
+    const membersWishedGender = choosenMembers.filter(member => member.gender == wishedGender)
+    const membersOtherGender = choosenMembers.filter(member => member.gender == otherGender)
+    const maxSpinWished = Math.max(...membersWishedGender.map(member => member.timesSpinned))
+    const maxSpinOther = Math.max(...membersOtherGender.map(member => member.timesSpinned))
+    const mostSpinnedIdolsWished = membersWishedGender.filter(member => member.timesSpinned === maxSpinWished)
+    const mostSpinnedIdolsOther = membersOtherGender.filter(member => member.timesSpinned === maxSpinOther)
+    text.innerHTML += "Most spinned good idol(s): " + mostSpinnedIdolsWished.map(member => member.name[0]
+        + " (" + allGroups[Math.abs(member.group[0])].name[0] + ")").join(", ")
+        + " for " + maxSpinWished + " times<br>"
+    text.innerHTML += "Most spinned bad idol(s): " + mostSpinnedIdolsOther.map(member => member.name[0]
+        + " (" + allGroups[Math.abs(member.group[0])].name[0] + ")").join(", ")
+        + " for " + maxSpinOther + " times<br>"
     // Zeit, wie lange gebraucht wurde
     endTime = new Date()
     const diffSec = Math.floor((endTime - startTime) / 1000)
@@ -301,12 +319,9 @@ function finishGame() {
     document.getElementById("btnUpgradeMoney").style = "display: none"
     document.getElementById("btnAddMembers").style = "display: none"
     document.getElementById("btnRemoveMembers").style = "display: none"
+
+    isRunning = false
 }
-
-
-// Most spinned idol anzeigen
-// maybe dafür ein Attribut bei den allen hinzufügen, dass sie verwendet werden können (vllt auch mal nützlich für andere Sachen)
-// und dann hier noch ein Attribut mit dem counter
 
 // maybe am Ende die letzten settings nochmal auflisten
 
