@@ -41,13 +41,15 @@ function getPictures() {
 
     console.log(allMembers.length)
 
+    let count = 650
+    let countMax = count + 26
     for (let m= 0; m < allMembers.length; m++) {
-    //for (let m= 595; m < (m+100); m++) {
+    //for (count; count < countMax; count++) {
         currentMember = allMembers[m]
 
         // muss das nicht evtl noch auf den letzten Namen gefiltert werden von den Gruppen?
         currentGroup = currentMember.group[0] < 0 ? allGroups[(currentMember.group[0]*-1)] : allGroups[currentMember.group[0]]
-        currentGroupName = currentGroup.name[0]
+        currentGroupName = currentGroup.name[currentGroup.name.length-1]
 
         let source = getFilePath()
         //console.log(source)
@@ -75,4 +77,4 @@ function getPictures() {
     }
 }
 
-getPictures()
+//getPictures()

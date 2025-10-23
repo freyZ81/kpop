@@ -3466,7 +3466,7 @@ let allMembers = [
         birthday: new Date("2001-02-13"),
     },
     {
-        name: ["Dam I"],
+        name: ["Dam I", "DamI"],
         group: [77],
         gender: 1,
         birthday: new Date("2001-06-07"),
@@ -4031,7 +4031,7 @@ let allMembers = [
         birthday: new Date("1994-08-09"),
     },
     {
-        name: ["Yoo Taeyang", "Taeyang", "YooTaeyang"],
+        name: ["Yoo Taeyang", "YooTaeyang", "Taeyang"],
         group: [95],
         gender: 2,
         birthday: new Date("1997-02-28"),
@@ -4056,7 +4056,7 @@ let allMembers = [
     },
     {
         name: ["Kunho"],
-        group: [95],
+        group: [96],
         gender: 2,
         birthday: new Date("2003-04-03"),
     },
@@ -4091,7 +4091,7 @@ let allMembers = [
         birthday: new Date("2006-07-12"),
     },
     {
-        name: ["ON:N"],
+        name: ["ON:N", "OnN"],
         group: [96],
         gender: 2,
         birthday: new Date("2006-12-08"),
@@ -4885,7 +4885,7 @@ let allGroups = [
     },
     {
         id: 87,
-        name: ["Hearts2Hearts"],
+        name: ["Hearts2Hearts", "H2H"],
         size: 8,
         fandom: ["S2U"],
         entertainment: ["SM Entertainment"],
@@ -4912,7 +4912,7 @@ let allGroups = [
     },
     {
         id: 90,
-        name: ["Allday Project"],
+        name: ["Allday Project", "ADP"],
         size: 5,
         fandom: ["DAY ONE"],
         entertainment: ["The Black Label"],
