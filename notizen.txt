@@ -26,3 +26,7 @@ member competition
     gucken, ob die Bilder vllt noch passender in das Feld können
     auf einmal kam Chaery bei den boys in der zweiten Runde -> und auch doppelt
 
+
+
+
+vllt mal nen cheat sheet mit den Funktionen machen, besonders Math. alles

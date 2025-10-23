@@ -10,6 +10,7 @@ let choosenMembers = []
 let countStreak = 0
 let countHighestStreakBeforeWin = 0
 let countHighestMissStreak = 0
+let probabilityHighestMissStreak
 let countMissStreak = 0
 let countSpins = 0
 let countHits = 0
@@ -40,7 +41,8 @@ document.addEventListener("keyup", function(event) {
 
 function setChanceText() {
     titleHint.innerHTML = Math.round((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable).length) * 100)
-        + "% chance to hit. Probability to win is: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable === true).length), 10)*100).toFixed(4)
+        + "% chance to hit. Probability to win is: "
+        + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable === true).length), 10)*100).toFixed(4)
         + "%"
 }
 
@@ -50,6 +52,7 @@ function start() {
     countStreak = 0
     countMissStreak = 0
     countHighestMissStreak = 0
+    probabilityHighestMissStreak = 0
     countSpins = 0
     countHits = 0
     countMisses = 0
@@ -158,7 +161,10 @@ function spin() {
         
         if (spinnedMember.gender == wishedGender) {
             // es wurde getroffen
-            countHighestMissStreak = countMissStreak > countHighestMissStreak ? countMissStreak : countHighestMissStreak
+            if (countMissStreak > countHighestMissStreak) {
+                countHighestMissStreak = countMissStreak
+                probabilityHighestMissStreak = parseFloat((Math.pow((choosenMembers.filter(member => member.gender === otherGender && member.usable).length / choosenMembers.filter(member => member.usable === true).length), countMissStreak)*100).toFixed(3))
+            }
             countHits++
             countStreak++
             let gainedMoney = currentMoneyValue * countStreak
@@ -290,13 +296,14 @@ function finishGame() {
     text.innerHTML = "You won!<br><br>"
     // Anzahl spins zählen und am Ende anzeigen
     text.innerHTML += "Spins: " + countSpins + ", hits: " + countHits + ", misses: " + countMisses + "<br>"
-    // earned money und vllt wie viel insgesamt ausgegeben wurde
+    // earned money und wie viel insgesamt ausgegeben wurde
     text.innerHTML += "You earned " + countEarnedMoney.toLocaleString('de-DE') + " and spent " + countSpentMoney.toLocaleString('de-DE') + " of it<br>"
+    // letzen money value ausgeben
+    text.innerHTML += "The money value was " + currentMoneyValue + " at the end.<br>"
     // den höchsten Streak count anzeigen am Ende, der es dann vorher aber noch nicht zum win geschafft hat
     text.innerHTML += "The highest streak before winning was: " + countHighestStreakBeforeWin + "<br>"
     // Highestmisstreak
-    // TODO: maybe gucken, dass man die Wahrscheinlichkeit der jeweils höchsten fail streak mit schreiben kann
-    text.innerHTML += "The highest failing streak was: " + countHighestMissStreak + "<br>"
+    text.innerHTML += "The highest failing streak was: " + countHighestMissStreak + " with " + probabilityHighestMissStreak + "% chance getting that<br>"
     // Wahrscheinlichkeit mit den settings (Chance zu hitten hoch 10) 10er Streak zu schaffen
     text.innerHTML += "Probability to win now was: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable === true).length), 10)*100).toFixed(4) + "%<br>"
     // Most played idol
@@ -341,11 +348,9 @@ function finishGame() {
     isRunning = false
 }
 
-// maybe am Ende die letzten settings nochmal auflisten
-
 // vllt die Sachen speichern, damit man dann ein eigenes Leaderboard haben kann
 
-// vllt generell die letzten immer wieder anzeigen
+// vllt generell die letzten immer wieder anzeigen -> könnte nur dann maybe scheiße aussehen aufm Handy
 
 // wenn mal alle Bilder drinne sind, die dann vllt anzeigen
 // die Bilder dann immer (Zeit bis zum nächsten spin - 0.5 Sekunden) drehen
