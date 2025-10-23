@@ -53,7 +53,7 @@ function start() {
     countSpins = 0
     countHits = 0
     countMisses = 0
-    money = 10000// FIXME0
+    money = 0
     currentMoneyValue = 1
     countStreakMoney = 0
     countEarnedMoney = 0
