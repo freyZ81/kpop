@@ -53,7 +53,7 @@ function start() {
     countSpins = 0
     countHits = 0
     countMisses = 0
-    money = 0
+    money = 10000// FIXME0
     currentMoneyValue = 1
     countStreakMoney = 0
     countEarnedMoney = 0
@@ -262,16 +262,16 @@ function addNewMembers() {
 
 function removeMembers() {
     if (money >= costsRemoveMembers) {
-        let membersToDelete = choosenMembers.filter(member => member.gender === otherGender && member.usable  == true)
+        let membersToDelete = choosenMembers.filter(member => member.gender === otherGender && member.usable === true)
         if (membersToDelete.length >= 55) {
             money -= costsRemoveMembers
             countSpentMoney += costsRemoveMembers
             costsRemoveMembers = Math.ceil((costsRemoveMembers*1.5) / 50) * 50
 
             for (let i = 0; i < 5; i++) {
-                let genderMembers = choosenMembers.filter(member => member.gender == otherGender && member.usable == true)
+                let genderMembers = choosenMembers.filter(member => member.gender === otherGender && member.usable === true)
                 let randomNewNumber = Math.floor(Math.random() * genderMembers.length)
-                let randomMember = membersToDelete[randomNewNumber]
+                let randomMember = genderMembers[randomNewNumber]
                 randomMember.usable = false
             }
 
@@ -295,9 +295,10 @@ function finishGame() {
     // den höchsten Streak count anzeigen am Ende, der es dann vorher aber noch nicht zum win geschafft hat
     text.innerHTML += "The highest streak before winning was: " + countHighestStreakBeforeWin + "<br>"
     // Highestmisstreak
+    // TODO: maybe gucken, dass man die Wahrscheinlichkeit der jeweils höchsten fail streak mit schreiben kann
     text.innerHTML += "The highest failing streak was: " + countHighestMissStreak + "<br>"
     // Wahrscheinlichkeit mit den settings (Chance zu hitten hoch 10) 10er Streak zu schaffen
-    text.innerHTML += "Probability to win now was: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender).length / choosenMembers.length), 10)*100).toFixed(4) + "%<br>"
+    text.innerHTML += "Probability to win now was: " + (Math.pow((choosenMembers.filter(member => member.gender === wishedGender && member.usable).length / choosenMembers.filter(member => member.usable === true).length), 10)*100).toFixed(4) + "%<br>"
     // Most played idol
     const membersWishedGender = choosenMembers.filter(member => member.gender == wishedGender)
     const membersOtherGender = choosenMembers.filter(member => member.gender == otherGender)
@@ -312,13 +313,18 @@ function finishGame() {
         + " (" + allGroups[Math.abs(member.group[0])].name[0] + ")").join(", ")
         + " for " + maxSpinOther + " times<br>"
     // Zeit, wie lange gebraucht wurde
-    // TODO: SOLLTE man mal ü1h sein, dann auch das schöner anzeigen
     endTime = new Date()
     const diffSec = Math.floor((endTime - startTime) / 1000)
-    const minutes = Math.floor(diffSec/60)
+    let minutes = Math.floor(diffSec/60)
+    const hours = Math.floor(minutes/60)
     const seconds = diffSec % 60
 
-    text.innerHTML += "Time needed: " + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "<br><br>"
+    text.innerHTML += "Time needed: " 
+    if (hours > 0) {
+        text.innerHTML += hours.toString().padStart(2, "0") + ":"
+        minutes -= (hours*60)
+    }
+    text.innerHTML += minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "<br><br>"
 
     text.innerHTML += "Select the gender you want to hit and press start"
 

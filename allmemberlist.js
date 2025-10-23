@@ -367,7 +367,7 @@ function getGroupNameById(groupId) {
 }
 
 function setTimes() {
-    //TODO: absichern, dass niht mehrmals in der Sekunde neu geladen wird
+    // TODO absichern, dass nicht mehrmals in der Sekunde neu geladen wird
 
     // Aktuelles Datum und Uhrzeitobjekt erstellen
     const currentDate = new Date();

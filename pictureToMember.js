@@ -158,16 +158,20 @@ function getHelp() {
 }
 
 function setGroupToGuess() {
+    // überprüft, ob der bereits eingegebene Text die Gruppe ist
+    // TODO: vllt so umbauen, dass man erst den Button drückt, dann kann man die Gruppe eingeben und überprüfen lassen
+    // oder wenn der Button geklickt wurde und das Feld leer ist kommt eine Meldung, dass man erst was eingeben muss
+    // wenn die Gruppe dann geguesst wurde, kann man noch den member guessen, allerdings braucht man dann auch Tipp 1 nicht mehr
     if (randomGuess) {
         const groupInput = document.getElementById("answer").value.toLowerCase().trim()
-        let groupToGuesSId;
+        let groupToGuesSId // warum brauche ich dich, wenn es doch vorher eig schon den member gibt?
 
         if (groupInput != "") {
             for (let i = 0; i < allGroups.length; i++) {
                 if (allGroups[i].id > 0) {
                     let correctGroupNames = allGroups[i].name.map(name => name.toLowerCase());
                     if (correctGroupNames.includes(groupInput)) {
-                        //wenn der Gruppenname gefunden wurde
+                        // wenn der Gruppenname gefunden wurde
                         groupToGuesSId = allGroups[i].id;
                         randomGuess = false;
                         break;
@@ -202,7 +206,6 @@ function setGroupToGuess() {
     setNewPicture();
 }
 
-// Überprüft, ob die Enter-Taste gedrückt wurde
 document.getElementById("answer").addEventListener("keyup", function(event) {
     // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
     if (event.keyCode === 13) {

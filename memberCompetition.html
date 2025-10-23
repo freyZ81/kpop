@@ -58,6 +58,63 @@
     <br>
     <p id="memberleftText">test</p>
 
+    <!--
+    <div id="bracket"></div>
+
+    <script>
+        const tournament = [
+        [
+            { player1: "Alice", player2: "Bob", winner: "Alice" },
+            { player1: "Charlie", player2: "Diana", winner: "Diana" },
+        ],
+        [
+            { player1: "Alice", player2: "Diana", winner: "Diana" },
+        ]
+        ];
+
+        const bracket = document.getElementById('bracket');
+
+        tournament.forEach((round, i) => {
+        const roundDiv = document.createElement('div');
+        roundDiv.classList.add('round');
+        roundDiv.innerHTML = `<h3>Runde ${i + 1}</h3>`;
+        
+        round.forEach(match => {
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('match');
+            matchDiv.innerHTML = `
+            <div>${match.player1}</div>
+            <div>${match.player2}</div>
+            <strong>→ ${match.winner}</strong>
+            `;
+            roundDiv.appendChild(matchDiv);
+        });
+
+        bracket.appendChild(roundDiv);
+        });
+    </script>
+
+    <style>
+        #bracket {
+        display: flex;
+        gap: 2rem;
+        }
+        .round {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        border-radius: 10px;
+        background: #f8f8f8;
+        }
+        .match {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.1);
+        }
+    </style>
+    -->
+
     <button onclick="window.location.href = 'allmemberlist.html';">Back to birthdaylist</button><br>
 
     <script src="memberlist.js"></script>

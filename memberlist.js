@@ -5020,7 +5020,7 @@ counters()
 //countSize()
 
 /*
-EXID, Madein, Bigbang, luminous, cosmosy
+EXID, Madein, Bigbang, luminous, cosmosy, 2NE1 (maybe wg Park Bom gucken)
 
 92 kann verwendet werden !! z.B. für A2O May
 
