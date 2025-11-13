@@ -193,12 +193,19 @@ function spin() {
             countStreak = 0
             countStreakMoney = 0
         }
+        text.innerHTML += "<br><img src=\"" + getFile() + "\" alt=\"" + getFile() + "\" height=\"200px\" width=\"150px\">"
         
         if (countStreak == 10) {
             finishGame()
         }
         checkButtons()
         wartezeit()
+
+        function getFile() {
+            currentGroup = spinnedMember.group[0] < 0 ? allGroups[(spinnedMember.group[0]*-1)] : allGroups[spinnedMember.group[0]]
+            currentGroupName = currentGroup.name[currentGroup.name.length-1]
+            return "pics/" + currentGroupName + "/" + spinnedMember.name[spinnedMember.name.length-1].toString().toLowerCase() + ".jpg"
+        }
 
         function wartezeit() {
             spinButton.disabled = true;
@@ -352,5 +359,3 @@ function finishGame() {
 
 // vllt generell die letzten immer wieder anzeigen -> könnte nur dann maybe scheiße aussehen aufm Handy
 
-// wenn mal alle Bilder drinne sind, die dann vllt anzeigen
-// die Bilder dann immer (Zeit bis zum nächsten spin - 0.5 Sekunden) drehen
