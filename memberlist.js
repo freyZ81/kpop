@@ -2520,7 +2520,7 @@ let allMembers = [
         group: [55],
         gender: 1,
         ranking: 17,
-        birthday: new Date("2007-04-12"),
+        birthday: new Date("2006-04-12"),
     },
     {
         name: ["Joobin"],
@@ -3725,7 +3725,7 @@ let allMembers = [
         group: [85],
         gender: 1,
         ranking: 4,
-        birthday: new Date("2006-04-18"),
+        birthday: new Date("2006-11-14"),
     },
     {
         name: ["Sarang"],
