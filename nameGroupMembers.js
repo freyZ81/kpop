@@ -73,6 +73,7 @@ function checkAnswer() {
                 inputGroupMember.placeholder = "member"
                 buttonGroupMember.innerHTML = "Enter member"
                 counter.innerHTML = "There are " + choosedGroupMembers.length + " members left."
+                document.getElementById("giveUp").style = "display: block"
             }
         } else {
             //die Membernamen werden eingegeben
@@ -104,6 +105,7 @@ function reset() {
     inputGroupMember.value = ""
     inputGroupMember.placeholder = "group"
     buttonGroupMember.innerHTML = "Enter group"
+    document.getElementById("giveUp").style = "display: none"
     //counter.innerHTML = ""
     groupSelected = false
     choosedGroupMembers = []

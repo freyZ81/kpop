@@ -2784,7 +2784,7 @@ let allMembers = [
     {
         name: ["Cocona"],
         group: [60],
-        gender: 1,
+        gender: 2, // TODO: im best case sonst nen drittes gender hinzufügen für they/them -> muss dann nur in der Liste berücksichtigt werden
         birthday: new Date("2005-12-06"),
     },
     {

@@ -285,7 +285,7 @@ function setBirthdays() {
     todaysBirthdays.innerHTML += "</span><br>"
 }
 
-// TODO: vllt nochmal gucken, ob man über den month rüber gucken kannfür nextBirthdays
+// TODO: vllt nochmal gucken, ob man über den month rüber gucken kann für nextBirthdays
 
 function setNextBirthdays(membersWithNextBirthdays) {
     membersWithNextBirthdays.sort(function(a, b) {
