@@ -4147,7 +4147,7 @@ let allGroups = [
     },
     {
         id: 5,
-        name: ["Aespa"],
+        name: ["aespa"],
         size: 4,
         fandom: ["My"],
         entertainment: ["SM Entertainment"],
@@ -4304,7 +4304,7 @@ let allGroups = [
         size: 6,
         fandom: ["Plory"],
         entertainment: ["RBW"],
-        debut: new Date("2021-03-21"),
+        debut: new Date("2021-03-15"),
         disband: new Date("2025-11-30"),
     },
     {
@@ -4880,7 +4880,7 @@ let allGroups = [
         size: 5,
         fandom: ["N/A"],
         entertainment: ["Starship Entertainment"],
-        debut: new Date("2025-03-24"),
+        debut: new Date("2025-02-24"),
         disband: new Date(""),
     },
     {
@@ -5021,7 +5021,7 @@ counters()
 
 /*
 EXID, Madein, Bigbang, luminous, cosmosy, 2NE1 (maybe wg Park Bom gucken)
-
+Say my name
 92 kann verwendet werden !! z.B. für A2O May
 
 komplett hinzufügen:
