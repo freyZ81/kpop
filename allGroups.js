@@ -96,5 +96,3 @@ function setGroups() {
 }
 
 setGroups()
-document.getElementById('filterEntertainment').value = "JYP"
-filterTable()
