@@ -1,5 +1,6 @@
 allGroups = JSON.parse(localStorage.getItem('groupsArray'))
 allMembers = JSON.parse(localStorage.getItem('membersArray'))
+lastSave = JSON.parse(localStorage.getItem('lastSave'))
 const text = document.getElementById("text")
 const titleHint = document.getElementById("titleHint")
 const spinButton = document.getElementById("spinButton")
@@ -204,7 +205,7 @@ function spin() {
         function getFile() {
             currentGroup = spinnedMember.group[0] < 0 ? allGroups[(spinnedMember.group[0]*-1)] : allGroups[spinnedMember.group[0]]
             currentGroupName = currentGroup.name[currentGroup.name.length-1]
-            return "pics/" + currentGroupName + "/" + spinnedMember.name[spinnedMember.name.length-1].toString().toLowerCase() + ".jpg"
+            return "pics/" + currentGroupName.toLowerCase() + "/" + spinnedMember.name[spinnedMember.name.length-1].toString().toLowerCase() + ".jpg"
         }
 
         function wartezeit() {
@@ -353,6 +354,11 @@ function finishGame() {
     document.getElementById("btnRemoveMembers").style = "display: none"
 
     isRunning = false
+}
+
+console.log(lastSave)
+if (lastSave != null) {
+    
 }
 
 // vllt die Sachen speichern, damit man dann ein eigenes Leaderboard haben kann

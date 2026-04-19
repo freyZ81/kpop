@@ -280,8 +280,8 @@ let allMembers = [
         birthday: new Date("2005-04-13"),
     },
     {
-        name: ["Jinni"],
-        group: [-6],
+        name: ["Jini"],
+        group: [0, -6],
         gender: 1,
         birthday: new Date("2004-04-16"),
     },
@@ -1300,8 +1300,8 @@ let allMembers = [
         birthday: new Date("2003-06-24"),
     },
     {
-        name: ["Heeseung"],
-        group: [31],
+        name: ["Evan", "Heeseung"],
+        group: [0, -31],
         gender: 2,
         birthday: new Date("2001-10-15"),
     },
@@ -3959,6 +3959,36 @@ let allMembers = [
         birthday: new Date("2005-10-21"),
     },
     {
+        name: ["Kat"],
+        group: [92],
+        gender: 1,
+        birthday: new Date("2005-04-15"),
+    },
+    {
+        name: ["Miche"],
+        group: [92],
+        gender: 1,
+        birthday: new Date("2005-04-15"),
+    },
+    {
+        name: ["Shijie"],
+        group: [92],
+        gender: 1,
+        birthday: new Date("2007-06-26"),
+    },
+    {
+        name: ["Quchang"],
+        group: [92],
+        gender: 1,
+        birthday: new Date("2007-07-28"),
+    },
+    {
+        name: ["Chenyu"],
+        group: [92],
+        gender: 1,
+        birthday: new Date("2008-02-22"),
+    },
+    {
         name: ["Yunah"],
         group: [93],
         gender: 1,
@@ -4095,6 +4125,137 @@ let allMembers = [
         group: [96],
         gender: 2,
         birthday: new Date("2006-12-08"),
+    },
+
+
+
+
+
+    
+    {
+        name: ["Joon Park", "JoonPark"],
+        group: [99],
+        gender: 2,
+        birthday: new Date("1969-07-20"),
+    },
+    {
+        name: ["Kyesang"],
+        group: [99],
+        gender: 2,
+        birthday: new Date("1978-12-20"),
+    },
+    {
+        name: ["Danny"],
+        group: [99],
+        gender: 2,
+        birthday: new Date("1978-12-22"),
+    },
+    {
+        name: ["Hoyoung"],
+        group: [99],
+        gender: 2,
+        birthday: new Date("1980-03-26"),
+    },
+    {
+        name: ["Taewoo"],
+        group: [99],
+        gender: 2,
+        birthday: new Date("1981-05-12"),
+    },
+
+
+    
+    {
+        name: ["Insooni"],
+        group: [106],
+        gender: 2,
+        birthday: new Date(""),
+    },
+
+
+
+    
+    {
+        name: ["Sungjin"],
+        group: [105],
+        gender: 2,
+        birthday: new Date("1993-01-16"),
+    },
+    {
+        name: ["Young K", "YoungK"],
+        group: [105],
+        gender: 2,
+        birthday: new Date("1993-12-19"),
+    },
+    {
+        name: ["Wonpil"],
+        group: [105],
+        gender: 2,
+        birthday: new Date("1994-04-28"),
+    },
+    {
+        name: ["Dowoon"],
+        group: [105],
+        gender: 2,
+        birthday: new Date("1995-08-25"),
+    },
+    {
+        name: ["Junhyeok"],
+        group: [0, -105],
+        gender: 2,
+        birthday: new Date("1993-07-17"),
+    },
+    {
+        name: ["eaJ", "Jae"],
+        group: [0, -105],
+        gender: 2,
+        birthday: new Date("1992-09-15"),
+    },
+    {
+        name: ["Insooni"],
+        group: [106],
+        gender: 2,
+        birthday: new Date("1957-04-05"),
+    },
+    {
+        name: ["Park Mikyung", "ParkMikyung"],
+        group: [106],
+        gender: 2,
+        birthday: new Date("1965-11-22"),
+    },
+    {
+        name: ["Shin Hyobum", "ShinHyobum"],
+        group: [106],
+        gender: 2,
+        birthday: new Date("1966-01-18"),
+    },
+    {
+        name: ["Lee Eun Mi", "Lee EunMi", "LeeEunMi"],
+        group: [106],
+        gender: 2,
+        birthday: new Date("1966-05-19"),
+    },
+    {
+        name: ["Na Yeongjoo", "NaYeongjoo"],
+        group: [107],
+        gender: 2,
+        birthday: new Date("2001-02-21"),
+    },{
+        name: ["Lee Songhyun", "LeeSonghyun"],
+        group: [107],
+        gender: 2,
+        birthday: new Date("2004-10-28"),
+    },{
+        name: ["Yerin"],
+        group: [108],
+        gender: 2,
+        birthday: new Date("1997-06-26"),
+    },
+    {
+        name: ["Jamie"],
+        group: [108],
+        gender: 2,
+        birthday: new Date("1997-07-05"),
     },
 
 ]
@@ -4312,7 +4473,7 @@ let allGroups = [
         name: ["BVNDIT"],
         size: 5,
         fandom: ["Bvnditbul"],
-        entertainment: [""],
+        entertainment: ["MNH Entertainment"],
         debut: new Date("2019-04-10"),
         disband: new Date("2022-10-31"),
     },
@@ -4428,9 +4589,9 @@ let allGroups = [
         id: 36,
         name: ["Billlie"],
         size: 7,
-        fandom: [""],
-        entertainment: [""],
-        debut: new Date(""),
+        fandom: ["belllie've"],
+        entertainment: ["Mystic Story Entertainment"],
+        debut: new Date("2021-11-10"),
         disband: new Date(""),
     },
     {
@@ -4851,7 +5012,7 @@ let allGroups = [
         id: 83,
         name: ["BADVILLAIN"],
         size: 7,
-        fandom: [""],
+        fandom: ["VILLAIN-ON"],
         entertainment: ["BPM Entertainment"],
         debut: new Date("2024-06-03"),
         disband: new Date(""),
@@ -4930,11 +5091,10 @@ let allGroups = [
     },
     {
         id: 92,
-        name: [""],
-        size: 4,
-        fandom: ["FOREVER"],
-        entertainment: ["CHXXTA Company"],
-        debut: new Date("2025-09-10"),
+        name: ["A2O May", "A20May"],
+        size: 5,fandom: ["MAYnia"],
+        entertainment: ["A2O Entertainment"],
+        debut: new Date("2024-12-20"),
         disband: new Date(""),
     },
     {
@@ -4973,10 +5133,128 @@ let allGroups = [
         debut: new Date("2024-01-10"),
         disband: new Date(""),
     },
+    {
+        //TODO: ab hier Bilder dann auch
+        id: 97, //member
+        name: ["Boy Story", "BoyStory"],
+        size: 6,
+        fandom: ["BOSS"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2018-09-21"),
+        disband: new Date(""),
+    },
+    {
+        id: 98, //member
+        name: ["NEXZ"],
+        size: 7,
+        fandom: ["NEX2Y"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2024-05-20"),
+        disband: new Date(""),
+    },
+    {
+        id: 99, //member
+        name: ["g.o.d", "god"],
+        size: 5,
+        fandom: ["Fan God"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("1999-01-13"),
+        disband: new Date(""),
+    },
+    {
+        id: 100,
+        name: ["Wonder Girls", "WonderGirls"], //member, gucken weil Sunmi schon da
+        size: 4,
+        fandom: ["Wonderful"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2007-02-13"),
+        disband: new Date("2017-01-27"),
+    },
+    {
+        id: 101, //member
+        name: ["2AM"],
+        size: 4,
+        fandom: ["I am", "Iam"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2008-07-11"),
+        disband: new Date(""),
+    },
+    {
+        id: 102,
+        name: ["2PM"],
+        size: 6,
+        fandom: ["HOTTEST"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2008-09-04"),
+        disband: new Date(""),
+    },
+    {
+        id: 103,
+        name: ["missA"], //member, gucken wg Suzy
+        size: 4,
+        fandom: ["Say A", "SayA"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2010-07-01"),
+        disband: new Date("2017-12-26"),
+    },
+    {
+        id: 104, //member
+        name: ["Got7"],
+        size: 7,
+        fandom: ["I GOT7", "IGOT7"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2014-01-16"),
+        disband: new Date(""),
+    },
+    {
+        id: 105,
+        name: ["Day6"],
+        size: 4,
+        fandom: ["My Day"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2015-09-07"),
+        disband: new Date(""),
+    },
+    {
+        id: 106,
+        name: ["Golden Girls", "GoldenGirls"],
+        size: 4,
+        fandom: [""],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2023-12-01"),
+        disband: new Date(""),
+    },
+    {
+        id: 107,
+        name: ["dodree"], //DDDD25
+        size: 2,
+        fandom: [""],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2026-01-21"),
+        disband: new Date(""),
+    },
+    {
+        id: 108, //Bilder
+        name: ["15&"],
+        size: 2,
+        fandom: ["Dreamers"],
+        entertainment: ["JYP Entertaintment"],
+        debut: new Date("2012-10-05"),
+        disband: new Date("2019-08-06"),
+    },
+    {
+        id: 109,
+        name: ["Say my Name", "SMN", "SayMyName"],
+        size: 7,
+        fandom: [""],
+        entertainment: ["Entertaintment"],
+        debut: new Date("2024-01-10"),
+        disband: new Date(""),
+    },
     
 ]
 
-
+//Kim Woojin,
 
 //localStorage.removeItem('membersArray');
 localStorage.setItem('groupsArray', JSON.stringify(allGroups));
@@ -5020,9 +5298,8 @@ counters()
 //countSize()
 
 /*
-EXID, Madein, Bigbang, luminous, cosmosy, 2NE1 (maybe wg Park Bom gucken)
-Say my name
-92 kann verwendet werden !! z.B. für A2O May
+EXID, Bigbang, luminous, cosmosy, 2NE1 (maybe wg Park Bom gucken)
+
 
 komplett hinzufügen:
 The Rose, lovelyz (El7z Up)

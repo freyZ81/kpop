@@ -3,6 +3,7 @@ Ein Memory Game erstellen, wo man dann auf einer Karte die Gruppe hat und auf ei
     vllt auch, ob man dann mehrere member gleichzeitig hat (dann muss man auch mehrere auswählen können, bevor es aufgelöst wird)
     wenn es möglich ist vllt auch das member Bild anzeigen (vllt auch Gruppe)
 
+
 hangman
     choosen, ob gg/bg/both
     wenn nur ein Buchstabe eingegeben wird, dann den setzen wenn es passt
@@ -10,23 +11,34 @@ hangman
     vllt mit Tipps, wo man dann je nachdem ob es die Gruppe ist, nen paar member namen bekommt oder andersherum die Gruppe
 
 
+Karten sammeln
+    man kann zwischendurch die member bekommen
+    möglicherweise kann man mit denen Geld verdienen, mit dem man dann neue Karten kaufen kann -> dafür müssten nur values ausgearbeitet werden
+    vllt kann man auch in den anderen games welche gewinnen -> am wahrscheinlichsten beim gamblen, dass entweder die mit den meisten drops vergeben wird oder im final lineup welche ausgesucht werden können
+    maybe in Richtung coockie clicker einbauen?
+
+
+Buchstabensalat idk
+    es werden Buchstaben angezeigt und dann muss man alle idols nennen, die all diese Buchstaben beinhalten
+    wobei eig alle Buchstaben drinne sein müssen und auch nur die...
+
+
+
+add ons:
+gambling
+    die Werte speichern, damit die auch aufgerufen werden können, selbst wenn die Seite mal neu geladen wird
+
+
+
+
+
 
 fixes:
-name group members
-    give up button ausblenden, wenn man die Gruppe angeben soll
-
-gallery
-    Gruppennamen sollen richtig angezeigt werden
-    vllt ne einfache Möglichkeit herauszufinden, ob ein Bild vorhanden ist oder nicht
-    maybe sonst mit ner Schleife...
-
 member competition
-    am Ende den Gewinner ausgeben
-    maybe nochmal die matches ausgeben -> evtl auch als Turnierbaum, wenn das IWIE möglich ist
     gucken, ob die Bilder vllt noch passender in das Feld können
-    auf einmal kam Chaery bei den boys in der zweiten Runde -> und auch doppelt
 
 
 
 
 vllt mal nen cheat sheet mit den Funktionen machen, besonders Math. alles
+

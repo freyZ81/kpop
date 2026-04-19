@@ -114,6 +114,7 @@ function reset() {
 function checkMemberName(userInput) {
     for (let i = 0; i < choosedGroupMembers.length; i++) {
         let currentMember = choosedGroupMembers[i]
+        console.log(currentMember)
         let memberNames = currentMember.map(currentMember => currentMember.toLowerCase())
         if (memberNames.includes(userInput)) {
             //Name in der Tabelle hinzufügen

@@ -242,7 +242,7 @@ function setBirthdays() {
         if (groupDebut != null | groupDebut != "") {
             if (koreaDate.getDate() === groupDebut.getDate() && koreaDate.getMonth() === groupDebut.getMonth()) {
                 todaysBirthdays.innerHTML += ("Heute hat " + group.name[0] + " (" + group.entertainment[0] + ") ihr " + (koreaDate.getYear()-groupDebut.getYear()) + ". Anniversary.<br>")
-            }
+            } //TODO: wenn disband, dann vllt "hätte" schreiben
         }
     }
 
