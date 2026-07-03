@@ -128,7 +128,7 @@ let allMembers = [
         group: [1],
         gender: 1,
         birthday: new Date("2004-03-18"),
-        },
+    },
     {
         name: ["Monday"],
         group: [1],
@@ -4126,12 +4126,6 @@ let allMembers = [
         gender: 2,
         birthday: new Date("2006-12-08"),
     },
-
-
-
-
-
-    
     {
         name: ["Joon Park", "JoonPark"],
         group: [99],
@@ -4162,19 +4156,6 @@ let allMembers = [
         gender: 2,
         birthday: new Date("1981-05-12"),
     },
-
-
-    
-    {
-        name: ["Insooni"],
-        group: [106],
-        gender: 2,
-        birthday: new Date(""),
-    },
-
-
-
-    
     {
         name: ["Sungjin"],
         group: [105],
@@ -4214,47 +4195,47 @@ let allMembers = [
     {
         name: ["Insooni"],
         group: [106],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1957-04-05"),
     },
     {
         name: ["Park Mikyung", "ParkMikyung"],
         group: [106],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1965-11-22"),
     },
     {
         name: ["Shin Hyobum", "ShinHyobum"],
         group: [106],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1966-01-18"),
     },
     {
         name: ["Lee Eun Mi", "Lee EunMi", "LeeEunMi"],
         group: [106],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1966-05-19"),
     },
     {
         name: ["Na Yeongjoo", "NaYeongjoo"],
         group: [107],
-        gender: 2,
+        gender: 1,
         birthday: new Date("2001-02-21"),
-    },{
+    }, {
         name: ["Lee Songhyun", "LeeSonghyun"],
         group: [107],
-        gender: 2,
+        gender: 1,
         birthday: new Date("2004-10-28"),
-    },{
+    }, {
         name: ["Yerin"],
         group: [108],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1997-06-26"),
     },
     {
         name: ["Jamie"],
         group: [108],
-        gender: 2,
+        gender: 1,
         birthday: new Date("1997-07-05"),
     },
 
@@ -4303,7 +4284,7 @@ let allGroups = [
         size: 4,
         fandom: ["Moomoo"],
         entertainment: ["RBW"],
-        debut: new Date("2014-06-18"),
+        debut: new Date("2014-06-19"),
         disband: new Date(""),
     },
     {
@@ -5092,7 +5073,7 @@ let allGroups = [
     {
         id: 92,
         name: ["A2O May", "A20May"],
-        size: 5,fandom: ["MAYnia"],
+        size: 5, fandom: ["MAYnia"],
         entertainment: ["A2O Entertainment"],
         debut: new Date("2024-12-20"),
         disband: new Date(""),
@@ -5251,7 +5232,7 @@ let allGroups = [
         debut: new Date("2024-01-10"),
         disband: new Date(""),
     },
-    
+
 ]
 
 //Kim Woojin,
@@ -5263,7 +5244,7 @@ localStorage.setItem('membersArray', JSON.stringify(allMembers));
 function countSize() {
     for (let i = 1; i < allGroups.length; i++) {
         let countGroup = allMembers.filter(allMembers => allMembers.group.includes(allGroups[i].id)).length
-        let countGroupAll = allMembers.filter(allMembers => allMembers.group.includes(allGroups[i].id) | allMembers.group.includes((allGroups[i].id*-1))).length
+        let countGroupAll = allMembers.filter(allMembers => allMembers.group.includes(allGroups[i].id) | allMembers.group.includes((allGroups[i].id * -1))).length
         if (countGroup != allGroups[i].size && countGroupAll != allGroups[i].size) {
             console.log(allGroups[i].name[0] + ", ID: " + allGroups[i].id + ", count: " + countGroup
                 + ", countAll: " + countGroupAll + ", size: " + allGroups[i].size)
