@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the S</title>
+
+    <style>
+        .not-available {
+            filter: grayscale(100%) brightness(50%);
+            border: 5px solid red;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.4s, filter 0.3s;
+        }
+
+        .idol-image {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .idol-image.flipping {
+            transform: rotateY(90deg);
+        }
+
+        .idol-image {
+            width: clamp(75px, 15vw, 150px);
+            height: auto;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+        }
+    </style>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Guess the S</h1>
+    <div id="divPictureSet" style="display: block;">
+        <p>Bilder-Set:</p>
+        <form>
+            <select name="pictureSet" id="filter-pictureSet" class="filter-input">
+                <option value="triples">Default</option>
+            </select>
+        </form>
+        <br>
+        <button id="selectSet" onclick="startGame()">Set auswählen</button>
+    </div>
+    <br>
+    <div id="divGame" style="display: none;">
+        <p>Stelle eine Frage:</p>
+        <form>
+            <select name="question" id="filter-question" class="filter-input">
+                <option value=""></option>
+            </select>
+        </form>
+        <div id="divIdolSelect" style="display: none;">
+            <br>
+            <form>
+                <select name="idol" id="filter-idol" class="filter-idol">
+                    <option value=""></option>
+                </select>
+            </form>
+        </div>
+        <br><br>
+        <button id="enterQuestion" onclick="answerQuestion()">Ask question</button>
+        <p id="answerText"></p>
+        <br><br><br>
+        <div id="s1Tos4">
+            <img id="s1" src="" class="idol-image" alt="Seoyeon">
+            <img id="s2" src="" class="idol-image" alt="Hyerin">
+            <img id="s3" src="" class="idol-image" alt="Jiwoo">
+            <img id="s4" src="" class="idol-image" alt="Chaeyeon">
+        </div>
+        <div id="s5Tos8">
+            <img id="s5" src="" class="idol-image" alt="Yooyeon">
+            <img id="s6" src="" class="idol-image" alt="Soomin">
+            <img id="s7" src="" class="idol-image" alt="Nakyoung">
+            <img id="s8" src="" class="idol-image" alt="Yubin">
+        </div>
+        <div id="s9Tos12">
+            <img id="s9" src="" class="idol-image" alt="Kaede">
+            <img id="s10" src="" class="idol-image" alt="Dahyun">
+            <img id="s11" src="" class="idol-image" alt="Kotone">
+            <img id="s12" src="" class="idol-image" alt="Yeonji">
+        </div>
+        <div id="s13Tos16">
+            <img id="s13" src="" class="idol-image" alt="Nien">
+            <img id="s14" src="" class="idol-image" alt="Sohyun">
+            <img id="s15" src="" class="idol-image" alt="Xinyu">
+            <img id="s16" src="" class="idol-image" alt="Mayu">
+        </div>
+        <div id="s17Tos20">
+            <img id="s17" src="" class="idol-image" alt="Lynn">
+            <img id="s18" src="" class="idol-image" alt="Joobin">
+            <img id="s19" src="" class="idol-image" alt="Hayeon">
+            <img id="s20" src="" class="idol-image" alt="ShiOn">
+        </div>
+        <div id="s21Tos24">
+            <img id="s21" src="" class="idol-image" alt="Chaewon">
+            <img id="s22" src="" class="idol-image" alt="Suliln">
+            <img id="s23" src="" class="idol-image" alt="SeoAh">
+            <img id="s24" src="" class="idol-image" alt="Jiyeon">
+        </div>
+    </div>
+
+
+    <script src="guessthes.js"></script>
+
+</body>
+
+</html>
