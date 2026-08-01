@@ -5447,7 +5447,7 @@ function counters() {
 }
 
 //counters()
-countSize()
+//countSize()
 
 /*
 EXID, Bigbang, luminous, cosmosy, 2NE1 (maybe wg Park Bom gucken)
@@ -5456,3 +5456,4 @@ EXID, Bigbang, luminous, cosmosy, 2NE1 (maybe wg Park Bom gucken)
 komplett hinzufügen:
 The Rose, lovelyz (El7z Up)
 */
+
