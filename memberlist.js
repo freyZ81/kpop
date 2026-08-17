@@ -2824,7 +2824,7 @@ let allMembers = [
         name: ["Rora"],
         group: [59],
         gender: 1,
-        birthday: new Date("2008-10-14"),
+        birthday: new Date("2008-08-14"),
     },
     {
         name: ["Rami"],
@@ -4385,6 +4385,54 @@ let allMembers = [
         gender: 1,
         birthday: new Date("2009-05-27"),
     },
+    {
+        name: ["Mika"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2002-05-04"),
+    },
+    {
+        name: ["Mia"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2002-11-04"),
+    },
+    {
+        name: ["Sara"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2003-06-28"),
+    },
+    {
+        name: ["Momoka"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2004-03-30"),
+    },
+    {
+        name: ["Rinka"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2004-08-18"),
+    },
+    {
+        name: ["Honoka"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2004-09-14"),
+    },
+    {
+        name: ["Luna"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2005-05-15"),
+    },
+    {
+        name: ["Anami"],
+        group: [112],
+        gender: 1,
+        birthday: new Date("2005-08-24"),
+    },
 
 ]
 
@@ -4466,8 +4514,8 @@ let allGroups = [
         name: ["Kep1er"],
         size: 6,
         fandom: ["Kep1ian"],
-        entertainment: ["Wakeone"],
-        debut: new Date("2002-01-03"),
+        entertainment: ["KLAP entertainment"],
+        debut: new Date("2022-01-03"),
         disband: new Date(""),
     },
     {
@@ -5395,6 +5443,15 @@ let allGroups = [
         fandom: ["DVS"],
         entertainment: ["independent"],
         debut: new Date("2025-04-22"),
+        disband: new Date(""),
+    },
+    {
+        id: 112,
+        name: ["GPP"],
+        size: 8,
+        fandom: [""],
+        entertainment: ["SM Entertainment Japan"],
+        debut: new Date("2026-01-14"),
         disband: new Date(""),
     },
 
