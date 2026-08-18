@@ -4433,6 +4433,48 @@ let allMembers = [
         gender: 1,
         birthday: new Date("2005-08-24"),
     },
+    {
+        name: ["Cho Hyejin", "Hyejin", "ChoHyejin"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2007-10-24"),
+    },
+    {
+        name: ["Kuk Chorok", "Chorok", "KukChorok"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2005-07-28"),
+    },
+    {
+        name: ["Shin Hyewon", "Hyewon", "ShinHyewon"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2005-10-05"),
+    },
+    {
+        name: ["U"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2008-08-21"),
+    },
+    {
+        name: ["Baby"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2009-02-10"),
+    },
+    {
+        name: ["Achiraya"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2009-08-18"),
+    },
+    {
+        name: ["Kilala"],
+        group: [113],
+        gender: 1,
+        birthday: new Date("2010-12-17"),
+    },
 
 ]
 
@@ -5452,6 +5494,15 @@ let allGroups = [
         fandom: [""],
         entertainment: ["SM Entertainment Japan"],
         debut: new Date("2026-01-14"),
+        disband: new Date(""),
+    },
+    {
+        id: 113,
+        name: ["OURBIRTHDAY"],
+        size: 7,
+        fandom: [""],
+        entertainment: ["Innit Entertainment"],
+        debut: new Date("2026-08-19"),
         disband: new Date(""),
     },
 
