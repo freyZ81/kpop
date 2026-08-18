@@ -50,22 +50,24 @@
     </div>
     <br>
     <div id="divGame" style="display: none;">
-        <p>Stelle eine Frage:</p>
-        <form>
-            <select name="question" id="filter-question" class="filter-input">
-                <option value=""></option>
-            </select>
-        </form>
-        <div id="divIdolSelect" style="display: none;">
-            <br>
+        <div id="divQuestion">
+            <p>Stelle eine Frage:</p>
             <form>
-                <select name="idol" id="filter-idol" class="filter-idol">
+                <select name="question" id="filter-question" class="filter-input">
                     <option value=""></option>
                 </select>
             </form>
+            <div id="divIdolSelect" style="display: none;">
+                <br>
+                <form>
+                    <select name="idol" id="filter-idol" class="filter-idol">
+                        <option value=""></option>
+                    </select>
+                </form>
+            </div>
+            <br><br>
+            <button id="enterQuestion" onclick="answerQuestion()">Ask question</button>
         </div>
-        <br><br>
-        <button id="enterQuestion" onclick="answerQuestion()">Ask question</button>
         <p id="answerText"></p>
         <br><br><br>
         <div id="s1Tos4">

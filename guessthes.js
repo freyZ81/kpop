@@ -1,5 +1,3 @@
-
-
 const questionSelect = document.getElementById("filter-question")
 const idolSelect = document.getElementById("filter-idol")
 const answerText = document.getElementById("answerText")
@@ -179,12 +177,12 @@ const allIdols = [
 function startGame() {
     document.getElementById("divPictureSet").style = "display: none"
     document.getElementById("divGame").style = "display: block"
+    document.getElementById("divQuestion").style = "display: block"
 
     choosenS = Math.floor(Math.random() * 24 + 1)
     console.log(choosenS)
 
     let set = document.getElementById("filter-pictureSet").value
-    //console.log(set)
 
     fileSet = "pics/" + set + "/"
 
@@ -221,7 +219,17 @@ function startGame() {
     allIdols.forEach(obj => { //sollte alle beim Neustart wieder neu setzen
         //TODO: evtl muss das graue noch geupdatet werden dann
         obj.available = true
+
+        const image = document.getElementById(`s${obj.number}`);
+        image.classList.remove("not-available");
     })
+    document.getElementById("answerText").innerHTML = ""
+
+    questionAnswers.forEach(ques => {
+        ques.asked = false
+    })
+    fillQuestionSelect()
+
 }
 
 questionSelect.addEventListener("change", () => { //TODO: darf nicht nur on change sein, wenn nur noch die Frage sein sollte...
@@ -243,7 +251,6 @@ questionSelect.addEventListener("change", () => { //TODO: darf nicht nur on chan
 
                 idolSelect.appendChild(option);
             });
-
     }
 });
 
@@ -261,6 +268,23 @@ function fillQuestionSelect() {
         });
 
     document.getElementById("divIdolSelect").style = "display: none"
+
+    if (questionSelect.options.length === 1) {
+        questionSelect.selectedIndex = 0;
+        document.getElementById("divIdolSelect").style = "display: block"
+        idolSelect.innerHTML = ""
+
+        allIdols
+            .filter(questionObject => questionObject.available === true)
+            .forEach(questionObject => {
+                const option = document.createElement("option");
+
+                option.value = questionObject.number;
+                option.textContent = questionObject.idol;
+
+                idolSelect.appendChild(option);
+            });
+    }
 }
 
 function answerQuestion() {
@@ -297,6 +321,10 @@ function answerQuestion() {
                 idolObject.available = false
             }
         })
+        if (selectedValue == 99) {
+            document.getElementById("divPictureSet").style = "display: block"
+            document.getElementById("divQuestion").style = "display: none"        
+        }
     } else {
         console.log("Member ist nicht dabei!")
         answerText.innerHTML += "<br>" + "Antwort: <strong>Nein!</strong>"

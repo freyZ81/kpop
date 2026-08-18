@@ -33,7 +33,6 @@ let countOtherGender = 70
 let isRunning = false
 
 document.addEventListener("keyup", function(event) {
-    // Wenn Enter gedrückt wurde, überprüfen wir die Antwort
     if (event.keyCode === 32 && isRunning) {
       event.preventDefault();
       spin()
